@@ -21,7 +21,6 @@ Or you can fill and submit the form bellow and I'll get back to you:
 <p class="alert alert-success hidden" id="contact-form-msg"></p>
 <form action="" method="POST" id="contact-form">
     <input type="hidden" name="_subject" value="New submission from dareenzo.github.io!" />
-    <input type="hidden" name="_next" value="//site.io/thanks.html" />
     <input type="text" name="_gotcha" style="display:none" />
     <label>Email</label>
     <input type="email" id="user_email" name="_replyto" placeholder="Your email address">
