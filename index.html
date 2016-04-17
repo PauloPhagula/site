@@ -1,0 +1,28 @@
+---
+layout: default
+---
+<article>
+<h1>Howdy</h1>
+
+<p>
+<small>
+<strong>DISCLAIMER:</strong><br/>
+Although I work for <a href="https://ux.co.mz" title="Go to ux - information technologies site" target="_blank">UX - Information Technologies</a>, <strong>this site is my personal blog, and its contents and opnions are my own.</strong>
+</small>
+</p>
+<br/>
+<strong>RECENT POSTS:</strong>
+
+{% for category in site.categories %}
+  <h4 id="{{category | first }}">{{ category | first }}</h4>
+    {% for posts in category %}
+        {% for post in posts limit:3 %}
+            <ul>
+                {% if post.title %}
+                <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+                {% endif %}
+            </ul>
+        {% endfor %}
+    {% endfor %}
+{% endfor %}
+</article>

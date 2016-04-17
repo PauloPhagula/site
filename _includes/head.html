@@ -1,0 +1,91 @@
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# object: http://ogp.me/ns/object# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile#" >
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, 
+                                   initial-scale=1,
+                                   maximum-scale=1,
+                                   user-scalable=no,
+                                   minimal-ui" />
+    <meta http-equiv="x-rim-auto-match" content="none" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <!-- BEGIN: Chrome Perf hints -->
+    <!-- 1. Prefetch Hints -->
+    <meta http-equiv="x-dns-prefetch-control" content="on"/>
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="dns-prefetch" href="//www.google-analytics.com">
+
+    <!-- 2. Subresource Hints -->
+    <link rel="subresource" href="{{ "/js/app.js" | prepend: site.baseurl }}">
+    <link rel="subresource" href="{{ "/css/main.css" | prepend: site.baseurl }}">
+
+    <!-- 4. Prerender hints -->
+    {% if page.next %}<link rel="prerender" href="{{ page.next.url }}" />{% endif %}
+
+    <!-- Les SEO -->
+    <title>{% if page.title %}{{ page.title | escape }} | {% else %}{% endif %}Paulo Phagula - Software Developer</title>
+    <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+    <meta name="keywords" content="web developer, HTML5, CSS3, javascript, mozambique, umbraco, wordpress, android, e-commerce" />
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+    <link rel="shortlink" href="http://goo.gl/" />
+
+    {% if page.previous %}<link rel="prev" href="{{ page.previous.url }}" title="{{ page.previous.title }}" />{% endif %}
+    {% if page.next %}<link rel="next" href="{{ page.next.url }}" title="{{ page.next.title }}" />{% endif %}
+
+    <link rel="manifest" href="android-manifest.json">
+
+    <link rel="shortcut icon" href="{{ "/img/apple-touch-icon-57x57.png" | prepend: site.baseurl }}" type="image/x-icon">
+
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="{{ "/img/apple-touch-icon-57x57.png" | prepend: site.baseurl }}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ "/img/apple-touch-icon-72x72.png" | prepend: site.baseurl }}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ "/img/apple-touch-icon-114x114.png" | prepend: site.baseurl }}">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Paulo Phagula">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="generator" content="jekyll">
+    <meta name="robots" content="index, follow">
+    <meta name="revisit-after" content="1 DAYS">
+    <meta name="author" type="text/plain" content="humans.txt" />
+    <meta name="contact" content="pphagula+dareenzo.gihub.io@gmail.com" />
+    <meta name="geography" content="Mozambique">
+
+    <!-- twitter meta -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@dareenzo" />
+    <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" />
+    <meta name="twitter:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}" />
+    <meta name="twitter:url" content="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}" />
+    {% if page.image %}<meta name="twitter:image" content="{{ site.baseurl | prepend: site.url }}{{ page.image }}" />{% endif %}
+
+    <!-- opengraph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="{% if page.title %}{{ page.title | escape }} | {% else %}{% endif %}Paulo Phagula - Software Developer" />
+    <meta property="og:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}" />
+    <meta property="og:image" content="{{ "/img/apple-touch-icon-114x114.png" | prepend: site.baseurl }}" />
+    <meta property="og:url" content="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}" />
+    <meta property="og:site_name" content="Paulo Phagula - Software Developer" />
+        
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
+    
+
+    <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
+    <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' />
+    <script> 
+        htmlElement = document.getElementsByTagName('html')[0];
+
+        htmlElement.style.display  = 'none';
+        htmlElement.className      = htmlElement.className.replace('no-js', 'js');
+        htmlElement.style.overflow = 'hidden';
+    </script>
+
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" cache="false"></script>
+        <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js" cache="false"></script>
+    <![endif]-->
+</head>
