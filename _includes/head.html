@@ -1,12 +1,6 @@
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# object: http://ogp.me/ns/object# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile#" >
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui" />
-
-    <meta name="HandheldFriendly" content="True" />
-    <meta name="MobileOptimized" content="320" />
-    <meta http-equiv="x-rim-auto-match" content="none" />
-    <meta name="format-detection" content="telephone=no" />
 
     <meta http-equiv="x-dns-prefetch-control" content="on"/>
     <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
@@ -23,31 +17,45 @@
     <link rel="subresource" href="{{ "/css/main.css" | prepend: site.baseurl }}">
 
     {% if page.next %}<link rel="prerender" href="{{ page.next.url }}" />{% endif %}
+    {% if page.previous %}<link rel="prerender" href="{{ page.previous.url }}" />{% endif %}
 
     <title>{% if page.title %}{{ page.title | escape }} | {% else %}{% endif %}{{ site.title }}</title>
     <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
-    <meta name="keywords" content="Chops & Craft, web developer, HTML5, CSS3, javascript, mozambique, umbraco, wordpress, android, iOS, e-commerce" />
     <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
 
     {% if page.previous %}<link rel="prev" href="{{ page.previous.url }}" title="{{ page.previous.title }}" />{% endif %}
     {% if page.next %}<link rel="next" href="{{ page.next.url }}" title="{{ page.next.title }}" />{% endif %}
 
-    <link rel="manifest" href="android-manifest.json">
+    
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="MobileOptimized" content="320" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="x-rim-auto-match" content="none" />
+    <meta http-equiv="cleartype" content="on">
 
     <link rel="shortcut icon" href="{{ "/img/apple-touch-icon-57x57.png" | prepend: site.baseurl }}" type="image/x-icon">
 
-    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="{{ "/img/apple-touch-icon-57x57.png" | prepend: site.baseurl }}">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ "/img/apple-touch-icon-72x72.png" | prepend: site.baseurl }}">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ "/img/apple-touch-icon-114x114.png" | prepend: site.baseurl }}">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <link rel="icon" sizes="192x192" href="img/touch/touch-icon-192x192.png">
+    <link rel="icon" sizes="128x128" href="img/touch/touch-icon-128x128.png">
+
+    <link rel="manifest" href="android-manifest.json">
 
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="{{ site.title }}">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ "/img/apple-touch-icon-57x57.png" | prepend: site.baseurl }}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{ "/img/apple-touch-icon-72x72.png" | prepend: site.baseurl }}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{ "/img/apple-touch-icon-114x114.png" | prepend: site.baseurl }}">
+
     <meta name="generator" content="jekyll">
     <meta name="robots" content="index, follow">
     <meta name="revisit-after" content="1 DAYS">
     <meta name="author" content="{{ site.author }}" />
+    <link rel="author" href="/about">
     <meta name="contact" content="pphagula+dareenzo.gihub.io@gmail.com" />
     <meta name="geography" content="Mozambique">
 
@@ -65,7 +73,7 @@
     <!-- SEO Property Combo -->
     <meta property="og:title" name="twitter:title" itemprop="title name" content="{% if page.title %}{{ page.title | escape }} | {% else %}{% endif %}{{ site.title }}" />
     <meta property="og:description" name="twitter:description" itemprop="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}" />
-    <meta property="og:image" name="twitter:image" itemprop="image primaryImageOfPage" content="{{ "/img/apple-touch-icon-114x114.png" | prepend: site.baseurl }}" />
+    <meta property="og:image" name="twitter:image" itemprop="image primaryImageOfPage" content="{{ "/img/apple-touch-icon-114x114.png" | prepend: site.baseurl | prepend: site.url }}" />
 
     <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
 
