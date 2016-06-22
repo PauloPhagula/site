@@ -20,7 +20,6 @@ Or you can fill and submit the form bellow and I'll get back to you:
 </p>
 <p class="alert alert-success hidden" id="contact-form-msg"></p>
 <form action="" method="POST" id="contact-form">
-    <input type="hidden" name="_subject" value="New submission from dareenzo.github.io!" />
     <input type="text" name="_gotcha" style="display:none" />
     <label>Email</label>
     <input type="email" id="user_email" name="_replyto" placeholder="Your email address">
@@ -29,6 +28,7 @@ Or you can fill and submit the form bellow and I'll get back to you:
     <label>Input the result</label>
     <input type="text" id="human-check" name="human-check" placeholder=""><br />
     <input type="hidden" id="human-check-2" name="human-check-2">
+    <p class="alert alert-success hidden" id="contact-form-msg"></p>
     <button type="submit" class="button">Submit</button>
 </form>
 

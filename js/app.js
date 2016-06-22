@@ -1,30 +1,28 @@
-(function($){
-    var config = {
-        form_url: "https://formspree.io/pphagula+dareenzo.github.io@gmail.com"
-    },
+(function(){
+    var config = { form_url: "https://formspree.io/pphagula+dareenzo.github.io@gmail.com" },
         texts = {
             'error-email-label': "Invalid Email",
             'error-message-label': "Invalid message",
             'error-captcha-label': "Invalid Captcha",
-            'general_error_title': "An error happend while submiting your form. Please try again.",
+            'general-error-title': "An error happend while submiting your form. Please try again.",
             'success-label': "Message sent. Thanks!"
         }
     ;
 
-    var humanCheckX  = parseInt(Math.random(0,1) * 10 + 1), 
+    var humanCheckX  = parseInt(Math.random(0,1) * 10 + 1),
         humanCheckY  = parseInt(Math.random(0,1) * 10 + 1),
-        $form        = $('#contact-form'),
-        $error       = $('#contact-form-msg'),
-        $humanCheck  = $('#human-check'),
-        $userEmail   = $('#user_email'),
-        $userMessage = $('#user_message')
+        $form        = document.getElementById('contact-form'),
+        $error       = document.getElementById('contact-form-msg'),
+        $humanCheck  = document.getElementById('human-check'),
+        $userEmail   = document.getElementById('user_email'),
+        $userMessage = document.getElementById('user_message')
     ;
 
-    $humanCheck.attr('placeholder', humanCheckX + '+' + humanCheckY + '=?');
-    $form.submit(function (e) {
-        var $this = $(this),
-            formData;
-
+    $humanCheck.setAttribute('placeholder', humanCheckX + '+' + humanCheckY + '=?');
+    $form.addEventListener("submit", function (e) {
+        var self = this,
+            formData,
+            xhr;
         e.preventDefault();
 
         feedback();
@@ -32,43 +30,64 @@
         if (!validateForm())
             return;
 
-        formData = $this.serializeArray();
+        var data = {
+            "user_email": $userEmail.value,
+            "user_message": $userMessage.value,
+            "_subject": "New submission from dareenzo.github.io!",
+            "_gotcha": null
+        };
 
-        var request = [];
+        formData = new FormData();
 
-        $.each(formData, function(ind,c){
-            if (c.name == 'human-check' || c.name == 'human-check-2')
-                return;
+        // We push our data into our FormData object
+        for (var name in data) {
+            formData.append(name, data[name]);
+        }
 
-            request.push(c);
-        });
+        xhr = createCORSRequest('POST', config.form_url);
+        if (xhr) {
 
-        $.ajax({
-            type: 'POST',
-            data: $.param(request),
-            url: config.form_url,
-            error: function(err){
-                feedback('error');
-            },
-            success: function(res){
+            xhr.addEventListener("load", function(event){
                 feedback('success');
-                $form.find('input[type!="submit"],textarea').val('');
-            }
-        });
+                self.reset();
+                humanCheckX  = parseInt(Math.random(0,1) * 10 + 1);
+                humanCheckY  = parseInt(Math.random(0,1) * 10 + 1);
+                $humanCheck.setAttribute('placeholder', humanCheckX + '+' + humanCheckY + '=?');
+            });
+
+            xhr.addEventListener("error", function(event){
+                feedback('error');
+            });
+
+            xhr.send(formData);
+        }
     });
 
+    function createCORSRequest(method, url) {
+        var xhr = new XMLHttpRequest();
+        if ("withCredentials" in xhr){
+            xhr.open(method, url, true);
+        } else if (typeof XDomainRequest != "undefined"){
+            xhr = new XDomainRequest();
+            xhr.open(method, url);
+        } else {
+            xhr = null;
+        }
+        return xhr;
+    }
+
     function validateForm(){
-        if (!$userEmail.val() || !/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/.test($userEmail.val())) {
+        if (!$userEmail.value || !/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/.test($userEmail.value)) {
             feedback('error_email');
             return false;
         }
 
-        if (!$userMessage.val()) {
+        if (!$userMessage.value) {
             feedback('error_message');
             return false;
         }
 
-        if ($humanCheck.val() != (humanCheckX + humanCheckY)) {
+        if ($humanCheck.value != (humanCheckX + humanCheckY)) {
             feedback('error_captcha');
             return false;
         }
@@ -77,11 +96,14 @@
     }
 
     function feedback(name) {
-        if (!name)
-            return $error.addClass('hidden').html('');
+        if (!name) {
+             $error.classList.add('hidden');
+             $error.innerHTML = '';
+             return;
+        }
 
         var langTexts = texts,
-            className = 'alert alert-danger',
+            className = ['alert', 'alert-danger'],
             $focusEl,
             text;
 
@@ -103,25 +125,28 @@
 
             case "success":
                 text = langTexts['success-label'];
-                className = 'alert alert-success';
+                className = ['alert','alert-success'];
             break;
 
-            default: 
-                text = langTexts['general_error_title'];
+            default:
+                text = langTexts['general-error-title'];
             break;
         }
 
-        $error
-            .html(text)
-            .removeClass('alert alert-danger alert-success')
-            .addClass(className)
-            .removeClass('hidden');
+        $error.innerHTML = text;
+        $error.classList.remove('alert');
+        $error.classList.remove('alert-danger');
+        $error.classList.remove('alert-success');
+        className.forEach(function(item, i){
+            $error.classList.add(item);
+        });
+        $error.classList.remove('hidden');
 
         if ($focusEl) {
             $focusEl.focus();
-            $('body,html').stop().animate({
-                scrollTop: $focusEl.offset().top - 60
-            });
+            // $('body,html').stop().animate({
+            //     scrollTop: $focusEl.offset().top - 60
+            // });
         }
     }
-})(jQuery);
+})();

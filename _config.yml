@@ -6,8 +6,9 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: Paulo Phagula
+title: Chops & Craft
 email: pphagula@gmail.com
+author: Paulo Phagula
 description: > # this means to ignore newlines until "baseurl:"
   Paulo Phagula is a passionate software developer from Mozambique crafting websites and apps.
 baseurl: "" # the subpath of your site, e.g. /blog

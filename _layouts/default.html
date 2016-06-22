@@ -9,9 +9,9 @@
     <main>
         <section id="side">
             <article id="about">
-                <a href="{{ site.baseurl }}/"><img src="{{ "/img/small.png" | prepend: site.baseurl}}" alt="{{ site.title }}" /></a>
+                <a href="{{ site.baseurl }}/"><img src="{{ "/img/avatar.png" | prepend: site.baseurl}}" alt="{{ site.title }}" /></a>
                 <h2>{{ site.title }}</h2>
-                <p>Personal blog about programming, hacking, open-source, startups, git, vim, linux, etc.</p>
+                <p>personal blog about programming, hacking, open-source, startups, git, vim, linux, etc.</p>
                 <p>
                     <a href="/about#services" title="Check out what I can do for you">#tech</a>
                     <a href="/about#work" title="Check out some of my work and projects">#craft</a>
@@ -39,7 +39,7 @@
             </ul>
 
             {% include search.html %}
-            <footer><small>Copyright (c) 2014 - {{ site.time | date: '%Y' }}, {{ site.title }}<br/>Some rights reserved</small></footer>    
+            <footer><small>Copyright (c) 2014 - {{ site.time | date: '%Y' }}, {{ site.author }}<br/>Some rights reserved</small></footer>
         </section>
 
         <section id="content">
@@ -51,7 +51,6 @@
 
     {% include analytics.html %}
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript">
         (function(){
             var jsb = document.createElement('script');
