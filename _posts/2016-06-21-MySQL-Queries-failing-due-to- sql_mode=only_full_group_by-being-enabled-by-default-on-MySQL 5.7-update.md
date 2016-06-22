@@ -35,7 +35,7 @@ That meant to us that somewhere in this new version, MySQL changed it's `sql_mod
 
 > In MySQL 5.7.5, the ONLY_FULL_GROUP_BY SQL mode is enabled by default because GROUP BY processing has become more sophisticated to include detection of functional dependencies.
 
-The temporary solution which we adapted was to set the `sql_mode` to `NO_ENGINE_SUBSTITUTION` which came as default for v5.6.6>. But, in the end we'll have to upgrade our queries to be compliant with the new `sql_mode` as defintive fix.
+The temporary solution which we adapted was to set the `sql_mode` to an empty value which then defaults to `NO_AUTO_CREATE_USER` which came as default for v5.6.10>. But, in the end we'll have to upgrade our queries to be compliant with the new `sql_mode` as defintive fix.
 
 ----
 References:
