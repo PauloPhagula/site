@@ -148,12 +148,11 @@ I know setting up your domains and hosting can be a daunting task, with so much 
     <h3>F-ES</h3>
     <div class="description">
         <p>JavaScript framework for modular and scalable SPAs inspired by
-        <a href="https://www.nczonline.net/about/" title="See Nicholas Zakas' Profile on his website" target="_blank">Nicholas Zakas</a> and 
-        <a href="https://addyosmani.com/" title="See Addy Osmani's Profile on his website" target="_blank">Addy Osmani<a/> talks on 
+        <a href="https://www.nczonline.net/about/" title="See Nicholas Zakas' Profile on his website" target="_blank">Nicholas Zakas</a> and
+        <a href="https://addyosmani.com/" title="See Addy Osmani's Profile on his website" target="_blank">Addy Osmani<a/> talks on
         <a href="http://www.slideshare.net/nzakas/scalable-javascript-application-architecture-2012" title="See Scalable Javascript Architecture talk slides on slideshare" target="_blank">Scalable Javascript Architecture</a></p>
     </div>
     <dl>
         <dt>URL:</dt><dd><a href="https://github.com/dareenzo/F-ES">github.com/dareenzo/F-ES</a></dd>
     </dl>
 </div>
-
