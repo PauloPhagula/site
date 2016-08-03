@@ -3,7 +3,7 @@ layout: post
 title:  "MySQL queries fail due to sql_mode=ONLY_FULL_GROUP_BY after updating to v5.7.*"
 excerpt: "Recently, on an live project, we've updated our MySQL server version so we could use the new JSON field introduced in v5.7.8. We were succesful in our quest, but, what we didn't expect, was the following stream of errors in queries. Find in this post, what caused these errors and how we fixed them (or at least circunvented for the time being)"
 date:   2016-06-21 00:00:00 +0200
-categories: coding
+categories: Coding
 tags: database mysql sql
 ---
 

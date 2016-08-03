@@ -3,7 +3,7 @@ layout: post
 title:  "BEM - block__element--modifier"
 excerpt: ""
 date:   2016-08-02 00:00:00 +0200
-categories: coding
+categories: Coding
 tags: css
 ---
 Have your browsed through the internet lately and then *view-source(d)* on some pages? Have you noticed that almost all css classes resemble this pattern: `some-thing__other-thing—change-looks` &mdash; mind the double underscores and double dashes... Wondering what’s that?
