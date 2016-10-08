@@ -22,5 +22,13 @@ permalink: /blog/:year/:month/:day/:title/
 
 ga_tracking_id: UA-76527140-1
 
+exclude:
+  - autoprefixer.yml
+  - Gemfile*
+  - README.md
+  - LICENSE.md
+  - tags/*.md
+  - Rakefile
+
 gems:
   - jekyll-postfiles
