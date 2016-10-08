@@ -21,3 +21,6 @@ markdown: kramdown
 permalink: /blog/:year/:month/:day/:title/
 
 ga_tracking_id: UA-76527140-1
+
+gems:
+  - jekyll-postfiles
