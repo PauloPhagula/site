@@ -12,11 +12,11 @@ permalink: /about/
 </p>
 <hr>
 
-I'm a driven, passionate and experienced software craftsman, working alongside stakeholders, business owners and designers, to develop modern, valuable and meaningful products for businesses, institutions and individuals.
+**Chops and Craft** is the personal blog and brain-dump of Paulo Phagula about programming and other topics to which he's enthusiastic.
 
-I blog about technology, culture, gadgets, diversity, code, the web, where we're going and we've been and I'm excited about community, social equity, media, entrepeneurship and above all, the open web.
+Paulo, develops and manages web and mobile services designed for social impact; has experience in managing large databases; has worked in technical consultancies for Microsoft, the World Bank, the Municipal Council of Maputo, and Aga Khan Foundation.
 
-If you want to know a bit more about me, just read my [resume](#resume) bellow or on [linkedIn](https://www.linkedin.com/in/paulo-phagula-9b6126b1).
+If you want to know a bit more about Paulo, just read the [resume](#resume) bellow or checkout his [linkedIn](https://www.linkedin.com/in/paulo-phagula) page.
 
 <hr/>
 
@@ -58,13 +58,15 @@ If you want to know a bit more about me, just read my [resume](#resume) bellow o
 </ul>
 
 ### Education
-<h4>Bachelor's Degree, Computer Software Engineering</h4>
-<a href="http://www.ustm.ac.mz">St Thomas University of Mozambique</a><br/>
+
+<h4>Bsc in Technology and Information Systems</h4>
+<a href="http://www.ustm.ac.mz">St. Thomas University of Mozambique</a><br/>
 <small>2010 - 2016 | Mozambique</small>
 
 ### Languages
+
 - Portuguese (Native)
-- English
+- English (Professional Proficiency)
 
 ### Certifications
 
@@ -79,6 +81,10 @@ Microsoft Certified Professional<br/>
 ### Skills
 
 **Programming**: HTML, CSS, JavaScript, PHP, Python, C#
+
+**Architectural Styles**: Object Oriented Programming, CQRS, Event Sourcing, Hexagonal
+
+**Methodologies**: Domain ­Driven Design, Event Storming, TDD/BDD, Kanban, Scrum
 
 **Databases:** MySQL, SQL Server, Oracle
 
@@ -145,11 +151,21 @@ I know setting up your domains and hosting can be a daunting task, with so much 
 </div>
 
 <div class="project">
-    <h3>F-ES</h3>
+    <h3>f.js</h3>
     <div class="description">
-        <p>JavaScript framework for modular and scalable SPAs inspired by <a href="https://www.nczonline.net/about/" title="See Nicholas Zakas' Profile on his website" target="_blank">Nicholas Zakas</a> and <a href="https://addyosmani.com/" title="See Addy Osmani's Profile on his website" target="_blank">Addy Osmani<a/> talks on <a href="http://www.slideshare.net/nzakas/scalable-javascript-application-architecture-2012" title="See Scalable Javascript Architecture talk slides on slideshare" target="_blank">Scalable Javascript Architecture</a></p>
+        <p>JavaScript framework for modular and scalable SPAs inspired by <a href="https://www.nczonline.net/about/" title="See Nicholas Zakas' Profile on his website" target="_blank">Nicholas Zakas</a> and <a href="https://addyosmani.com/" title="See Addy Osmani's Profile on his website" target="_blank">Addy Osmani</a> talks on <a href="http://www.slideshare.net/nzakas/scalable-javascript-application-architecture-2012" title="See Scalable Javascript Architecture talk slides on slideshare" target="_blank">Scalable Javascript Architecture</a></p>
     </div>
     <dl>
-        <dt>URL:</dt><dd><a href="https://github.com/dareenzo/F-ES">github.com/dareenzo/F-ES</a></dd>
+        <dt>URL:</dt><dd><a href="https://github.com/dareenzo/f.js">github.com/dareenzo/f.js</a></dd>
+    </dl>
+</div>
+
+<div class="project">
+    <h3>SEO - fu</h3>
+    <div class="description">
+        <p>A simple HTML file filled with tags and documentation, describing in which order tags should come; what they're used for; why use or ditch each of them while focusing in reaching better SEO</p>
+    </div>
+    <dl>
+        <dt>URL:</dt><dd><a href="https://github.com/dareenzo/seo-fu">github.com/dareenzo/seo-fu</a></dd>
     </dl>
 </div>
