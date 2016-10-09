@@ -14,8 +14,6 @@ permalink: /about/
 
 **Chops and Craft** is the personal blog and brain-dump of Paulo Phagula about programming and other topics to which he's enthusiastic.
 
-Paulo, develops and manages web and mobile services designed for social impact; has experience in managing large databases; has worked in technical consultancies for Microsoft, the World Bank, the Municipal Council of Maputo, and Aga Khan Foundation.
-
 If you want to know a bit more about Paulo, just read the [resume](#resume) bellow or checkout his [linkedIn](https://www.linkedin.com/in/paulo-phagula) page.
 
 <hr/>
@@ -88,17 +86,11 @@ Microsoft Certified Professional<br/>
 
 **Databases:** MySQL, SQL Server, Oracle
 
-**Version Control**: Git, Github, Bitbucket
+**Version Control / Collaboration**: Git / Github, Bitbucket
 
-**CMS**: WordPress, Umbraco, SharePoint
+**CMS**: WordPress, Umbraco
 
-**Operating Systems**: UNIX, Linux, MacOS, Windows
-
-**Task Runners**: Gulp, Grunt
-
-**Frameworks**: Django, Flask; Sass, Less; NancyFx; Backbone, Angular; Express; Epiphany; Bootstrap, Foundation.
-
-**Web Servers**: Apache, IIS
+**Operating Systems**: Linux, MacOS, Windows
 
 ---
 
