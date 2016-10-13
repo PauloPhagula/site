@@ -8,7 +8,7 @@ categories: Coding
 tags: javascript js currying functional
 ---
 
-I was working on nodejs project with mighty [@giannis](https://github.com/giannis) and we had this library that
+I was working on a nodejs project with mighty [@giannis](https://github.com/giannis) and we had this library that
 required setting up event handlers, pretty much in the usual form of:
 
 ```javascript
@@ -43,6 +43,7 @@ And that is where the challenge begun, as in the `handlerfn` I could no longer
 know which `libObject` instance I should call.
 
 That's when might [@giannis](https://github.com/giannis) told me:
+
 > mate, just use "bind" on the handlerfn, and pass in the key/id of the instance
 you want.
 
