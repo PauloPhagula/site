@@ -2,7 +2,7 @@
 layout: post
 title:  "Writing reliable and robust code with Design by Contract"
 excerpt: "Review on Design By Contract: motivations, benefits and give example."
-date:   2016-01-08 00:00:00 +0200
+date:   2017-01-08 00:00:00 +0200
 categories: Coding
 tags: dbc python ddd
 ---
