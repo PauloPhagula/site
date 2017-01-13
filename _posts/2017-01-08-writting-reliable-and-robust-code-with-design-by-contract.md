@@ -60,7 +60,7 @@ indicating its:
 * post-conditions - the conditions that will be true after its execution, if the routine has worked correctly
 
 And more than just defining the pre-conditions and post-conditions, we must embed them into code, in 
-such way that whenever the code runs, its self validating, takinga a pro-active position
+such way that whenever the code runs, its self validating, taking a pro-active position
 towards avoiding bugs rather than applying defensive programming.
 
 (Routines is old school we do classes and objects these days...)
@@ -72,7 +72,7 @@ always valid. And in DbC we're meant to do it by explicitly and clearly defining
 * invariant - class/object wise conditions that must be valid at all times. They can be only invalid during a routine execution, but not before or after it.
 
 If either a pre-condition, post-condition or invariant is violated an Exception must be raised 
-immediately, to stop the routing from not doing it's job properly or the object from getting
+immediately, to stop the routinw from not doing it's job properly or the object from getting
 into invalid state.
 
 ## The Command-Query Separation Principle
