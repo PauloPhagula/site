@@ -1,4 +1,10 @@
 (function(){
+
+    if (window.location.href.split('/').filter(function(part) { return part.length; }).pop() !== 'contact') {
+        return;
+    }
+    
+
     var config = { form_url: "https://formspree.io/pphagula+dareenzo.github.io@gmail.com" },
         texts = {
             'error-email-label': "Invalid Email",
