@@ -11,12 +11,6 @@ truth: there's no inheritance in JavaScript...there's no such thing as
 prototypal inheritance."
 ---
 
-This post is not about getting started with JavaScript OO, it's rather
-about clearing the confusion in our minds about JavaScript OO concepts.
-Specifically it's an attempt to mark in my head a simple truth: there's
-no inheritance in JavaScript...there's no such thing as prototypal
-inheritance.
-
 Yes, they lied, big time. All you have is delegation and copying properties.
 They say it's inheritance but that is due to JS trying to accommodate the
 classical inheritance object-orientation model to cater for a smooth
