@@ -4,35 +4,43 @@ title: "Re-learning the JavaScript inheritance that doesn't exist"
 date: 2017-04-06 08:00:00 +0200
 categories: Coding
 tags: javascript object-orientation
-excerpt: ""
+excerpt: "This post is not about getting started with JavaScript OO,
+it's rather about clearing the confusion in our minds about JavaScript
+OO concepts. Specifically it's an attempt to mark in my head a simple
+truth: there's no inheritance in JavaScript...there's no such thing as
+prototypal inheritance."
 ---
 
-This post is not about getting you started with JavaScript OO. It's
-about re-learning and clearing the confusion in my mind. It's about
-teaching marking in my head a simple truth: There's no inheritance in
-JavaScript... There's no such thing as prototypal inheritance.
+This post is not about getting started with JavaScript OO, it's rather
+about clearing the confusion in our minds about JavaScript OO concepts.
+Specifically it's an attempt to mark in my head a simple truth: there's
+no inheritance in JavaScript...there's no such thing as prototypal
+inheritance.
 
-
-Yes, they lied big time. All you have is delegation and copying properties.
-They say its inheritance but that is due to JS trying to accommodate the
+Yes, they lied, big time. All you have is delegation and copying properties.
+They say it's inheritance but that is due to JS trying to accommodate the
 classical inheritance object-orientation model to cater for a smooth
 transition of "Java" people into JavaScript.
-Personally I think this creates more confusion than it helps. If people
-were taught straight from the beginning the real gospel instead of trying
+Personally, I think this creates more confusion than it helps. If people
+were taught straight from the beginning, the real gospel instead of trying
 to "travestize" it for them there wouldn't be much confusion, but well,
 it is what it is.
 
 To understand why and how things came to be, we need to look a bit and
 understand JavaScript's history.
 In the beginning, when Brendan Eich was creating the language, his intention
-was bring Scheme into the browser, and that's where JS gets the whole
-prototype inheritance thing (which doesn't exist). Overtime though, as
-Java was the mainstream programming language back then, he was asked to
-"massage" the language as to make it more "familiar" for Java developers,
-as they were JavaScript's potential users ... and err... this is where
-shit got fucked up.
-The massaging brought along `this` and `new`, constructs that don't exist
-in scheme naturally.
+was bring [Scheme](https://en.wikipedia.org/wiki/Scheme_%28programming_language%29)
+into the browser, and that's where JS gets the whole prototype inheritance
+thing (which doesn't exist). Overtime though, as Java was the mainstream
+programming language back then, he was asked to "massage" the language as
+to make it more "familiar" for Java developers, as they were JavaScript's
+potential users ... and err... this is where shit got fucked up.
+The massaging brought along `new` and other constructs that don't exist
+in Scheme naturally.
+
+One of the main concepts in prototypal inheritance (that doens't exist)
+is that of a **prototype**, so, let's start by getting into what that is
+before touching other parts.
 
 ## What is a prototype
 
@@ -48,12 +56,12 @@ be passed (not down) through the chain until you, so you can use it as
 yours.
 
 The way this applies to JS, is that all objects have a property called
-`__proto__` (not `prototype` but which we -- creatively -- call "prototype")
+`__proto__` (not `prototype`, but which we -- creatively -- call "prototype")
 that references a friend object to which they delegate property lookup
-whenever they do not have the intended property. By default this friend
+whenever they do not have the intended property. By default, this friend
 object is `Object.prototype`.
 
-An example illustrates better:
+An example illustrates it better:
 
 We start by creating a simple dumb dog object with a sound property with
 the value 'woof!'
@@ -79,11 +87,11 @@ console.log(Object.prototype)
 
 Now, considering the dog object created above, not very useful in its
 presents state, let's say we'd like it to do something, say make a sound.
-We could add a method on the dog object that allows it to make a sound.
-But, lets consider that asides our dog object, our program will need
+We could add a method on the dog object that allows it to make a sound,
+but, lets consider that asides our dog object, our program will need
 other objects to make sounds.
 Well, we could add a function to each of those objects. But if we think
-of it, we quickly realize it's impractical to have a N copies of the same
+of it, we quickly realize it's impractical to have N copies of the same
 function. So, instead, what we can do is create a "friend" object with
 the function and then tell all of these objects to become friends with
 it, such that we reuse that single method all over.
@@ -98,7 +106,8 @@ var animal = {
     }
 }
 
-Object.setPrototypeOf(dog, animal); // set the friend object. Makes `dog.__proto__` reference the animal object
+// set the friend object. Makes `dog.__proto__` reference the animal object
+Object.setPrototypeOf(dog, animal);
 ```
 
 Now, we can safely call `dog.makeSound()` and have the output of `'woof!'`
@@ -110,16 +119,16 @@ Note:
 - dog didn't inherit `makeSound` from animal. It delegated what it didn't
   have (`makeSound()`) to animal.
   Should it have inherited, then `makeSound()` would be its own property
-  (we can verify if an object owns as property with `objectVariable.hasOwnProperty(propertyName)`),
+  (we can verify if an object owns as property with `.hasOwnProperty(propertyName)`),
   and wouldn't go away when we remove it from animal. In the same way
   that if we add properties to animal, dog will be able to access them
-  as if they were its.
+  as if they were its own.
 
   ```js
     dog.hasOwnProperty('makeSound') // => false
   ```
 
-## prototype vs `.prototype` Vs. `.__proto__`
+## prototype vs `.prototype` vs `.__proto__`
 
 prototype is the term used to speak of the friend object referenced by
 `.__proto__` in any object.
@@ -282,23 +291,23 @@ zezinho.isHuman() // =>
 ## Conclusions
 
 - There's no inheritance in JavaScript. Only property delegation and copying.
-  - If a property is removed from the "friended object" object the other object no longer has it
-  - As we saw in the `objectCreate`, the ownProperties were copied from another object. We can expand on this and compose objects from others further improving reuse.
-- All objects are just object literals with properties added. `new` and `Object.create` just create the literal internally, add properties to it, link to a prototype and return it. No magic! We can implement this ourselves
+  - If a property is removed from the "friended object" object the other object no longer can use it
+  - As we saw in the `objectCreate`, the `ownProperties` were copied from another object. We can expand on this and compose objects from others further improving reuse.
+- There's only one way of creating objects and that's with object literals. `new` and `Object.create` just create the literal internally, add properties to it, link to a prototype and return it. No magic! We can implement this ourselves
 - `__proto__` is a property of all objects (even functions)
 - prototype exists as two concepts:
   1. the friend object to which objects delegate property lookup (`__proto__`) and
-  1. the property of all functions used to keep future friend (read `__proto__`) object of the new objects created by calling the function using the `new()` operator
+  1. the property of all functions used to keep future friend (read `__proto__`) object of new objects created by calling the function using the `new()` operator
 - Prototypes exist as a form reuse. And the way they've been made / thought-of, they have a beautiful side-effect that the classical inheritance object-oriented form of reuse doesn't have, which is to save memory. That is, in the classical form, each instance of an object has all the details about it (the whole pack of properties it inherited), while with prototypes only references are kept to where to find the properties, so rather than say 1000 copies only 1 exists. This is exceptionally well thought, and is specially useful given the resource constraint limits imposed by the web browsers environment.
-- The decision to add `new` and pseudo-classical pattern just created more confusion and disinformation to the community and language users. It should serve as a lesson to future endeavours
+- The decision to add `new` and pseudo-classical pattern just created more confusion and disinformation to the community and language users. It should serve as a lesson to future endeavors
 
 
----
+## Closing
 
-Last but not least, I could only figure this out after watching the
+Last but not least, I was only able to figure this out after watching the
 [Object creation YouTube video series](https://www.youtube.com/playlist?list=PL0zVEGEvSaeHBZFy6Q8731rcwk0Gtuxub)
 on [funfunfunction](http://www.youtube.com/channel/UCO1cgjhGzsSYb1rsB4bFe4Q)
-by [Matthias Johansson](https://twitter.com/mpjme). So I strongly
-recommend watching those to all JS people out there.
+by [Matthias Johansson](https://twitter.com/mpjme), so I strongly recommend
+watching those to all JS people out there.
 
 A zillion "Good Monday mornings!" for you Matthias.
