@@ -28,7 +28,7 @@ into the browser, and that's where JS gets the whole prototype inheritance
 thing (which doesn't exist). Overtime though, as Java was the mainstream
 programming language back then, he was asked to "massage" the language as
 to make it more "familiar" for Java developers, as they were JavaScript's
-potential users ... and err... this is where shit got fucked up.
+potential users ... and err... this is where things went wrong.
 The massaging brought along `new` and other constructs that don't exist
 in Scheme naturally.
 
