@@ -98,16 +98,12 @@ a {
     display: inline;
 }
 
-    a:visited {
+    a:visited, a:active {
     }
 
     a:hover {
         text-decoration: underline;
         color: #427fed;
-    }
-
-    a:active {
-        color: tomato;
     }
 
 strong {
@@ -402,7 +398,6 @@ body {
     background-color: #333;
     color: #404040;
     font: normal 13px Roboto,arial,sans-serif;
-    font-family: 'Roboto';
     height: 100%;
     margin: 0;
     overflow-y: scroll;
@@ -425,7 +420,6 @@ main {
 
 
 #side {
-    background-color: #333;
     color: white;
     width: 230px;
     /*padding: 15px;*/
@@ -567,7 +561,6 @@ nav ul {
 }
 footer {
     text-align: center;
-    color: #FFF;
     margin-bottom: 15px;
 }
 
