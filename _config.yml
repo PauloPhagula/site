@@ -30,5 +30,21 @@ exclude:
   - tags/*.md
   - Rakefile
 
+# sass compression
+sass:
+    style: compressed
+
+# html compression
+compress_html:
+  clippings: all
+  comments: []
+  endings: all
+  ignore:
+    envs: [local]
+  blanklines: false
+  profile: false
+  startings: [html, head, body]
+
 gems:
   - jekyll-postfiles
+  - jekyll-assets
