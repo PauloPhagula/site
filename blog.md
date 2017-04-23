@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Blog
+excerpt: Find here the listing of all blog entries and register for notifications on future updates
 permalink: /blog/
 ---
 

@@ -21,9 +21,9 @@
                 <h2>{{ site.title }}</h2>
                 <p>personal blog and brain-dump on programming and related topics</p>
                 <p>
-                    <a href="/about#services" title="Check out what I can do for you">#tech</a>
-                    <a href="/about#work" title="Check out some of my work and projects">#craft</a>
-                    <a href="https://github.com/dareenzo" title="Have a look at my code on github" target="_blank">#coding</a>
+                    <a href="/about#services" title="Check out what I can do for you">#services</a>
+                    <a href="/about#work" title="Check out some of my work and projects">#work</a>
+                    <a href="https://github.com/dareenzo" title="Have a look at my code on github" target="_blank">#code</a>
                     <a href="https://kodikos-io.github.io" title="Check out my Startup Kodikos" target="_blank">#startup</a>
                 </p>
             </article>
@@ -33,7 +33,7 @@
                 {% for page in site.pages %}
                     {% if page.title and page.title != "Search Results" %}
                     <li>
-                    <a class="page-link" href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+                    <a class="page-link" href="{{ page.url | prepend: site.baseurl }}" title="{% if page.excerpt %}{{ page.excerpt }}{% endif %}">{{ page.title }}</a>
                     </li>
                     {% endif %}
                 {% endfor %}
