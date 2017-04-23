@@ -6,15 +6,16 @@
     <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
     <link rel="dns-prefetch" href="//fonts.googleapis.com">
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="dns-prefetch" href="//www.googletagmanager.com">
     <link rel="dns-prefetch" href="//www.google-analytics.com">
 
     <link rel="preconnect" href="//cdnjs.cloudflare.com" crossorigin="anonymous">
     <link rel="preconnect" href="//fonts.googleapis.com" crossorigin="anonymous">
     <link rel="preconnect" href="//fonts.gstatic.com" crossorigin="anonymous">
+    <link rel="preconnect" href="//www.googletagmanager.com" crossorigin="anonymous">
     <link rel="preconnect" href="//www.google-analytics.com" crossorigin="anonymous">
 
-    <link rel="subresource" href="{{ "/js/app.js" | prepend: site.baseurl }}">
-    <link rel="subresource" href="{{ "/css/main.css" | prepend: site.baseurl }}">
+    <link rel="preload" href="{{ "/css/main.css" | prepend: site.baseurl }}" as="style">
 
     {% if page.next %}<link rel="prerender" href="{{ page.next.url }}" />{% endif %}
     {% if page.previous %}<link rel="prerender" href="{{ page.previous.url }}" />{% endif %}
@@ -37,19 +38,16 @@
     <link rel="shortcut icon" href="{{ "/img/apple-touch-icon-57x57.png" | prepend: site.baseurl }}" type="image/x-icon">
 
     <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="{{ "/img/favicons/android-chrome-192x192.png" | prepend: site.baseurl }}">
+    <link rel="manifest" href="{{ "/manifest.json" | prepend: site.baseurl }}">
+    <meta name="theme-color" content="#333">
 
-    <link rel="icon" sizes="192x192" href="img/touch/touch-icon-192x192.png">
-    <link rel="icon" sizes="128x128" href="img/touch/touch-icon-128x128.png">
-
-    <link rel="manifest" href="android-manifest.json">
+    <link rel="mask-icon" href="{{"/img/favicons/safari-pinned-tab.svg" | prepend: site.baseurl }}" color="#333">
 
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="{{ site.title }}">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-    <link rel="apple-touch-icon" sizes="57x57" href="{{ "/img/apple-touch-icon-57x57.png" | prepend: site.baseurl }}">
-    <link rel="apple-touch-icon" sizes="72x72" href="{{ "/img/apple-touch-icon-72x72.png" | prepend: site.baseurl }}">
-    <link rel="apple-touch-icon" sizes="114x114" href="{{ "/img/apple-touch-icon-114x114.png" | prepend: site.baseurl }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ "/img/favicons/apple-touch-icon.png" | prepend: site.baseurl }}">
 
     <meta name="generator" content="jekyll">
     <meta name="robots" content="index, follow">
@@ -104,7 +102,7 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <!--[if lt IE 8]>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/json2/20150503/json2.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/json3/3.3.2/json3.min.js"></script>
     <![endif]-->
     <script>
         htmlElement = document.getElementsByTagName('html')[0];
