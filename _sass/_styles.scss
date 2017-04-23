@@ -397,11 +397,15 @@ body {
     background-color: #e5e5e5;
     background-color: #333;
     color: #404040;
-    font: normal 13px Roboto,arial,sans-serif;
+    font: normal 13px arial, sans-serif;
     height: 100%;
     margin: 0;
     overflow-y: scroll;
     visibility: visible;
+}
+
+.fonts-loaded body {
+    font-family: Roboto;
 }
 
 main {
