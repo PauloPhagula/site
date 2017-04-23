@@ -91,7 +91,8 @@
             this.media = "all";
             document.getElementsByTagName("html")[0].className +=' fonts-loaded';
         };
-        document.head.appendChild(font);
+        // IE < 9 doesn't have document.head
+        document.getElementsByTagName('head')[0].appendChild(font);
     })();
     </script>
     <noscript><link rel='stylesheet' href='//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&subset=latin'></noscript>
