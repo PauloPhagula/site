@@ -73,5 +73,20 @@ layout: compress
         htmlElement.style.display  = 'block';
         htmlElement.style.overflow = '';
     </script>
+    <script type="text/javascript" async="async" defer="defer">
+    (function(){
+        var font = document.createElement('link');
+        font.rel = "stylesheet";
+        font.type = 'text/css';
+        font.href = "//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&subset=latin";
+        font.media = "none";
+        font.onload =  function (e) {
+            this.media = "all";
+            document.getElementsByTagName("html")[0].className +=' fonts-loaded';
+        };
+        /* IE < 9 doesn't have document.head */
+        document.getElementsByTagName('head')[0].appendChild(font);
+    })();
+    </script>
 </body>
 </html>
