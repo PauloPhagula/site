@@ -603,23 +603,23 @@ footer {
 }
 
 .f a {
-    background-image: url('../img/facebook.png');
+    background-image: url('/../img/facebook.png');
 }
 
 .t a {
-    background-image: url('../img/twitter.png');
+    background-image: url('/../img/twitter.png');
 }
 
 .w a {
-    background-image: url('../img/whatsapp.png');
+    background-image: url('/../img/whatsapp.png');
 }
 
 .s a {
-    background-image: url('../img/skype.png');
+    background-image: url('/../img/skype.png');
 }
 
 .g a {
-    background-image: url('../img/google plus.png');
+    background-image: url('/../img/google plus.png');
 }
 
     .f a:hover,
@@ -627,6 +627,7 @@ footer {
     .w a:hover,
     .s a:hover,
     .g a:hover {
+        transition: all 0.5s ease;
         -webkit-transition: all 0.5s ease;
         -moz-transition: all 0.5s ease;
         -ms-transition: all 0.5s ease;

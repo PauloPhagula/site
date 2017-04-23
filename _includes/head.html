@@ -15,8 +15,6 @@
     <link rel="preconnect" href="//www.googletagmanager.com" crossorigin="anonymous">
     <link rel="preconnect" href="//www.google-analytics.com" crossorigin="anonymous">
 
-    <link rel="preload" href="{{ "/css/main.css" | prepend: site.baseurl }}" as="style">
-
     {% if page.next %}<link rel="prerender" href="{{ page.next.url }}" />{% endif %}
     {% if page.previous %}<link rel="prerender" href="{{ page.previous.url }}" />{% endif %}
 
@@ -77,7 +75,13 @@
 
     <meta name="google-site-verification" content="hXGNVG1mBEAHY0UFP_2RAzcWhzVKmQmWLbAtqPAafog" />
 
-    <link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
+    <style type="text/css">
+        {% capture styles %}
+            {% include critical.scss %}
+        {% endcapture %}
+        {{ styles | scssify | strip }}
+    </style>
+
     <script type="text/javascript">
     (function(){
         var font = document.createElement('link');
