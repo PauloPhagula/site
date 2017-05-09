@@ -8,13 +8,13 @@ layout: default
     <header class="excerpt">
         Posted on <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%d/%m/%Y" }}</time>
         in <a>{{ category }}</a><br/>
-        Tags: 
+        Tags:&nbsp;
         <ul class="tags no-list" style="display: inline">
         {% for tag in sorted_tags %}
         <li><a>{{ tag }}</a></li>
         {% endfor %}
-        </ul> 
-        
+        </ul>
+
         {% if page.excerpt %}
         <p>
         {{ page.excerpt }}
@@ -23,7 +23,7 @@ layout: default
     </header>
 
     {{ content }}
-    
+
     <hr/>
     <div>
         <div class="left">
@@ -38,7 +38,7 @@ layout: default
         {% endif %}
         </div>
     </div>
-    
+
     <div class="clearfix"></div>
 
     {% if content and page.related %}
@@ -55,7 +55,7 @@ layout: default
     <hr />
     <div class="comments">
         <div id="disqus_thread"></div>
-        <noscript>Please enable JavaScript to see the <a href="http://disqus.com/?ref_noscript">comments</a></noscript>      
+        <noscript>Please enable JavaScript to see the <a href="http://disqus.com/?ref_noscript">comments</a></noscript>
     </div>
 </article>
 

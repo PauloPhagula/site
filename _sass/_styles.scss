@@ -53,12 +53,6 @@ h6 {
 p {
     line-height: 1.5;
     margin: 0 0 1em;
-    -ms-word-break: normal;
-    word-break: normal;
-    -webkit-hyphens: auto;
-    -moz-hyphens: auto;
-    -ms-hyphens: auto;
-    hyphens: auto;
 }
 
 hr {
@@ -288,6 +282,7 @@ textarea {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
+    transition: border-color 0.15s ease-in-out 0s;
     -webkit-transition: border-color 0.15s ease-in-out 0s;
     -moz-transition: border-color 0.15s ease-in-out 0s;
     -ms-transition: border-color 0.15s ease-in-out 0s;
@@ -331,6 +326,7 @@ textarea {
     -webkit-transition: background-color .218s,border-color .218s,box-shadow .218s;
     transition: background-color .218s,border-color .218s,box-shadow .218s;
     -webkit-user-select: none;
+    user-select: none;
     background-color: #fff;
     border: 1px solid #d9d9d9;
     cursor: pointer;
@@ -398,14 +394,24 @@ body {
     background-color: #333;
     color: #404040;
     font: normal 13px arial, sans-serif;
+    font-family:
+        // This order matters
+        -apple-system, // Safari for OS X and iOS (San Francisco)
+        BlinkMacSystemFont, // Chrome on Mac OS X
+        'Segoe UI', // Windows and Windows Phone
+        Roboto, // Android and Chrome OS
+        'Oxygen-Sans', 'Ubuntu', 'Cantarell', // KDE, Ubuntu, GNOME
+        'Fira Sans', // Firefox OS
+        'Droid Sans', // Older versions of Android
+        'Helvetica Neue', // Pre-El Capitan versions of Mac OS X
+        Helvetica, Arial, sans-serif, // Default fallback
+        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; // Apple and Windows emojis
     height: 100%;
     margin: 0;
     overflow-y: scroll;
     visibility: visible;
-}
-
-.fonts-loaded body {
-    font-family: Roboto;
+    word-break: break-word;
+    word-wrap: break-word;
 }
 
 main {
@@ -531,7 +537,6 @@ nav ul {
 .excerpt a.title {
     color: #427fed;
     line-height: 1.4;
-    font-family: 'Roboto',Arial,sans-serif;
     font-size: 16px;
     font-style: normal;
     font-variant: normal;
@@ -552,7 +557,7 @@ nav ul {
     }
 
         .excerpt .tags li:after {
-            content: ' \2219';
+            content: ' - ';
             color: rgb(153, 153, 153); /*\00b7*/
         }
 

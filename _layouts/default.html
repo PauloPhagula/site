@@ -7,15 +7,10 @@ layout: compress
 {% include head.html %}
 
 <body lang="en" dir="ltr">
-    <!-- Google Tag Manager -->
-    <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NCKZVZ"
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NCKZVZ"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-NCKZVZ');</script>
-    <!-- End Google Tag Manager -->
+    <!-- End Google Tag Manager (noscript) -->
 
     <main>
         <section id="side">
@@ -60,33 +55,8 @@ layout: compress
     </main>
 
     <script type="text/javascript">
-        /*
-        (function(){
-            var jsb = document.createElement('script');
-            jsb.src = '{{ "/js/app.js" | prepend: site.baseurl }}';
-            jsb.setAttribute('async', 'true');
-            document.documentElement.firstChild.appendChild(jsb);
-        })();
-        */
-    </script>
-    <script type="text/javascript">
         htmlElement.style.display  = 'block';
         htmlElement.style.overflow = '';
-    </script>
-    <script type="text/javascript" async="async" defer="defer">
-    (function(){
-        var font = document.createElement('link');
-        font.rel = "stylesheet";
-        font.type = 'text/css';
-        font.href = "//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i&subset=latin";
-        font.media = "none";
-        font.onload =  function (e) {
-            this.media = "all";
-            document.getElementsByTagName("html")[0].className +=' fonts-loaded';
-        };
-        /* IE < 9 doesn't have document.head */
-        document.getElementsByTagName('head')[0].appendChild(font);
-    })();
     </script>
 </body>
 </html>
