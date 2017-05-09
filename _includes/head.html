@@ -53,7 +53,7 @@
     <meta name="geography" content="Mozambique">
 
     <!-- twitter meta -->
-    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:card" content="{% if page.share_image %}summary_large_image{% else %}summary{% endif %}" />
     <meta name="twitter:site" content="@dareenzo" />
     <meta name="twitter:creator" content="@dareenzo">
     <meta name="twitter:url" content="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}" />
@@ -64,9 +64,16 @@
     <meta property="og:site_name" content="{{ site.title }}" />
 
     <!-- SEO Property Combo -->
+    {% capture share_image_url %}
+        {% if page.share_image %}
+            {{ page.share_image }}
+        {% else %}
+            /img/facebook-share.png
+        {% endif %}
+    {% endcapture %}
     <meta property="og:title" name="twitter:title" itemprop="title name" content="{% if page.title %}{{ page.title | escape }} | {% else %}{% endif %}{{ site.title }}" />
     <meta property="og:description" name="twitter:description" itemprop="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}" />
-    <meta property="og:image" name="twitter:image" itemprop="image primaryImageOfPage" content="{{ "/img/facebook-share.png" | prepend: site.baseurl | prepend: site.url }}" />
+    <meta property="og:image" name="twitter:image" itemprop="image primaryImageOfPage" content="{{ share_image_url  | strip | prepend: site.baseurl | prepend: site.url }}" />
 
     <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
 

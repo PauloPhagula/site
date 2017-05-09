@@ -5,7 +5,10 @@ excerpt: "Review on Design By Contract: motivations, benefits and give example."
 date:   2017-01-08 00:00:00 +0200
 categories: Coding
 tags: dbc python ddd
+share_image: "/img/blog/design-by-contract.png"
 ---
+
+![](/img/blog/design-by-contract.png)
 
 ## (Emotional) Intro
 
@@ -14,7 +17,7 @@ somewhere in the world. Bugs, bugs, bugs users scream...
 
 I mean, Wikipedia even keeps a [list of the most "awesome" bugs in the world](https://en.wikipedia.org/wiki/List_of_software_bugs).
 
-As software developers/enginners/crafters/gardners/<what-your-write-in-your-bio-here> 
+As software developers/enginners/crafters/gardners/<what-your-write-in-your-bio-here>
 in order to sleep peacifuly at night we must make sure that no bugs are in our code.
 
 But that's just thinking of ourselves. The real motivation for wanting reliable
@@ -41,10 +44,10 @@ the conditions and obligations of business contracts.
 
 Software contracts are like business contracts, in that they are characterized by relations of
 client-supplier and obligations-benefits.
-Also, just like business contracts, software contracts can be broken, by either party, by not 
+Also, just like business contracts, software contracts can be broken, by either party, by not
 meeting with their obligations.
 
-The important bit here is that, since in software the contract must run within its 
+The important bit here is that, since in software the contract must run within its
 specifications, breaking a contract indicates the presence of a defect or bug.
 
 ----
@@ -53,25 +56,25 @@ specifications, breaking a contract indicates the presence of a defect or bug.
 
 In software programming the smallest unit of functionality is a routine and so,
 if we want to ensure reliability, we must tackle the problem at this level.
-What DbC then says is that we must define correctness for any routine by clearly and explicitly 
+What DbC then says is that we must define correctness for any routine by clearly and explicitly
 indicating its:
 
 * pre-conditions - the conditions that must be true in order for the routine to work correctly
 * post-conditions - the conditions that will be true after its execution, if the routine has worked correctly
 
-And more than just defining the pre-conditions and post-conditions, we must embed them into code, in 
+And more than just defining the pre-conditions and post-conditions, we must embed them into code, in
 such way that whenever the code runs, its self validating, taking a pro-active position
 towards avoiding bugs rather than applying defensive programming.
 
 (Routines is old school we do classes and objects these days...)
 
-The Object-Orientation paradigm, commonly used to design and program software, gave us objects, a 
-new unit of software after functions/routines. And so we must also ensure that objects state is 
+The Object-Orientation paradigm, commonly used to design and program software, gave us objects, a
+new unit of software after functions/routines. And so we must also ensure that objects state is
 always valid. And in DbC we're meant to do it by explicitly and clearly defining it's invariants.
 
 * invariant - class/object wise conditions that must be valid at all times. They can be only invalid during a routine execution, but not before or after it.
 
-If either a pre-condition, post-condition or invariant is violated an Exception must be raised 
+If either a pre-condition, post-condition or invariant is violated an Exception must be raised
 immediately, to stop the routinw from not doing it's job properly or the object from getting
 into invalid state.
 
@@ -87,7 +90,7 @@ With that in mind, Meyer divides functions into two categories:
 * Queries: questions we can asks to object instance
 * Commands: actions to be taken by an object instance
 
-Given this separation Meyer goes forward and provides us with the 
+Given this separation Meyer goes forward and provides us with the
 Command-Query Separation CQS) principle:
 
 > any routine should be a query or a command but not a mixture of the two
@@ -97,7 +100,7 @@ Command-Query Separation CQS) principle:
 * only procedures should do the computations that alter the state of objects. Functions should not do that
 * a query is a way of asking a question about an object, and the process of answering that question should not change the object
 
-### But why would we neee this CQS? 
+### But why would we neee this CQS?
 
 The reason for CQS is that it is impossible for us to reason about the correctness of the state of
 an object, by using queries that change the object. Because we use the queries attributes and
@@ -190,12 +193,12 @@ class Account(object):
 DbC is a very simple and proven technique which every developer should learn and try to apply to software
 being developed in order to guarantee robustness and reliability
 
-No framework/library/base class is necessary in order to use DbC. In fact I advise against that, as 
-any of those components, although saving key strokes, can introduce a level of indirection to the 
+No framework/library/base class is necessary in order to use DbC. In fact I advise against that, as
+any of those components, although saving key strokes, can introduce a level of indirection to the
 code, which would otherwise be clearer with, just the basic language features being used.
 
-(It is discussable but) DbC in grand part takes care of unit-testing, as it is constantly ensuring 
-that it is doing things properly. Further more, this is what unittesting tries to fix, and it does 
+(It is discussable but) DbC in grand part takes care of unit-testing, as it is constantly ensuring
+that it is doing things properly. Further more, this is what unittesting tries to fix, and it does
 indeed do a good job, but it is not as powerfull because there's a limit to how much it can "spy"
 into the System Under Test to assert if it is indeed working properly.
 
