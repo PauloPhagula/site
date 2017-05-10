@@ -5,6 +5,7 @@ excerpt: ""
 date:   2016-08-26 00:00:00 +0200
 categories: Coding
 tags: flask
+share_image: "/img/blog/http-cache-decision-tree.png"
 ---
 
 In my rumblings developing flask applications I found the [caching decorator](http://flask.pocoo.org/docs/0.11/patterns/viewdecorators/#caching-decorator).
@@ -14,7 +15,7 @@ The decorator is a short and well-written piece of code, but I feel like it miss
 - It doesn't respect the `no-cache` requirement from the client (although I understand why one may not want this, as it would mean busting cache every single time someone asks for it, thus creating the possibility of reducing the caching effort and benefits to zero)
 
 The way I try to improve it is by having a decorator that easily allows me to
-define a caching-control policy per view, that involes both the client-side and
+define a caching-control policy per view, that involves both the client-side and
 server-side, by following the flow-chart bellow, taken from the [HTTP Caching](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching)
 article by Google Guru [Ilya Grigorik](https://www.igvita.com/)
 
@@ -105,9 +106,9 @@ def index():
 
 **Note**
 
-> Google Chrome doesn't function correctly, it doesn't send the `If-None-Match` header effectlively not allowing the client-side cache to be used at all. Maybe it's a problem with dev-tools. So better test with Firefox Developer Edition
+> Google Chrome doesn't function correctly, it doesn't send the `If-None-Match` header effectively not allowing the client-side cache to be used at all. Maybe it's a problem with dev-tools. So better test with Firefox Developer Edition
 
-Last but not least, the way I deal with static content like javascript and css,
+Last but not least, the way I deal with static content like JavaScript and CSS,
 is by using far-future expiration dates and changing the URL by overriding the `url_for`
 function to include the modified date of the file on disk.
 That way, cache busting is already done from the moment I save the file..
