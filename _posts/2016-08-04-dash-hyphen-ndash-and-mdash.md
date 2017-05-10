@@ -1,11 +1,14 @@
 ---
 layout: post
 title:  "dash(hyphen), ndash and mdash"
-excerpt: ""
+excerpt: "This article is more related to grammar and small details in language rather than the usual (coding). It tells how (accidentally) through reading code I came to learn that we actually have three (3) kinds of dashes instead of just one. I wrote this short post just so: we don't forget about them; their differences and when to use each."
 date:   2016-08-03 00:00:00 +0200
 categories: Coding
 tags: nocode
+share_image: "/img/blog/dash-ndash-mdash.jpg"
 ---
+
+![dash ndash and mdash image](/img/blog/dash-ndash-mdash.jpg)
 
 It is common that developers use some separator on the title tag to separate the actual page title from the site name, normally using a pipe or mid-dot or even a dash/hyphen, thus rendering a title like: `About - StackOverflow`.
 

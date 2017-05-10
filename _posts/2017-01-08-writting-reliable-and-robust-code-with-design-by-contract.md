@@ -1,14 +1,14 @@
 ---
 layout: post
 title:  "Writing reliable and robust code with Design by Contract"
-excerpt: "Review on Design By Contract: motivations, benefits and give example."
+excerpt: "This article explains: what Design by Contract is; how it came to be; why it helps us writing reliable and robust code; and why the technique should be on every developers toolbox. It also provides a code snippet succinctly explaining how it can applied in a simple common day-to-day scenario."
 date:   2017-01-08 00:00:00 +0200
 categories: Coding
 tags: dbc python ddd
 share_image: "/img/blog/design-by-contract.png"
 ---
 
-![](/img/blog/design-by-contract.png)
+![Contract Image](/img/blog/design-by-contract.png)
 
 ## (Emotional) Intro
 
@@ -17,8 +17,8 @@ somewhere in the world. Bugs, bugs, bugs users scream...
 
 I mean, Wikipedia even keeps a [list of the most "awesome" bugs in the world](https://en.wikipedia.org/wiki/List_of_software_bugs).
 
-As software developers/enginners/crafters/gardners/<what-your-write-in-your-bio-here>
-in order to sleep peacifuly at night we must make sure that no bugs are in our code.
+As software developers/enginners/crafters/gardners
+in order to sleep peacefully at night we must make sure that no bugs are in our code.
 
 But that's just thinking of ourselves. The real motivation for wanting reliable
 and robust code is that:
@@ -75,7 +75,7 @@ always valid. And in DbC we're meant to do it by explicitly and clearly defining
 * invariant - class/object wise conditions that must be valid at all times. They can be only invalid during a routine execution, but not before or after it.
 
 If either a pre-condition, post-condition or invariant is violated an Exception must be raised
-immediately, to stop the routinw from not doing it's job properly or the object from getting
+immediately, to stop the routine from not doing it's job properly or the object from getting
 into invalid state.
 
 ## The Command-Query Separation Principle
@@ -100,7 +100,7 @@ Command-Query Separation CQS) principle:
 * only procedures should do the computations that alter the state of objects. Functions should not do that
 * a query is a way of asking a question about an object, and the process of answering that question should not change the object
 
-### But why would we neee this CQS?
+### But why would we need this CQS?
 
 The reason for CQS is that it is impossible for us to reason about the correctness of the state of
 an object, by using queries that change the object. Because we use the queries attributes and
@@ -123,7 +123,7 @@ All we have to do is strategically place (based on verification type, i.e pre-co
 conditional checks in the code, that raise exceptions when not met.
 
 The whole gist of DbC is summarized in the code snippet bellow that exhibits an example of an
-hypotetical Bank Account object, which as per DbC guidelines must protect it selve from getting
+hypothetical Bank Account object, which as per DbC guidelines must protect it self from getting
 into an invalid state.
 
 ```python
@@ -197,9 +197,9 @@ No framework/library/base class is necessary in order to use DbC. In fact I advi
 any of those components, although saving key strokes, can introduce a level of indirection to the
 code, which would otherwise be clearer with, just the basic language features being used.
 
-(It is discussable but) DbC in grand part takes care of unit-testing, as it is constantly ensuring
-that it is doing things properly. Further more, this is what unittesting tries to fix, and it does
-indeed do a good job, but it is not as powerfull because there's a limit to how much it can "spy"
+(It is arguable but) DbC in grand part takes care of unit-testing, as it is constantly ensuring
+that it is doing things properly. Further more, this is what unit testing tries to fix, and it does
+indeed do a good job, but it is not as powerful because there's a limit to how much it can "spy"
 into the System Under Test to assert if it is indeed working properly.
 
 
