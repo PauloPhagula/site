@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Improving the flask cache decorator"
-excerpt: "The article details how we can go about improving the "standard" flask cache decorator, more specifically suggesting an API that easily resembles and relates to the client-side/browser caching-control policy"
+excerpt: "The article details how we can go about improving the 'standard' flask cache decorator, more specifically suggesting an API that easily resembles and relates to the client-side/browser caching-control policy"
 date:   2016-08-26 00:00:00 +0200
 categories: Coding
 tags: flask
