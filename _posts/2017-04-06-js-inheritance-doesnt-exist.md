@@ -9,7 +9,10 @@ it's rather about clearing the confusion in our minds about JavaScript
 OO concepts. Specifically it's an attempt to mark in my head a simple
 truth: there's no inheritance in JavaScript...there's no such thing as
 prototypal inheritance."
+share_image: "/img/blog/javascript-inheritance-last-will-and-testament.jpeg"
 ---
+
+![JavaScript Inheritance - Last will and Testament Image](/img/blog/javascript-inheritance-last-will-and-testament.jpeg)
 
 Yes, they lied, big time. All you have is delegation and copying properties.
 They say it's inheritance but that is due to JS trying to accommodate the
@@ -32,7 +35,7 @@ potential users ... and err... this is where things went wrong.
 The massaging brought along `new` and other constructs that don't exist
 in Scheme naturally.
 
-One of the main concepts in prototypal inheritance (that doens't exist)
+One of the main concepts in prototypal inheritance (that doesn't exist)
 is that of a **prototype**, so, let's start by getting into what that is
 before touching other parts.
 
