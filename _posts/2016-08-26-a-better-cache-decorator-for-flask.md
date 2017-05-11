@@ -19,7 +19,8 @@ define a caching-control policy per view, that involves both the client-side and
 server-side, by following the flow-chart bellow, taken from the [HTTP Caching](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching)
 article by Google Guru [Ilya Grigorik](https://www.igvita.com/)
 
-![HTTP cache decision tree](/img/blog/http-cache-decision-tree.png)
+{% include image.html url="/img/blog/http-cache-decision-tree.png" caption="HTTP cache decision tree" %}
+
 
 > Talk is cheap. Show me the code. (Linus Torvalds)
 
