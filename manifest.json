@@ -5,7 +5,7 @@
   "theme_color": "#333",
   "background_color": "#fff",
   "orientation": "portrait",
-  "display": "standalone",
+  "display": "minimal-ui",
   "icons": [
     {
       "src": "/img/favicons/android-chrome-192x192.png",
