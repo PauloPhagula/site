@@ -3,14 +3,14 @@
     if (window.location.href.split('/').filter(function(part) { return part.length; }).pop() !== 'contact') {
         return;
     }
-    
+
 
     var config = { form_url: "https://formspree.io/pphagula+dareenzo.github.io@gmail.com" },
         texts = {
             'error-email-label': "Invalid Email",
             'error-message-label': "Invalid message",
             'error-captcha-label': "Invalid Captcha",
-            'general-error-title': "An error happend while submiting your form. Please try again.",
+            'general-error-title': "An error happened while submitting your form. Please try again.",
             'success-label': "Message sent. Thanks!"
         }
     ;
