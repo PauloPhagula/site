@@ -25,7 +25,7 @@ develops and manages, web and mobile services, with emphasis on maximizing the
 exploration of low cost mobile technologies like USSD and SMS.
 
 Having worked as a Database Administrator and Applications Manager for the
-ProCredit and Ecobank, he has training and experience with managing databases
+ProCredit and Ecobank banks, he has training and experience with managing databases
 and providing technical support for the banking and finances sectors.
 
 If you want to know a bit more about Paulo, just read his [linkedIn](https://www.linkedin.com/in/paulo-phagula) page.
@@ -33,8 +33,6 @@ If you want to know a bit more about Paulo, just read his [linkedIn](https://www
 ---
 
 <h2 id="services">Services</h2>
-
-What can I help you with?
 
 ### Development / Programming
 
@@ -86,7 +84,7 @@ for those simpler sites and support for the more complex ones.
         <p>MOPA is a Participatory Monitoring platform for citizen engagement in waste management and other Municipal services. This platform connects citizens to the government using multiple communication channels like USSD, Apps and the Internet.</p>
     </div>
     <dl>
-        <dt>Mobile:</dt><dd><a href="tel:*311#">*311#</a> on Vodacom, M-Cel and Movitel</dd>
+        <dt>Mobile:</dt><dd><a href="tel:*311#">*311#</a> on Vodacom, Mcel and Movitel</dd>
         <dt>Android:</dt><dd><a href="https://play.google.com/store/apps/details?id=mz.co.mopa">Download on PlayStore</a></dd>
         <dt>Web:</dt><dd><a href="http://www.mopa.co.mz">www.mopa.co.mz</a> </dd>
     </dl>

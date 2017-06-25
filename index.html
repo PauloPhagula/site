@@ -4,14 +4,15 @@ layout: default
 <article>
 <h1>Howdy</h1>
 
-<p>
-<small>
-<strong>DISCLAIMER:</strong><br/>
-Although I work for <a href="https://ux.co.mz" title="Go to ux - information technologies site" target="_blank">UX - Information Technologies</a>, <strong>this site is my personal blog, and its contents and opnions are my own.</strong>
+<h3><small>DISCLAIMER</small></h3>
+<p><small>
+The content presented in this site represents my individual research, views and opinions.
+It has no intention to cause any harm.
+My employers, customers, relatives and the like cannot be held responsible for what you will see here!
 </small>
 </p>
-<br/>
-<strong>RECENT POSTS:</strong>
+
+<h3>Recent Posts</h3>
 
 {% for category in site.categories %}
   <h4 id="{{category | first }}">{{ category | first }}</h4>
