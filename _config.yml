@@ -50,7 +50,3 @@ compress_html:
   blanklines: false
   profile: false
   startings: [html, head, body]
-
-gems:
-  - jekyll-postfiles
-  - jekyll-assets
