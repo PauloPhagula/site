@@ -15,12 +15,17 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://dareenzo.github.io" # the base hostname & protocol for your site
 twitter_username: dareenzo
 github_username:  dareenzo
+ga_tracking_id: UA-76527140-1
+
+collections:
+  notes:
+    output: true
+    permalink: /:collection/:name
 
 # Build settings
 markdown: kramdown
 permalink: /blog/:year/:month/:day/:title/
 
-ga_tracking_id: UA-76527140-1
 
 exclude:
   - autoprefixer.yml
