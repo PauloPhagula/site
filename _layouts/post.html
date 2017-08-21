@@ -6,7 +6,7 @@ layout: default
 <article>
     <h1>{{ page.title }}</h1>
     <header class="excerpt">
-        <meta itemprop="datePublished" content="{{ page.date | date: "%d/%m/%Y" }}" />
+        <meta itemprop="datePublished" content='{{ page.date | date: "%d/%m/%Y" }}' />
         Posted on <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%d %b %Y" }}</time>
         in <a>{{ category }}</a><br/>
         Tags:&nbsp;
