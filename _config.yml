@@ -16,6 +16,7 @@ url: "https://dareenzo.github.io" # the base hostname & protocol for your site
 twitter_username: dareenzo
 github_username:  dareenzo
 ga_tracking_id: UA-76527140-1
+timezone: Africa/Maputo
 
 collections:
   notes:

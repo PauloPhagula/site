@@ -59,8 +59,8 @@ sitemap:
   {% endfor %}
 
   {% for collection in site.collections %}
-    {% if collection[1].output %}
-      {% for doc in collection[1].docs %}
+    {% if collection.output %}
+      {% for doc in collection.docs %}
         <url>
           <loc>{{ site.url }}{{ doc.url | remove: "index.html" }}</loc>
           {% if doc.sitemap.lastmod %}
