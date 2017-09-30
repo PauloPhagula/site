@@ -8,8 +8,7 @@ layout: compress
 
 <body lang="en" dir="ltr">
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NCKZVZ"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NCKZVZ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
     <main>
@@ -18,7 +17,7 @@ layout: compress
                 <a href="{{ site.baseurl }}/"><img src="{{ "/img/avatar.svg" | prepend: site.baseurl}}" alt="{{ site.title }}" /></a>
                 <h2>{{ site.title }}</h2>
                 <p>personal blog and brain-dump on programming and related topics</p>
-                <p>
+                <p class="navigation">
                     <a href="/about#services" title="Check out what I can do for you">#services</a>
                     <a href="/about#work" title="Check out some of my work and projects">#work</a>
                     <a href="https://github.com/dareenzo" title="Have a look at my code on github" target="_blank">#code</a>
@@ -26,8 +25,8 @@ layout: compress
                 </p>
             </article>
 
-            <nav>
-                <ul>
+            <nav >
+                <ul class="navigation">
                 {% for page in site.pages %}
                     {% if page.title and page.title != "Search Results" %}
                     <li>
@@ -56,7 +55,7 @@ layout: compress
             </ul>
 
             {% include search.html %}
-            <footer><small>Copyright (c) 2014 - {{ site.time | date: '%Y' }}, {{ site.author }}<br/>Some rights reserved</small></footer>
+            <footer><small>Copyright &copy; {{ site.time | date: '%Y' }} {{ site.author }}.<br/>Some rights reserved</small></footer>
         </section>
 
         <section id="content">

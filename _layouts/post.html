@@ -4,16 +4,23 @@ layout: default
 {% assign sorted_tags = (page.tags | sort) %}
 {% assign category = (page.categories | sort | limit1) %}
 <article>
-    <h1>{{ page.title }}</h1>
+    <h1 class="article-title">{{ page.title }}</h1>
     <header class="excerpt">
+        <div class="article-post-date">
         Posted on <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished" content="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%d %b %Y" }}</time>
         in <a>{{ category }}</a><br/>
+        </div>
+
+        <!--
         Tags:&nbsp;
+
         <ul class="tags no-list" style="display: inline">
         {% for tag in sorted_tags %}
         <li><a>{{ tag }}</a></li>
         {% endfor %}
         </ul>
+
+        -->
 
         {% if page.excerpt %}
         <p>
@@ -23,8 +30,10 @@ layout: default
     </header>
 
     {{ content }}
+
     <hr/>
-    <div>
+
+    <div class="sharing">
         <p>
             Share article on:
             <a title="Share article via Email" href="mailto:?subject={{ page.title }}&body={{ page.url | escape | prepend: site.baseurl | prepend: site.url | url_encode}}">Mail</a> -
@@ -32,8 +41,10 @@ layout: default
             <a title="Share article on Facebook" target="_blank" href="https://www.facebook.com/sharer.php?u={{ page.url | escape | prepend: site.baseurl | prepend: site.url | url_encode}}">Facebook</a>
         </p>
     <div>
+
     <hr/>
-    <div>
+
+    <div class="pagination">
         <div class="left">
         {% if page.previous %}
         <a href="{{ page.previous.url }}">&#65513; Previous Post</a>
@@ -49,6 +60,7 @@ layout: default
 
     <div class="clearfix"></div>
 
+    <div class="related-posts">
     {% if content and page.related %}
         <h5>RELATED POSTS:</h5>
         <ul class="tags">
@@ -59,8 +71,10 @@ layout: default
             {% endfor %}
         </ul>
     {% endif %}
+    </div>
 
     <hr />
+
     <div class="comments">
         <div id="disqus_thread"></div>
         <noscript>Please enable JavaScript to see the <a href="http://disqus.com/?ref_noscript">comments</a></noscript>
