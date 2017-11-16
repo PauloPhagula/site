@@ -13,20 +13,11 @@ permalink: /about/
 **Chops and Craft** is the personal blog and brain-dump of **Paulo Phagula**
 on programming and related topics to which he's enthusiastic.
 
-Paulo, is a Mozambique based software developer, who crafts and manages, web
+Paulo, is a Mozambique based software engineer, who crafts and manages, web
 and mobile services. His passion lies in developing software that adds value to
-businesses and people’s lives, from idea inception to shipping the final product,
-doing anything from system architecture, back-end and front-end work.
+businesses and people's lives, from idea inception to shipping the final product.
 
-Presently, he works as a developer at [UX - Information Technologies](https://www.ux.co.mz)
--- an award winning, internet-based company from Mozambique, delivering technical
-solutions for social and economic development on emerging markets -- where he
-develops and manages, web and mobile services, with emphasis on maximizing the
-exploration of low cost mobile technologies like USSD and SMS.
-
-Having worked as a Database Administrator and Applications Manager for the
-ProCredit and Ecobank banks, he has training and experience with managing databases
-and providing technical support for the banking and finances sectors.
+He has worked in the domains of Banking & Finances, Human Resources & Recruitingi, e-Governance, e-Commerce, and more.
 
 If you want to know a bit more about Paulo, just read his [linkedIn](https://www.linkedin.com/in/paulo-phagula) page.
 
