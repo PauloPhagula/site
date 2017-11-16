@@ -17,7 +17,7 @@ Paulo, is a Mozambique based software engineer, who crafts and manages, web
 and mobile services. His passion lies in developing software that adds value to
 businesses and people's lives, from idea inception to shipping the final product.
 
-He has worked in the domains of Banking & Finances, Human Resources & Recruitingi, e-Governance, e-Commerce, and more.
+He has worked in the domains of Banking & Finances, Human Resources & Recruiting, e-Governance, e-Commerce, and more.
 
 If you want to know a bit more about Paulo, just read his [linkedIn](https://www.linkedin.com/in/paulo-phagula) page.
 
