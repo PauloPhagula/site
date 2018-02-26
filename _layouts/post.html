@@ -1,8 +1,8 @@
 ---
 layout: default
 ---
-{% assign sorted_tags = (page.tags | sort) %}
-{% assign category = (page.categories | sort | limit1) %}
+{% assign sorted_tags = page.tags | sort %}
+{% assign category = page.categories | sort | limit1 %}
 <article>
     <h1 class="article-title">{{ page.title }}</h1>
     <header class="excerpt">
@@ -65,7 +65,7 @@ layout: default
         <h5>RELATED POSTS:</h5>
         <ul class="tags">
             {% for post in site.posts %}
-                {% if page.related contains post.title or page.related contais post.url %}
+                {% if page.related contains post.title or page.related contains post.url %}
                     <li><a href="{{ post.url }}">{{ post.title }}</a></li>
                 {% endif %}
             {% endfor %}
