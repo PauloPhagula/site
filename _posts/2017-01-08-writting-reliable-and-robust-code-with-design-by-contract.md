@@ -2,10 +2,12 @@
 layout: post
 title:  "Writing reliable and robust code with Design by Contract"
 excerpt: "This article explains: what Design by Contract is; how it came to be; why it helps us writing reliable and robust code; and why the technique should be on every developers toolbox. It also provides a code snippet succinctly explaining how it can applied in a simple common day-to-day scenario."
-date:   2017-01-08 00:00:00 +0200
+date: 2017-01-08 00:00:00 +0200
 categories: Coding
 tags: dbc python ddd
 share_image: "/img/blog/design-by-contract.png"
+extra_js:
+  - https://cdnjs.cloudflare.com/ajax/libs/prism/1.11.0/components/prism-python.js
 ---
 
 ![Contract Image](/img/blog/design-by-contract.png)
@@ -127,7 +129,6 @@ hypothetical Bank Account object, which as per DbC guidelines must protect it se
 into an invalid state.
 
 ```python
-
 class Account(object):
 
     def __init__(self, name: Name, currency: Currency):
@@ -201,7 +202,6 @@ code, which would otherwise be clearer with, just the basic language features be
 that it is doing things properly. Further more, this is what unit testing tries to fix, and it does
 indeed do a good job, but it is not as powerful because there's a limit to how much it can "spy"
 into the System Under Test to assert if it is indeed working properly.
-
 
 ## Aside
 
