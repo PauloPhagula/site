@@ -5,6 +5,7 @@ date:   2014-08-03 09:47:59 +0200
 categories: Coding
 tags: .Net
 excerpt: ""
+lang: pt
 ---
 Ao desenvolver um sistema que envie emails, geralmente não se deve enviar os emails quando se efectuam testes. Pelo contrário, os emails devem estar disponiveis para investigação / avaliação de resultado e/ou debugging. Como sempre existem várias alternativas para resolver este problema: Fakes, Mocks ou a Implementação padrão.
 

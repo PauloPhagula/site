@@ -5,7 +5,9 @@ date:   2014-08-16 12:21:03 +0200
 categories: Coding
 tags: note virtualbox
 excerpt: ""
+lang: pt
 ---
+
 Para alargar um disco virtual no VirtualBox, usa-se o comando VBoxManage em um Terminal de comandos.
 
 

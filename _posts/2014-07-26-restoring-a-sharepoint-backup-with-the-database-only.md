@@ -5,6 +5,7 @@ date:   2014-07-26 09:57:07 +0200
 categories: Coding
 tags: note sharepoint database sqlserver
 excerpt: ""
+lang: pt
 ---
 Então você tem que restaurar um backup de SharePoint mas  não consegue fazê-lo usando a interface do *Central Administration*, pelos mais variados erros. 
 Mas, no entanto, você tem acesso directo a base de dados de conteúdo via SQL Server ou consegue identificar o ficheiro de backup da base de dados de conteúdo dos outros  na pasta onde tem o backup da *farm* do SharePoint.

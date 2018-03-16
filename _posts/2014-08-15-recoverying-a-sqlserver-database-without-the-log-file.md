@@ -5,7 +5,9 @@ date:   2014-08-15 20:46:14 +0200
 categories: Coding
 tags: SQLServer
 excerpt: ""
+lang: pt
 ---
+
 Então por algum motivo mágico consegui perder o .LDF correcto de uma BD. O .LDF *novo* que tenho é antigo, e assim não consigo fazer o restore. que fazer?
 
 {% highlight sql %}

@@ -5,6 +5,7 @@ date:   2014-08-23 17:20:19 +0200
 categories: Coding
 tags: note bash
 excerpt: ""
+lang: pt
 ---
 ## No Sistema operativo
 
