@@ -87,3 +87,4 @@ exclude:
   - build.sh
   - .travis.yml
   - screenshot.png
+  - vendor
