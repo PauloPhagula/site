@@ -10,12 +10,12 @@ fi
 set -e
 
 # build site with jekyll, by default to `_site' folder
-bundle exec jekyll build
+bundle exec jekyll build --verbose
 
 # cleanup
 rm -rf ../dareenzo.github.io.master
 
-#clone `master' branch of the repository using encrypted GH_TOKEN for authentification
+#clone `master' branch of the repository using encrypted GH_TOKEN for authentication
 git clone https://${GH_TOKEN}@github.com/dareenzo/dareenzo.github.io.git ../dareenzo.github.io.master
 
 # copy generated HTML site to `master' branch
