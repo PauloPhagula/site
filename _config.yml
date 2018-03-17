@@ -86,3 +86,4 @@ exclude:
   - tag_generator.py
   - build.sh
   - .travis.yml
+  - screenshot.png
