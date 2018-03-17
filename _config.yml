@@ -84,3 +84,5 @@ exclude:
   - tags/*.md
   - Rakefile
   - tag_generator.py
+  - build.sh
+  - .travis.yml
