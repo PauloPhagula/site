@@ -6,68 +6,87 @@ layout: compress
 
 {% include head.html %}
 
-<body lang="en" dir="ltr">
+<body lang="{{ page.lang | default: site.lang | default: "en" }}">
+  {% if site.google_tag_manager and jekyll.environment == 'production' %}
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NCKZVZ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{site.google_tag_manager}}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
+  {% endif %}
 
-    <main>
-        <section id="side">
-            <article id="about">
-                <a href="{{ site.baseurl }}/"><img src="{{ "/img/avatar.svg" | prepend: site.baseurl}}" alt="{{ site.title }}" /></a>
-                <h2>{{ site.title }}</h2>
-                <p>personal blog and brain-dump on programming and related topics</p>
-                <p class="navigation">
-                    <a href="/about#services" title="Check out what I can do for you">#services</a>
-                    <a href="/about#work" title="Check out some of my work and projects">#work</a>
-                    <a href="https://github.com/dareenzo" title="Have a look at my code on github" target="_blank">#code</a>
-                    <a href="https://kodikos-io.github.io" title="Check out my Startup Kodikos" target="_blank">#startup</a>
-                </p>
-            </article>
+  <!--[if lte IE 9]>
+    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+  <![endif]-->
 
-            <nav >
-                <ul class="navigation">
-                {% for page in site.pages %}
-                    {% if page.title and page.title != "Search Results" %}
-                    <li>
-                    <a class="page-link" href="{{ page.url | prepend: site.baseurl }}" title="{% if page.excerpt %}{{ page.excerpt }}{% endif %}">{{ page.title }}</a>
-                    </li>
-                    {% endif %}
-                {% endfor %}
-                </ul>
-            </nav>
+  <header class="header">
+    <article class="about">
+      <a href="{{ site.baseurl }}/"><img class="logo" src="{{ "/assets/images/avatar.svg" | prepend: site.baseurl}}" alt="{{ site.title }}" /></a>
+      <h2>{{ site.title }}</h2>
+      <p>{{ site.tagline }}</p>
+      <!--
+      <p class="navigation">
+        <a href="/about#work" title="Check out some of my work and projects">#work</a>
+        <a href="https://github.com/dareenzo" title="Have a look at my code on github" target="_blank">#code</a>
+        <a href="https://kodikos-io.github.io" title="Check out my Startup Kodikos" target="_blank">#startup</a>
+      </p>
+      -->
+    </article>
 
-            <ul class="social">
-                <li>
-                    <a href="https://www.facebook.com/paulo.phagula" title="Follow me on Facebook" target="_blank">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" preserveAspectRatio="xMidYMid meet">
-                            <path d="M21 12.646C21 7.65 16.97 3.6 12 3.6s-9 4.05-9 9.046a9.026 9.026 0 0 0 7.59 8.924v-6.376H8.395V12.64h2.193v-1.88c0-2.186 1.328-3.375 3.267-3.375.93 0 1.728.07 1.96.1V9.77H14.47c-1.055 0-1.26.503-1.26 1.242v1.63h2.517l-.33 2.554H13.21V21.6c4.398-.597 7.79-4.373 7.79-8.954"></path>
-                        </svg>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://twitter.com/dareenzo" title="Follow me on Twitter" target="_blank">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" preserveAspectRatio="xMidYMid meet">
-                            <path d="M21.725 5.338c-.744.47-1.605.804-2.513 1.006a3.978 3.978 0 0 0-2.942-1.293c-2.22 0-4.02 1.81-4.02 4.02 0 .32.034.63.07.94-3.31-.18-6.27-1.78-8.255-4.23a4.544 4.544 0 0 0-.574 2.01c.04 1.43.74 2.66 1.8 3.38-.63-.01-1.25-.19-1.79-.5v.08c0 1.93 1.38 3.56 3.23 3.95-.34.07-.7.12-1.07.14-.25-.02-.5-.04-.72-.07.49 1.58 1.97 2.74 3.74 2.8a8.49 8.49 0 0 1-5.02 1.72c-.3-.03-.62-.04-.93-.07A11.447 11.447 0 0 0 8.88 21c7.386 0 11.43-6.13 11.414-11.414.015-.21.01-.38 0-.578a7.604 7.604 0 0 0 2.01-2.08 7.27 7.27 0 0 1-2.297.645 3.856 3.856 0 0 0 1.72-2.23"></path>
-                        </svg>
-                    </a>
-                </li>
-            </ul>
+    <nav class="header__navigation">
+      <ul class="navigation">
+        <li><a class="page-link" href="/blog" title="Read my articles">Articles</a></li>
+        <li><a class="page-link" href="/talks" title="">Talks</a></li>
+        <li><a class="page-link" href="/about" title="Learn more about me and this site">About</a></li>
+        <!--
+        <li><a class="page-link" href="/services" title="Check out what I can do for you">Services</a></li>
+        <li><a class="page-link" href="/work" title="View some my most notable work and projects">Portfolio</a></li>
 
-            {% include search.html %}
-            <footer><small>Copyright &copy; {{ site.time | date: '%Y' }} {{ site.author }}.<br/>Some rights reserved</small></footer>
-        </section>
+        <li><a class="page-link" href="/contact" title="Get my contacts details so you can reach out to me">Contact</a></li>
+        -->
+      </ul>
+    </nav>
 
-        <section id="content">
-            {{ content }}
-        </section>
+    <!--
+    {% include search.html %}
+    -->
+  </header>
 
-        <div class="clearfix"></div>
-    </main>
+  <main>
+    <section id="content">
+      {{ content }}
+    </section>
+    <div class="clearfix"></div>
+  </main>
 
-    <script type="text/javascript">
-        htmlElement.style.display  = 'block';
-        htmlElement.style.overflow = '';
-    </script>
+  <footer class="footer">
+    <ul class="social">
+      <li><a href="mailto:{{site.author.email}}" target="_blank" title="Drop me an email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
+      <li><a href="https://github.com/dareenzo" target="_blank" title="Fork my code on Github"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+      <li><a href="https://stackoverflow.com/users/6270740/paulo-phagula" target="_blank" title="Help me out with some questions on StackOverflow"><i class="fa fa-stack-overflow" aria-hidden="true"></i></a></li>
+      <li><a href="https://www.linkedin.com/in/paulo-phagula" target="_blank" title="Connect with me on Linkedin if you, too, need to put up with this crap against your will"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+      <li><a href="https://twitter.com/dareenzo" target="_blank" title="Follow me on Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+      <li><a href="/feed.rss.xml" target="_blank" title="Subscribe to new posts via the RSS Feed"><i class="fa fa-feed" aria-hidden="true"></i></a></li>
+    </ul>
+    <p class="copyright">
+      Copyright &copy; 2014 - {{ site.time | date: '%Y' }} {{ site.author.name }}.<br/>
+      Some rights reserved
+    </p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.11.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.11.0/plugins/toolbar/prism-toolbar.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.11.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.11.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.12.2/components/prism-python.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.12.2/components/prism-ruby.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.12.2/components/prism-sql.js"></script>
+
+  {% for js_name in page.extra_js %}
+    <script src="{{ js_name }}"></script>
+  {% endfor %}
+
+  <script type="text/javascript">
+    htmlElement.style.display = 'block';
+    htmlElement.style.overflow = '';
+  </script>
 </body>
 </html>

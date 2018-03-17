@@ -1,0 +1,17 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+  Paulo Phagula -- Everything -- @dareenzo
+
+# THANKS
+
+  Many...
+
+# TECHNOLOGY COLOPHON
+
+  CSS3, HTML5
+  jQuery, Modernizr, Normalize.css
+  Jekyll, github pages,
+  ViM, AsciiDoc

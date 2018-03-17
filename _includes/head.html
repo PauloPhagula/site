@@ -1,110 +1,120 @@
-<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# object: http://ogp.me/ns/object# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile#" >
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# object: http://ogp.me/ns/object# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile#">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <meta http-equiv="x-dns-prefetch-control" content="on"/>
-    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
-    <link rel="dns-prefetch" href="//www.googletagmanager.com">
-    <link rel="dns-prefetch" href="//www.google-analytics.com">
+  <meta http-equiv="x-dns-prefetch-control" content="on"/>
+  <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="//www.googletagmanager.com">
+  <link rel="dns-prefetch" href="//www.google-analytics.com">
 
-    <link rel="preconnect" href="//cdnjs.cloudflare.com" crossorigin="anonymous">
-    <link rel="preconnect" href="//www.googletagmanager.com" crossorigin="anonymous">
-    <link rel="preconnect" href="//www.google-analytics.com" crossorigin="anonymous">
+  <link rel="preconnect" href="//cdnjs.cloudflare.com" crossorigin="anonymous">
+  <link rel="preconnect" href="//www.googletagmanager.com" crossorigin="anonymous">
+  <link rel="preconnect" href="//www.google-analytics.com" crossorigin="anonymous">
 
-    {% if page.next %}<link rel="prerender" href="{{ page.next.url }}" />{% endif %}
-    {% if page.previous %}<link rel="prerender" href="{{ page.previous.url }}" />{% endif %}
+  {% if page.next %}<link rel="prerender" href="{{ page.next.url }}" />{% endif %}
+  {% if page.previous %}<link rel="prerender" href="{{ page.previous.url }}" />{% endif %}
 
-    <title>{% if page.title %}{{ page.title | escape }} | {% else %}{% endif %}{{ site.title }}</title>
-    <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
-    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+  <title>{% if page.title %}{{ page.title }} &middot; {{ site.title }}{% else %}{{ site.title }} &middot; {{ site.tagline }}{% endif %}</title>
+  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
 
-    {% if page.previous %}<link rel="prev" href="{{ page.previous.url }}" title="{{ page.previous.title }}" />{% endif %}
-    {% if page.next %}<link rel="next" href="{{ page.next.url }}" title="{{ page.next.title }}" />{% endif %}
+  {% if page.previous %}<link rel="prev" href="{{ page.previous.url }}" title="{{ page.previous.title }}" />{% endif %}
+  {% if page.next %}<link rel="next" href="{{ page.next.url }}" title="{{ page.next.title }}" />{% endif %}
 
-    <meta name="HandheldFriendly" content="True" />
-    <meta name="MobileOptimized" content="320" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta http-equiv="x-rim-auto-match" content="none" />
-    <meta http-equiv="cleartype" content="on">
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta http-equiv="x-rim-auto-match" content="none" />
+  <meta http-equiv="cleartype" content="on">
 
-    <meta name="mobile-web-app-capable" content="yes">
-    <link rel="icon" sizes="192x192" href="{{ "/img/favicons/android-chrome-192x192.png" | prepend: site.baseurl }}">
-    <link rel="manifest" href="{{ "/manifest.json" | prepend: site.baseurl }}">
-    <meta name="theme-color" content="#333">
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="icon" sizes="192x192" href="{{ "/assets/images/favicons/android-chrome-192x192.png" | prepend: site.baseurl }}">
+  <link rel="manifest" href="{{ "/manifest.json" | prepend: site.baseurl }}">
+  <meta name="theme-color" content="#333">
 
-    <link rel="mask-icon" href="{{"/img/favicons/safari-pinned-tab.svg" | prepend: site.baseurl }}" color="#333">
+  <link rel="mask-icon" href="{{"/assets/images/favicons/safari-pinned-tab.svg" | prepend: site.baseurl }}" color="#333">
 
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="{{ site.title }}">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ "/img/favicons/apple-touch-icon.png" | prepend: site.baseurl }}">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="{{ site.title }}">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ "/assets/images/favicons/apple-touch-icon.png" | prepend: site.baseurl }}">
 
-    <meta name="generator" content="jekyll">
-    <meta name="robots" content="index, follow">
-    <meta name="revisit-after" content="1 DAYS">
-    <meta name="author" content="{{ site.author }}" />
-    <link rel="author" href="/about">
-    <meta name="contact" content="pphagula+dareenzo.gihub.io@gmail.com" />
-    <meta name="geography" content="Mozambique">
+  <meta name="generator" content="jekyll">
+  {% if page.robots and jekyll.environment == 'production' %}
+  <meta name="robots" content="{{ page.robots }}">
+  {% endif %}
+  <meta name="revisit-after" content="1 DAYS">
+  <meta name="author" content="{{ site.author.name }}" />
+  <link rel="publisher" href="https://plus.google.com/+{{ site.google_plus }}" />
+  <link rel="author" href="/about">
+  <meta name="contact" content="{{ site.author.email }}" />
+  <meta name="geography" content="Mozambique">
+  <meta name="source" content="https://github.com/dareenzo/dareenzo.github.io">
 
-    <!-- twitter meta -->
-    <meta name="twitter:card" content="{% if page.share_image %}summary_large_image{% else %}summary{% endif %}" />
-    <meta name="twitter:site" content="@dareenzo" />
-    <meta name="twitter:creator" content="@dareenzo">
-    <meta name="twitter:url" content="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}" />
+  <!-- twitter meta -->
+  <meta name="twitter:card" content="{% if page.share_image %}summary_large_image{% else %}summary{% endif %}" />
+  <meta name="twitter:site" content="@dareenzo" />
+  <meta name="twitter:creator" content="@dareenzo">
+  <meta name="twitter:url" content="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}" />
 
-    <!-- opengraph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}" />
-    <meta property="og:site_name" content="{{ site.title }}" />
+  <!-- opengraph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}" />
+  <meta property="og:site_name" content="{{ site.title }}" />
 
-    <!-- SEO Property Combo -->
-    {% capture share_image_url %}
-        {% if page.share_image %}
-            {{ page.share_image }}
-        {% else %}
-            /img/facebook-share.png
-        {% endif %}
-    {% endcapture %}
-    <meta property="og:title" name="twitter:title" itemprop="title name" content="{% if page.title %}{{ page.title | escape }} | {% else %}{% endif %}{{ site.title }}" />
-    <meta property="og:description" name="twitter:description" itemprop="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}" />
-    <meta property="og:image" name="twitter:image" itemprop="image primaryImageOfPage" content="{{ share_image_url  | strip | prepend: site.baseurl | prepend: site.url }}" />
+  <!-- SEO Property Combo -->
+  {% capture share_image_url %}
+    {% if page.share_image %}
+      {{ page.share_image }}
+    {% else %}
+      /assets/images/facebook-share.png
+    {% endif %}
+  {% endcapture %}
+  <meta property="og:title" name="twitter:title" itemprop="title name" content="{% if page.title %}{{ page.title }} &middot; {{ site.title }}{% else %}{{ site.title }} &middot; {{ site.tagline }}{% endif %}" />
+  <meta property="og:description" name="twitter:description" itemprop="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}" />
+  <meta property="og:image" name="twitter:image" itemprop="image primaryImageOfPage" content="{{ share_image_url | strip | prepend: site.baseurl | prepend: site.url }}" />
 
-    <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
+  <link rel="alternate" type="application/atom+xml" title="{{ site.title }} &raquo; Atom Feed" href="{{ "/feed.atom.xml" | prepend: site.baseurl | prepend: site.url }}">
+  <link rel="alternate" type="application/rss+xml"  title="{{ site.title }} &raquo; RSS Feed"  href="{{ "/feed.rss.xml"  | prepend: site.baseurl | prepend: site.url }}">
 
-    <meta name="google-site-verification" content="hXGNVG1mBEAHY0UFP_2RAzcWhzVKmQmWLbAtqPAafog" />
+  <meta name="google-site-verification" content="hXGNVG1mBEAHY0UFP_2RAzcWhzVKmQmWLbAtqPAafog" />
 
-    <style type="text/css">
-        {% capture styles %}
-            {% include critical.scss %}
-        {% endcapture %}
-        {{ styles | scssify | strip }}
-    </style>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/prism/1.11.0/themes/prism.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/prism/1.11.0/plugins/toolbar/prism-toolbar.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+  <style type="text/css">
+  {% capture styles %}
+    {% include critical.scss %}
+  {% endcapture %}
+  {{ styles | scssify | strip }}
+  </style>
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <!--[if lt IE 8]>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/json3/3.3.2/json3.min.js"></script>
-    <![endif]-->
-    <script>
-        htmlElement = document.getElementsByTagName('html')[0];
+  <script>
+    var htmlElement = document.getElementsByTagName('html')[0];
+    htmlElement.style.display  = 'none';
+    htmlElement.className = htmlElement.className.replace('no-js', 'js');
+    htmlElement.style.overflow = 'hidden';
 
-        htmlElement.style.display  = 'none';
-        htmlElement.className      = htmlElement.className.replace('no-js', 'js');
-        htmlElement.style.overflow = 'hidden';
-    </script>
+    // Redirect to https
+    var host = "{{ site.url }}";
+    if (host == window.location.host && window.location.protocol != "https:") {
+      window.location.protocol = "https";
+    }
+  </script>
 
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-NCKZVZ');</script>
-    <!-- End Google Tag Manager -->
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Yrsa|Open+Sans">
+
+  {% for css_name in page.extra_css %}
+  <link rel="stylesheet" href="{{ css_name }}">
+  {% endfor %}
+
+  {% if site.google_tag_manager and jekyll.environment == 'production' %}
+    {% include google_tag_manager.html %}
+  {% endif %}
+
+  {% if site.tags == "" %}
+    {% include collecttags.html %}
+  {% endif %}
 
 </head>

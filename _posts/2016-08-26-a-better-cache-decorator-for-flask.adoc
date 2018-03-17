@@ -1,43 +1,57 @@
 ---
 layout: post
-title:  "Improving the flask cache decorator"
-excerpt: "The article details how we can go about improving the 'standard' flask cache decorator, more specifically suggesting an API that easily resembles and relates to the client-side/browser caching-control policy"
-date:   2016-08-26 00:00:00 +0200
+title: Improving the Flask cache decorator
+excerpt: >
+  The article details how we can go about improving the "standard" flask cache
+  decorator, more specifically suggesting an API that easily resembles and relates
+  to the client-side/browser caching-control policy
+date: 2016-08-26 00:00:00 +0200
 categories: Coding
-tags: flask
-share_image: "/img/blog/http-cache-decision-tree.png"
+tags: Flask
+share_image: "/content/2016/08/http-cache-decision-tree.png"
 ---
+:page-liquid:
+:uri-cache-decorator: http://flask.pocoo.org/docs/0.11/patterns/viewdecorators/#caching-decorator
+:uri-http-caching: https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching
 
-In my rumblings developing flask applications I found the [caching decorator](http://flask.pocoo.org/docs/0.11/patterns/viewdecorators/#caching-decorator).
-The decorator is a short and well-written piece of code, but I feel like it misses the few points bellow:
+In my rumblings developing flask applications I found the {uri-cache-decorator}[caching decorator].
+The decorator is a short and well-written piece of code, but I feel like it misses
+the few points bellow:
 
-- It only caches on the server side and doesn't leverage the client-side cache - meaning that clients still have to go and hit the server every single time they require a resource
-- It doesn't respect the `no-cache` requirement from the client (although I understand why one may not want this, as it would mean busting cache every single time someone asks for it, thus creating the possibility of reducing the caching effort and benefits to zero)
+- It only caches on the server side and doesn't leverage the client-side cache -
+  meaning that clients still have to go and hit the server every single time they
+  require a resource
+- It doesn't respect the `no-cache` requirement from the client (although I
+  understand why one may not want this, as it would mean busting cache every single
+  time someone asks for it, thus creating the possibility of reducing the caching
+  effort and benefits to zero)
 
 The way I try to improve it is by having a decorator that easily allows me to
 define a caching-control policy per view, that involves both the client-side and
-server-side, by following the flow-chart bellow, taken from the [HTTP Caching](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching)
-article by Google Guru [Ilya Grigorik](https://www.igvita.com/)
+server-side, by following the flow-chart bellow, taken from the {uri-http-caching}[HTTP Caching]
+article by Google Guru https://www.igvita.com/[Ilya Grigorik]
 
-{% include image.html url="/img/blog/http-cache-decision-tree.png" caption="HTTP cache decision tree" %}
+image::/content/2016/08/http-cache-decision-tree.png[align="center", title="HTTP cache decision tree"]
 
+> Talk is cheap. Show me the code.
+> -- Linus Torvalds
 
-> Talk is cheap. Show me the code. (Linus Torvalds)
-
-```python
+[source,python]
+----
 import binascii
 import datetime
 from flask import Response, make_response
-def cached(cacheable = False, must_revalidate = True, client_only = True, client_timeout = 0, server_timeout = 5 * 60, key='view/%s'):
-"""
 
-@see https://jakearchibald.com/2016/caching-best-practices/
-    https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching
+def cached(cacheable=False, must_revalidate=True, client_only=True, client_timeout=0, server_timeout=(5 * 60), key='view/%s'):
+"""
+See:
+- https://jakearchibald.com/2016/caching-best-practices/
+- https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching
 """
 def decorator(f):
   @wraps(f)
   def decorated_function(*args, **kwargs):
-    cache_key = key % request.full_path # include querystring
+    cache_key = key % request.full_path # include query string
     cache_policy = ''
     etag = ''
     if not cacheable:
@@ -92,24 +106,27 @@ def decorator(f):
     return response
   return decorated_function
 return decorator
-
-```
+----
 
 Then in your views you can use it like
 
-```python
+[source,python]
+----
 @pages.route('/')
 @cached(True, must_revalidate=True, client_only=False, client_timeout=120, server_timeout=5*60)
 def index():
   """Serve client-side application shell."""
   return render_template('shell.html', model = get_default_model())
-```
+----
 
-**Note**
-
-> Google Chrome doesn't function correctly, it doesn't send the `If-None-Match` header effectively not allowing the client-side cache to be used at all. Maybe it's a problem with dev-tools. So better test with Firefox Developer Edition
+[NOTE]
+====
+Google Chrome doesn't function correctly, it doesn't send the `If-None-Match`
+header effectively not allowing the client-side cache to be used at all. Maybe
+it's a problem with dev-tools. So better test with Firefox Developer Edition
+====
 
 Last but not least, the way I deal with static content like JavaScript and CSS,
-is by using far-future expiration dates and changing the URL by overriding the `url_for`
-function to include the modified date of the file on disk.
+is by using far-future expiration dates and changing the URL by overriding the
+`url_for` function to include the modified date of the file on disk.
 That way, cache busting is already done from the moment I save the file..

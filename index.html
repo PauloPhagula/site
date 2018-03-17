@@ -2,28 +2,13 @@
 layout: default
 ---
 <article>
-<h1>Howdy</h1>
-
-<h3><small>DISCLAIMER</small></h3>
-<p><small>
-The content presented in this site represents my individual research, views and opinions.
-It has no intention to cause any harm.
-My employers, customers, relatives and the like cannot be held responsible for what you will see here!
-</small>
-</p>
-
-<h3>Recent Posts</h3>
-
-{% for category in site.categories %}
-  <h4 id="{{category | first }}">{{ category | first }}</h4>
-    {% for posts in category %}
-        {% for post in posts limit:3 %}
-            <ul>
-                {% if post.title %}
-                <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-                {% endif %}
-            </ul>
-        {% endfor %}
-    {% endfor %}
-{% endfor %}
+  <div class="intro text-center">
+    <p class="intro__lead">
+      Ahoy, I'm Paulo. <br />
+      I am <a href="https://en.wikipedia.org/wiki/Programmer" target="_blank">programmer</a> from Mozambique.<br/>
+      I <a href="https://github.com/dareenzo" target="_blank">write &amp; share</a> code, then
+        <a href="/blog">blog</a> and
+        <a href="/talks">speak</a> about it.
+    </p>
+  </div>
 </article>

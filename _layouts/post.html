@@ -4,81 +4,88 @@ layout: default
 {% assign sorted_tags = page.tags | sort %}
 {% assign category = page.categories | sort | limit1 %}
 <article>
-    <h1 class="article-title">{{ page.title }}</h1>
-    <header class="excerpt">
-        <div class="article-post-date">
-        Posted on <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished" content="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%d %b %Y" }}</time>
-        in <a>{{ category }}</a><br/>
-        </div>
-
-        <!--
-        Tags:&nbsp;
-
-        <ul class="tags no-list" style="display: inline">
+  <h1 class="article__title">{{ page.title }}</h1>
+  <header>
+    <div class="article__meta">
+      <i class="fa fa-calendar-o" aria-hidden="true"></i> <time class="article__post-date" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished" content="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%d %b %Y" }}</time> |
+      <i class="fa fa-folder-o" aria-hidden="true"></i> {{ category }} |
+      {% include reading_time.html %}
+      <br/>
+      {% if page.tags.size > 0 %}
+      <span class="article__tags">
+        <i class="fa fa-tags" aria-hidden="true"></i>
         {% for tag in sorted_tags %}
-        <li><a>{{ tag }}</a></li>
+        {{ tag }}&nbsp;
         {% endfor %}
-        </ul>
-
-        -->
-
-        {% if page.excerpt %}
-        <p>
-        {{ page.excerpt }}
-        </p>
-        {% endif %}
-    </header>
-
-    {{ content }}
-
-    <hr/>
-
-    <div class="sharing">
-        <p>
-            Share article on:
-            <a title="Share article via Email" href="mailto:?subject={{ page.title }}&body={{ page.url | escape | prepend: site.baseurl | prepend: site.url | url_encode}}">Mail</a> -
-            <a title="Share article on Twitter" target="_blank" href="https://twitter.com/intent/tweet?url={{ page.url | escape | prepend: site.baseurl | prepend: site.url | url_encode}}&text={{ page.title }}&via=dareenzo">Twitter</a> -
-            <a title="Share article on Facebook" target="_blank" href="https://www.facebook.com/sharer.php?u={{ page.url | escape | prepend: site.baseurl | prepend: site.url | url_encode}}">Facebook</a>
-        </p>
-    <div>
-
-    <hr/>
-
-    <div class="pagination">
-        <div class="left">
-        {% if page.previous %}
-        <a href="{{ page.previous.url }}">&#65513; Previous Post</a>
-        {% endif %}
-        </div>
-
-        <div class="right">
-        {% if page.next %}
-        <a href="{{ page.next.url }}">Next Post &#65515;</a>
-        {% endif %}
-        </div>
+      </span>
+      {% endif %}
     </div>
 
-    <div class="clearfix"></div>
-
-    <div class="related-posts">
-    {% if content and page.related %}
-        <h5>RELATED POSTS:</h5>
-        <ul class="tags">
-            {% for post in site.posts %}
-                {% if page.related contains post.title or page.related contains post.url %}
-                    <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-                {% endif %}
-            {% endfor %}
-        </ul>
+    {% if page.excerpt %}
+    <p class="article__excerpt">
+    {{ page.excerpt }}
+    </p>
     {% endif %}
-    </div>
+  </header>
 
-    <hr />
+  {{ content }}
 
-    <div class="comments">
-        <div id="disqus_thread"></div>
-        <noscript>Please enable JavaScript to see the <a href="http://disqus.com/?ref_noscript">comments</a></noscript>
-    </div>
+  <hr/>
+
+  <div class="sharing">
+    <p>
+      Share this on:
+      <a title="Share article on Email" href="mailto:?subject={{ page.title }}&body={{ page.url | escape | prepend: site.baseurl | prepend: site.url | url_encode}}">Mail</a> -
+      <a title="Share article on Twitter" target="_blank" href="https://twitter.com/intent/tweet?url={{ page.url | escape | prepend: site.baseurl | prepend: site.url | url_encode}}&text={{ page.title }}&via=dareenzo">Twitter</a> -
+      <a title="Share article on Facebook" target="_blank" href="https://www.facebook.com/sharer.php?u={{ page.url | escape | prepend: site.baseurl | prepend: site.url | url_encode}}">Facebook</a>
+    </p>
+  </div>
+
+  <div class="pagination">
+    {% if page.previous %}
+      <div class="pagination__previous-url">
+        <a href="{{ page.previous.url }}" title="{{ page.previous.title }}" rel="prev">
+          <span class="pagination__previous-arrow"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></span>
+          <span class="pagination__previous-title">{{ page.previous.title }}</span>
+        </a>
+      </div>
+    {% endif %}
+
+    {% if page.next %}
+      <div class="pagination__next-url">
+        <a href="{{ page.next.url }}" title="{{ page.next.title }}" rel="next">
+          <span class="pagination__next-title">{{ page.next.title }}</span>
+          <span class="pagination__next-arrow"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></span>
+        </a>
+      </div>
+    {% endif %}
+    <div class="clearfix"></div>
+  </div>
+
+  <div class="related-posts">
+  {% if content and page.related %}
+    <h5>RELATED POSTS:</h5>
+    <ul class="tags">
+      {% for post in site.posts %}
+        {% if page.related contains post.title or page.related contains post.url %}
+        <li><a href="{{ post.url }}" title="{{ post.title }} {{ post.content | trim: 200 }}">{{ post.title }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  {% endif %}
+  </div>
+
+  <hr />
+
+{% if jekyll.environment == "production" %}
+  <div class="comments">
+    <p>Please, use <a href="https://help.disqus.com/customer/portal/articles/665057-syntax-highlighting">syntax highlighting</a> in your comments, to make them more readable.</p>
+    <div id="disqus_thread"></div>
+    <noscript>Please, enable JavaScript to see the <a href="http://disqus.com/?ref_noscript">comments</a></noscript>
+  </div>
+{% endif %}
 </article>
 
-{% include disqus.html %}
+{% if jekyll.environment == "production" %}
+  {% include disqus.html %}
+{% endif %}

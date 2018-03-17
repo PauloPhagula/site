@@ -11,14 +11,18 @@ permalink: /blog/
   {% if currentyear != year %}
     {% unless forloop.first %}</ul>{% endunless %}
     <h2>{{ currentyear }}</h2>
-    <ul class="no-list">
+    <ul class="no-list posts-list">
     {% capture year %}{{ currentyear }}{% endcapture %}
   {% endif %}
-  {% if post.url %}<li style="padding:5px;">{% if post.category == "speaking" %}<i class="fa fa-microphone"></i> {% endif %} <span class="post-meta pull-right">{{ post.date | date: "%d/%m/%Y" }}</span><a href="{{ post.url }}" title="{{post.title}}"> {{ post.title }}</a></li>{% endif%}
+  {% if post.url %}
+    <li class="posts-list-item">
+      {% if post.category == "speaking" %}
+        <i class="fa fa-microphone"></i>
+      {% endif %}
+      <time class="post-meta">{{ post.date | date: "%b %d" }}</time>
+      <a class="post-link" href="{{ post.url }}" title="{{post.title}}">{{ post.title }}</a>
+    </li>
+  {% endif%}
 {% endfor %}
 </ul>
-</div><br/>
-<p>
-Subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a>
-</p>
-
+</div>

@@ -3,16 +3,15 @@ layout: post
 title: "Re-learning the JavaScript inheritance that doesn't exist"
 date: 2017-04-06 08:00:00 +0200
 categories: Coding
-tags: javascript object-orientation
-excerpt: "This post is not about getting started with JavaScript OO,
-it's rather about clearing the confusion in our minds about JavaScript
-OO concepts. Specifically it's an attempt to mark in my head a simple
-truth: there's no inheritance in JavaScript...there's no such thing as
-prototypal inheritance."
-share_image: "/img/blog/javascript-inheritance-last-will-and-testament.jpeg"
+tags: JavaScript Object-Orientation
+excerpt: >
+  This post is not about getting started with JavaScript OO,
+  it's rather about clearing the confusion in our minds about JavaScript
+  OO concepts. Specifically it's an attempt to mark in my head a simple
+  truth: there's no inheritance in JavaScript...there's no such thing as
+  prototypal inheritance.
+share_image: "/content/2017/04/javascript-inheritance-last-will-and-testament.jpeg"
 ---
-
-![JavaScript Inheritance - Last will and Testament Image](/img/blog/javascript-inheritance-last-will-and-testament.jpeg)
 
 Yes, they lied, big time. All you have is delegation and copying properties.
 They say it's inheritance but that is due to JS trying to accommodate the
@@ -284,7 +283,6 @@ person.isHuman = function() { return true; } // adding something to prototype ma
 zezinho.isHuman() // =>
 ```
 
-
 ## Conclusions
 
 - There's no inheritance in JavaScript. Only property delegation and copying.
@@ -297,7 +295,6 @@ zezinho.isHuman() // =>
   1. the property of all functions used to keep future friend (read `__proto__`) object of new objects created by calling the function using the `new()` operator
 - Prototypes exist as a form reuse. And the way they've been made / thought-of, they have a beautiful side-effect that the classical inheritance object-oriented form of reuse doesn't have, which is to save memory. That is, in the classical form, each instance of an object has all the details about it (the whole pack of properties it inherited), while with prototypes only references are kept to where to find the properties, so rather than say 1000 copies only 1 exists. This is exceptionally well thought, and is specially useful given the resource constraint limits imposed by the web browsers environment.
 - The decision to add `new` and pseudo-classical pattern just created more confusion and disinformation to the community and language users. It should serve as a lesson to future endeavors
-
 
 ## Closing
 

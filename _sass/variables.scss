@@ -1,0 +1,24 @@
+// Font stack
+$font-family-base: Helvetica, Arial, sans-serif;
+$font-size-base: 16px;
+$font-size-small: $font-size-base * 0.875;
+$line-height-base: 1.5;
+
+$spacing-unit:30px;
+
+// http://www.colourlovers.com/palette/92095/Giant_Goldfish
+$color-white: #fff;
+$color-black: #000;
+$color-text: #111;
+$color-background: #fdfdfd;
+$color-brand: #2a7ae2;
+
+$color-grey: #828282;
+$color-grey-light: lighten($color-grey, 40%);
+$color-grey-dark: darken($color-grey, 25%);
+
+$color-link: #4492ff;
+$color-link-hover: #09c;
+
+$on-palm:600px;
+$on-laptop:800px;

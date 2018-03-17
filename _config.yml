@@ -6,42 +6,54 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site settings
-title: Chops & Craft
-email: pphagula@gmail.com
-author: Paulo Phagula
-description: > # this means to ignore newlines until "baseurl:"
-  Paulo Phagula is a passionate software developer from Mozambique crafting websites and apps.
-baseurl: "" # the subpath of your site, e.g. /blog
+title: Paulo Phagula
+tagline: Musings on Software Engineering
+description: > # this means to ignore newlines until next "key:"
+  Paulo Phagula's Blog on Software Engineering and related topics
 url: "https://dareenzo.github.io" # the base hostname & protocol for your site
-twitter_username: dareenzo
-github_username:  dareenzo
-ga_tracking_id: UA-76527140-1
+baseurl: "" # the subpath of your site, e.g. /blog
 timezone: Africa/Maputo
 
-collections:
-  notes:
-    output: true
-    permalink: /:collection/:name
+author:
+  name: Paulo Phagula
+  email: pphagula@gmail.com
+
+footer_links:
+  twitter: dareenzo
+  github: dareenzo
+  linkedin: paulo-phagula
+  stack_overflow: 6270740/paulo-phagula
+
+google_analytics: UA-76527140-1
+google_tag_manager: GTM-NCKZVZ
+google_plus: PauloPhagula
+
+# Permalinks
+permalink: /blog/:year/:month/:day/:title/
 
 # Build settings
 markdown: kramdown
-permalink: /blog/:year/:month/:day/:title/
+highlighter: none
+kramdown:
+  syntax_highlighter_opts:
+    disable : true
 
+plugins:
+  - jekyll-asciidoc
+  - jekyll-sitemap
+  - jemoji
+  - jekyll-redirect-from
 
-exclude:
-  - autoprefixer.yml
-  - Gemfile*
-  - README.md
-  - LICENSE.md
-  - tags/*.md
-  - Rakefile
+asciidoctor:
+  attributes:
+  - icons=font
 
 # sass compression
 sass:
   sass_dir: _sass
   style: compressed
 
-# html compression
+# HTML compression
 compress_html:
   clippings: all
   comments: []
@@ -52,3 +64,23 @@ compress_html:
   profile: false
   startings: [html, head, body]
 
+tags:
+
+collections:
+  notes:
+    output: true
+    permalink: /:collection/:name
+
+  talks:
+    output: true
+    permalink: /:collection/:name
+
+# Exclude these files from your production _site
+exclude:
+  - autoprefixer.yml
+  - Gemfile*
+  - README.md
+  - LICENSE.md
+  - tags/*.md
+  - Rakefile
+  - tag_generator.py

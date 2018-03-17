@@ -1,0 +1,62 @@
+/*
+.admonitionblock table
+.admonitionblock table tbody td,
+.admonitionblock table tbody tr:nth-child(2n+1) {
+  // all: initial; // `revert` would be good here but only words in CSS 4
+}
+
+.admonitionblock table {
+  width: 100%;
+  overflow: auto;
+}
+
+.admonitionblock table tr {
+  background-color: #fff;
+  border-top: 1px solid #c6cbd1;
+}
+
+.admonitionblock table td {
+  padding: 6px 13px;
+  border: 1px solid #dfe2e5;
+}
+*/
+/** AsciiDoc Admonitions */
+span.icon>.fa {
+  cursor: default;
+}
+
+.admonitionblock td.icon {
+  text-align: center;
+  width: 80px;
+}
+.admonitionblock td.icon [class^="fa icon-"] {
+  font-size: 1.5em;
+  text-shadow: 1px 1px 2px rgba(0,0,0,.5);
+  cursor: default;
+}
+.admonitionblock td.icon .icon-note:before {
+  content: "\f05a";
+  content: "📎";
+  color: #19407c;
+}
+.admonitionblock td.icon .icon-tip:before {
+  content: "\f0eb";
+  content: "💡";
+  text-shadow: 1px 1px 2px rgba(155,155,0,.8);
+  color: #111;
+}
+.admonitionblock td.icon .icon-warning:before {
+  content: "\f071";
+  content: "⚠";
+  color: #bf6900;
+}
+.admonitionblock td.icon .icon-caution:before {
+  content: "\f06d";
+  content: "🔥";
+  color: #bf3400;
+}
+.admonitionblock td.icon .icon-important:before {
+  content: "\f06a";
+  content: "❗";
+  color: #bf0000;
+}

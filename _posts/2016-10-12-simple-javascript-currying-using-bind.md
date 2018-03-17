@@ -1,15 +1,17 @@
 ---
 layout: post
-title:  "Simple JavaScript Currying Using bind"
-excerpt: "In this blog post I tell you a short story about how I was introduced to
-javascript function currying"
-date:   2016-10-12 00:00:00 +0200
+title: "Simple JavaScript Currying Using bind"
+excerpt: >
+  In this blog post I tell you a short story about how I was introduced to
+  JavaScript function currying"
+date: 2016-10-12 00:00:00 +0200
 categories: Coding
-tags: javascript js currying functional
+tags: JavaScript
 ---
 
-I was working on a nodejs project with mighty [@giannis](https://github.com/giannis) and we had this library that
-required setting up event handlers, pretty much in the usual form of:
+I was working on a nodejs project with mighty [@giannis](https://github.com/giannis)
+and we had this library that required setting up event handlers, pretty much in
+the usual form of:
 
 ```javascript
 libObject.on('event', function(param) {
@@ -44,12 +46,12 @@ know which `libObject` instance I should call.
 
 That's when might [@giannis](https://github.com/giannis) told me:
 
-> mate, just use "bind" on the handlerfn, and pass in the key/id of the instance
+> mate, just use "bind" on the `handlerfn`, and pass in the key/id of the instance
 you want.
 
-Well, I already knew that functions are first class objets in javascript, and that they
-can be passed around, and even have methods called on them. Specifically I already
-knew about [`call`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call)
+Well, I already knew that functions are first class objects in JavaScript, and
+that they can be passed around, and even have methods called on them. Specifically
+I already knew about [`call`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call)
 and [`apply`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply),
 but I had never had a case in which `bind` was needed.
 
@@ -72,18 +74,17 @@ for (var key in libObjectCollection) {
 }
 ```
 
-The first parameter into the bind method is the new `this` or context under which the returned function
-will run when called in the future.
+The first parameter into the bind method is the new `this` or context under which
+the returned function will run when called in the future.
 
-Following is the key I need for `libObject` and last is whichever params the library will pass into
-the fn when calling.
-
-
+Following is the key I need for `libObject` and last is whichever params the
+library will pass into the fn when calling.
 
 Last but not least, as I pointed above ... this was the the naive way... In the
 very end, since this was a NodeJS project and we were already using [PM2](http://pm2.keymetrics.io),
 we just created n [different processes each with it's own configuration](http://pm2.keymetrics.io/docs/usage/application-declaration/)
 and didn't need to change the code.
 
-Despite that I'm thankful I found this issue for now I've learned this lesson. BTW, badass developers
-call this thing we tried to do with `bind` [currying](https://www.sitepoint.com/currying-in-functional-javascript/).
+Despite that I'm thankful I found this issue for now I've learned this lesson.
+BTW, in FP circles developers call this thing we tried to do with `bind`
+[currying](https://www.sitepoint.com/currying-in-functional-javascript/).

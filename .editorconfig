@@ -12,23 +12,10 @@ end_of_line = lf
 insert_final_newline = true
 trim_trailing_whitespace = true
 indent_style = space
-indent_size = 4
-max_line_length = 80
-
-[*.sh]
-end_of_line = lf
-
-[*.{cmd, bat, txt}]
-end_of_line = crlf
-
-[*.md, *.rst, *.diff]
-trim_trailing_whitespace = false
-
-[*.rst]
-indent_size = 3
-
-[{*.json, *.yml, *.xml, *.eslintrc, *.csslintrc, *.html}]
 indent_size = 2
 
-[*.sql, *.sh]
-max_line_length =
+[*.py]
+indent_size = 4
+
+#[*.{md, adoc, rst}]
+#trim_trailing_whitespace = false
