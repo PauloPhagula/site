@@ -11,16 +11,9 @@ html {
 body {
   color: #44484a;
   text-rendering: optimizeLegibility;
-  // See:
-  // - http://markdotto.com/2018/02/07/github-system-fonts/
-  // - https://make.wordpress.org/core/2016/07/07/native-fonts-in-4-6/
-  // - https://woorkup.com/system-font/
-  font: 16px/1.5
-    -apple-system, // Safari for OS X and iOS (San Francisco)
-    BlinkMacSystemFont, // Chrome on Mac OS X
-    'Segoe UI', // Windows and Windows Phone
-    Helvetica, Arial, sans-serif, // Default fallback
-    'Apple Color Emoji', 'Android Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; // Apple, Android, and Windows emojis
+  font-size: $font-size-base;
+  font-family: $font-family-base;
+  line-height: $line-height-base;
   height: 100%;
   margin: 0 auto;
   overflow-y: scroll;
@@ -173,7 +166,7 @@ pre {
 }
 
 code {
-  font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Roboto Mono", "Courier New", Courier, monospace !important;
+  font-family: $font-family-monospace !important;
   font-size: 0.9em;
   padding: 0.2em 0.4em;
   margin: 0;

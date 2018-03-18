@@ -1,0 +1,36 @@
+//== Font stack
+// See:
+// - http://markdotto.com/2018/02/07/github-system-fonts/
+// - https://make.wordpress.org/core/2016/07/07/native-fonts-in-4-6/
+// - https://woorkup.com/system-font/
+$font-family-sans-serif: -apple-system, // Safari for OS X and iOS (San Francisco)
+  BlinkMacSystemFont, // Chrome on Mac OS X
+  'Segoe UI', // Windows and Windows Phone
+  Helvetica, Arial, sans-serif, // Default fallback
+  'Apple Color Emoji', 'Android Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; // Apple, Android, and Windows emojis;
+$font-family-serif: Georgia, "Times New Roman", Times, serif;
+$font-family-monospace: Menlo, Monaco, Consolas, "Liberation Mono", "Roboto Mono", "Courier New", Courier, monospace;
+$font-family-base: $font-family-sans-serif;
+
+$font-size-base: 16px;
+$font-size-small: $font-size-base * 0.875;
+$line-height-base: 1.5;
+
+$spacing-unit: 30px;
+
+// http://www.colourlovers.com/palette/92095/Giant_Goldfish
+$color-white: #fff;
+$color-black: #000;
+$color-text: #111;
+$color-background: #fdfdfd;
+$color-brand: #2a7ae2;
+
+$color-grey: #828282;
+$color-grey-light: lighten($color-grey, 40%);
+$color-grey-dark: darken($color-grey, 25%);
+
+$color-link: #4492ff;
+$color-link-hover: #09c;
+
+$on-palm:600px;
+$on-laptop:800px;
