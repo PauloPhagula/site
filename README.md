@@ -1,4 +1,4 @@
-# Chops & Craft
+# dareenzo.github.io [![Build Status](https://travis-ci.org/dareenzo/dareenzo.github.io.svg?branch=develop)](https://travis-ci.org/dareenzo/dareenzo.github.io)
 
 ![Blog screenshot](/screenshot.png)
 
