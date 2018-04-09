@@ -20,7 +20,7 @@ event:
 
 ## Abstract
 
-[Software is eating the world](https://a16z.com/2016/08/20/why-software-is-eating-the-world)
+[Software is eating the world](https://a16z.com/2016/08/20/why-software-is-eating-the-world/)
 and [companies need to become software companies](https://www.entrepreneur.com/article/273859).
 It doesn't mater if the business is in traditional area, like finance or
 manufacturing, software is no longer something to support the business, it is
