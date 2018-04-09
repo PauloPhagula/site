@@ -7,9 +7,9 @@
 
 # Site settings
 title: Paulo Phagula
-tagline: Musings on Software Engineering
+tagline: Musings and Scribbles on Software Development
 description: > # this means to ignore newlines until next "key:"
-  Paulo Phagula's Blog on Software Engineering and related topics
+  Paulo Phagula's Blog on Software Development and related topics
 url: "https://dareenzo.github.io" # the base hostname & protocol for your site
 baseurl: "" # the subpath of your site, e.g. /blog
 timezone: Africa/Maputo
