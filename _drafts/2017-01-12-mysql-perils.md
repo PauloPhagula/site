@@ -1,6 +1,6 @@
 ---
 layout: post
-title: The Perils of MySQL
+title: A few MySQL subtleties and how to go about them
 excerpt:
 date: 2017-01-12 00:00:00 +0200
 categories: Coding
@@ -12,32 +12,33 @@ commonly used by Web Developers and supports many software bundles like
 WordPress and Drupal which in turn support most of the sites in the internet.
 
 Its users range from the one-man-band-man hard-core developers writing
-code in the basements, to the super-mega enterprises like Facebook,
+code in their basements, to the super-mega enterprises like Facebook,
 Github, Google, and Wikipedia just to name a few.
 
 (Almost everyone uses it -- that's what I want to say)
 
-Now, despite its very large user base, there are still many misconceptions
-/ particularities / subtleties about how to use it and properly setup,
-that usually go unnoticed until its too late. At large, this is due to
-ignorance on developers (which commonly have to act as DBAs), but mostly
-to MySQL itself which acts in an very uncommon way -- read insecure,
-non-ANSI compliant, shit-show like style -- by default.
+Now, despite its very large user base, there are still many misconceptions/subtleties
+about how to use it and properly setup, that usually go unnoticed until its too
+late, or that are initially unusual/unexpected by people (like me) used to other
+database products. At large, this is due to ignorance on developers
+(which commonly have to act as DBAs), but mostly to MySQL itself which acts in
+a very uncommon way --read insecure, non-ANSI compliant, shit-show like style--
+by default.
 
 The fact that it's so easy to setup and use, allows almost anyone,
 beginner or not, to just fire it and rock on.
 
 This post is not about ranting about MySQL nor promoting `<insert-your-favorite-db-here>`
 --I'll do my best to control my emotions, I promise!. Its about sharing details
-on a set of subtleties I found in my experience, and how you can go about them
-so you're not caught off guard as I was.
+on a set of subtleties I found in my experience (coming from SQL Server and Oracle),
+and how you can go about them so you're not caught off guard as I was.
 
 ## Division by zero equals NULL
 
 Here we go
 
-```log
-mysql> select 1/0;
+```sql
+mysql> SELECT 1/0;
 +------+
 | 1/0  |
 +------+
@@ -57,7 +58,7 @@ instead. Let's try it.
 mysql> SET SESSION sql_mode = 'ERROR_FOR_DIVISION_BY_ZERO,STRICT_ALL_TABLES';
 Query OK, 0 rows affected, 1 warning (0.00 sec)
 
-mysql> select @@sql_mode;
+mysql> SELECT @@sql_mode;
 +----------------------------------------------+
 | @@sql_mode                                   |
 +----------------------------------------------+
@@ -65,7 +66,7 @@ mysql> select @@sql_mode;
 +----------------------------------------------+
 1 row in set (0.00 sec)
 
-mysql> select 1/0;
+mysql> SELECT 1/0;
 +------+
 | 1/0  |
 +------+
@@ -87,22 +88,22 @@ mysql> show warnings;
 1 row in set (0.00 sec)
 ```
 
-Hm, it seems like the sql mode just produces warnings, but let's try it with a
+Hm, it seems like the SQL mode just produces warnings, but let's try it with a
 table
 
 ```sql
 mysql> CREATE TABLE test(value int);
 Query OK, 0 rows affected (0.04 sec)
 
-mysql> insert into test(value) VALUES(1/0);
+mysql> INSERT INTO test(value) VALUES(1/0);
 ERROR 1365 (22012): Division by 0
 ```
 
-It seems SQL mode won't cut it all times. Simple select statements will not be
-fully covered for these kinds of errors, only your table data (what you insert
-and update) will.
+It seems SQL mode won't cut it all times. Simple `SELECT` statements will not be
+fully covered for these kinds of errors, only your table data (what you `INSERT`
+and `UPDATE`) will.
 
-Let's confirm this by looking at another example with selects and table data.
+Let's confirm this by looking at another example with `SELECT`s and table data.
 
 ```sql
 mysql> SELECT count(*)/0 FROM test;
@@ -122,12 +123,12 @@ mysql> SELECT value/0 FROM test WHERE value=1;
 1 row in set, 1 warning (0.00 sec)
 ```
 
-That's it indeed, for selects all we get is a warning, but at least we're covered
+That's it indeed, for `SELECT`s all we get is a warning, but at least we're covered
 from data corruption. It is not perfect but should help a bit, also if your
 database interface allows, you can tell it to convert the warnings into errors
 in which case you would get "full protection". In the absence of that feature a
 technique that I've seen some people use is to try to cover for the zero case by
-using `IF`s or `NULLIF`s, more or less like:
+using `IF`s or `NULLIF`s, more or less like so:
 
 ```sql
 SELECT 1/nullif(some_column, 0); -- returns null
@@ -147,7 +148,7 @@ persist after reboots.
 ## '' = 0
 
 ```sql
-mysql> select ''=0;
+mysql> SELECT ''=0;
 +------+
 | ''=0 |
 +------+
@@ -168,7 +169,7 @@ programming languages, particularly when the operands for the equality operator
 are numbers and strings. See the following sample
 
 ```sql
-mysql> select 'password'=0;
+mysql> SELECT 'password'=0;
 +--------------+
 | 'password'=0 |
 +--------------+
@@ -178,7 +179,7 @@ mysql> select 'password'=0;
 
 Two values of different data types, one falsy and another truthy are being compared
 somehow and are considered equal. I'd get it if we were comparing a string of
-numbers like `'1'` with a number like `1`, but this, this is weird.
+numbers like `'1'` with a number like `1`, but this... this is weird.
 
 Unfortunately, I no longer remember exactly what was the case, but I've had a
 situation in the past where this caused me to waste hours to figure out.
@@ -196,7 +197,7 @@ but perhaps I haven't lived long enough to see one just yet. Regardless, the
 situation is the one bellow:
 
 ```sql
-mysql> create table test (birth_day date, created_at datetime);
+mysql> CREATE TABLE test (birth_day date, created_at datetime);
 Query OK, 0 rows affected (0.02 sec)
 
 mysql> INSERT INTO test VALUES('0000-00-00', '0000-00-00 00:00:00');
@@ -205,7 +206,7 @@ Query OK, 1 row affected (0.00 sec)
 mysql> INSERT INTO test VALUES('2000-10-00', '0000-00-00 19:30:00');
 Query OK, 1 row affected (0.00 sec)
 
-mysql> select * from test;
+mysql> SELECT * FROM test;
 +------------+---------------------+
 | birth_day  | created_at          |
 +------------+---------------------+
@@ -231,7 +232,7 @@ for computing the candidates experience would bring inconsistent results.
 
 How to avoid this? Set SQL mode to include `STRICT_ALL_TABLES`, `NO_ZERO_DATE`
 and `NO_ZERO_IN_DATE`, so that it complains appropriately upon the presence of
-incorrect date values.
+incorrect date values. Let's try it:
 
 ```sql
 mysql> SET SESSION sql_mode = 'NO_ZERO_DATE,NO_ZERO_IN_DATE,STRICT_ALL_TABLES';
@@ -246,24 +247,19 @@ behave incorrectly and raising warning but ultimately no protection is provided.
 See bellow:
 
 ```sql
-mysql> delete from test;
-Query OK, 0 rows affected (0.00 sec)
-
 mysql> SET SESSION sql_mode = 'NO_ZERO_DATE,NO_ZERO_IN_DATE';
 Query OK, 0 rows affected, 1 warning (0.00 sec)
 
 mysql> INSERT INTO test VALUES('2000-10-00', '0000-00-00 19:30:00');
 Query OK, 1 row affected, 2 warnings (0.00 sec)
 
-mysql> select * from test;
+mysql> SELECT * FROM test;
 +------------+---------------------+
 | birth_day  | created_at          |
 +------------+---------------------+
 | 0000-00-00 | 0000-00-00 00:00:00 |
 +------------+---------------------+
 1 row in set (0.00 sec)
-
-mysql>
 ```
 
 Note how not only it "simply" raised warnings, but it also replaced our values
@@ -273,7 +269,7 @@ with zeros, which is much worse than what we had to begin with.
 
 Some people unknowingly use these data types as if they were synonymous, but in
 reality they're different and appropriate for different usage scenarios. The
-sample bellow should clarify what I mean
+sample bellow should clarify what I mean:
 
 ```sql
 SET SESSION time_zone='+2:00';
@@ -282,7 +278,6 @@ CREATE TABLE dates (
     date_timestamp timestamp,
     date_datetime datetime
 )
-
 
 -- Inserting the exact same value to both columns
 INSERT INTO dates (date_timestamp, date_datetime) VALUES ('2017-07-09 20:11:00', '2017-07-09 20:11:00');
@@ -321,18 +316,18 @@ choices and you should be fine.
 
 ## UTF8 is not UTF8 aka Can you INSERT 💩?
 
-This is serious, can you INSERT 💩 in your table? ...No?
+This is serious, can you `INSERT` 💩 in your table? ...No?
 
-Why not? It's UTF-8 right? I saw you doing the CHARSET thing when you created
+Why not? It's UTF-8 right? I saw you doing the `CHARSET` thing when you created
 your table...
 
-To be fair, encodings, unicode, charsets and collations make my head
+To be fair, encodings, unicode, character sets and collations make my head
 hurt and I'm not a smart guy so I'll just give you the bottom line and
-refer to a place where you can know more
+refer to a place where you can know more.
 
 Bottom line is: if you created a table with `CHARSET uft8` then it won't work
 with 💩, that is, you're not supporting all characters in unicode, and so
-people cannot leave emojis on comments or write asian kanjis or characters,
+people cannot leave emojis on comments, or write asian kanjis or characters,
 on your site/app. This is because UTF8 (the real one) is `utf8mb4`, not
 `utf8` as is said in many places on the internet.
 
@@ -350,9 +345,8 @@ CREATE TABLE poo_utf8 (
 ) CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 INSERT INTO poo_utf8(contents) VALUES ('big ol pile of 💩');
-```
-
 Query OK, 1 row affected, 1 warning (0.01 sec)
+```
 
 Oh, lovely... let's query it then
 
@@ -398,7 +392,7 @@ Don't let anyone take your 💩. Use `utf8mb4` and `utf8mb4_unicode_ci`.
 Of course 💩 was just an example. If you want to support any character
 you need to use "proper" UTF8.
 
-BTW on MySQL 8 This is going to be the default, but we all know everyone must do
+BTW on MySQL 8 this is going to be the default, but we all know everyone must do
 ceremonies and rituals prior to migrating, so...
 
 To know the exact details of why this is so check out https://mathiasbynens.be/notes/mysql-utf8mb4
@@ -406,7 +400,7 @@ To know the exact details of why this is so check out https://mathiasbynens.be/n
 ## The `CHECK` constraint is only parsed but ignored in the end
 
 This has been in MySQL since forever and not even MySQL 8 will fix it. MySQL parses
-the CHECK constraints when defining tables but it doesn't enforce them. They're
+the `CHECK` constraints when defining tables but it doesn't enforce them. They're
 just there but do nothing.
 
 The example bellow depicts the behavior. On it we imagine defining a `people`
@@ -424,7 +418,7 @@ CREATE TABLE people (
 mysql> INSERT INTO people (NAME, gender) VALUE ('Paulo', 'h');
 Query OK, 1 row affected (0.00 sec)
 
-mysql> select * from people;
+mysql> SELECT * FROM people;
 +----+-------+--------+
 | id | name  | gender |
 +----+-------+--------+
@@ -434,7 +428,7 @@ mysql> select * from people;
 ```
 
 As you saw all went well, except MySQL didn't cry when I said my gender was `h`
-for human.
+--for human.
 
 How to go about this? Know that `CHECK` constraints in MySQL are just for show.
 You'll need to find another way instead, perhaps triggers or some code in your
@@ -448,11 +442,11 @@ for something... say vacancies. The candidates can go change through various sta
 from registered to hopefully (selected).
 
 Imagine I want to get the total of candidates per each category. I could
-(mistakenly) go with a query like `select flow_status, count(*) from candidate`,
+(mistakenly) go with a query like `SELECT flow_status, count(*) FROM candidate`,
 missing the `GROUP BY`.
 
 ```sql
-mysql> select flow_status, count(*) from candidate;
+mysql> SELECT flow_status, count(*) FROM candidate;
 +-------------+----------+
 | flow_status | count(*) |
 +-------------+----------+
@@ -477,7 +471,7 @@ then it is very likely you have problem.
 
 The cure for this problem is the same as for the next point. So, just keep going.
 
-## non-GROUP nor aggregated columns in SELECT
+## Non-GROUPed-BY nor aggregated columns in SELECT
 
 This is stopped by default starting from MySQL 5.7 as seen these reference
 articles:
@@ -512,11 +506,14 @@ mysql> SELECT id, invoice_id, description FROM invoice_line_items GROUP BY invoi
 ```
 
 Because MySQL doesn't enforce the usage the correct behavior of `GROUP BY` we can
-easily accidentally return incorrect data, such as above. Luckily this behavior
+easily return incorrect data by accident, such as above. Luckily this behavior
 has been corrected by default since version 5.7 with the mode `ONLY_FULL_GROUP_BY`.
 Setting your SQL mode to include it sort things out for you you.
 
 ## Data Truncations
+
+MySQL tends to do data truncations whenever a value doesn't fit a column. Like
+in the other cases the sin is the silent warning. Let look at an example.
 
 ```sql
 mysql> CREATE TABLE foo (bar VARCHAR(4));
@@ -550,6 +547,8 @@ includes both these and a couple of related ones
 
 ## MySQL uses separate encoding for different parts
 
+In MySQL these components have different encodings:
+
 - Server
 - Client
 - Connection
@@ -557,7 +556,7 @@ includes both these and a couple of related ones
 - Table
 - Field
 
-```txt
+```sql
 mysql> \s
 --------------
 mysql  Ver 14.14 Distrib 5.7.15, for osx10.11 (x86_64) using  EditLine wrapper
@@ -589,13 +588,22 @@ Threads: 5  Questions: 289  Slow queries: 0  Opens: 166  Flush tables: 1  Open t
 ) ENGINE=InnoDB DEFAULT CHARSET=greek
 ```
 
+There's nothing with the above. In fact it is a feature and I've had good
+legitimate cases for having two different encodings in use for different parts.
+It's more a good to know thing, as to improve your decisions on configuration,
+and helping in managing your expectations upon the server's behavior regarding
+this matter.
+
 ## Booleans are synonymous with Tiny Integers
+
+In MySQL Booleans are synonymous with tiny integers, actually to be precise
+`BOOL`s are aliases for `TINYINT`s. Let's have a look at the sample code
 
 ```sql
 mysql> CREATE TABLE things (is_fit BOOL);
 Query OK, 0 rows affected (0.11 sec)
 
-mysql> desc things;
+mysql> DESC things;
 +--------+------------+------+-----+---------+-------+
 | Field  | Type       | Null | Key | Default | Extra |
 +--------+------------+------+-----+---------+-------+
@@ -603,7 +611,7 @@ mysql> desc things;
 +--------+------------+------+-----+---------+-------+
 1 row in set (0.00 sec)
 
-mysql> show create table things;
+mysql> SHOW CREATE TABLE things;
 +--------+---------------------------------------------------------------------------------------------------+
 | Table  | Create Table                                                                                      |
 +--------+---------------------------------------------------------------------------------------------------+
@@ -633,18 +641,29 @@ Only `CHAR` has a limit of 255.
 The limit for VARCHAR was lifted from 255 on MySQL 5.0.3. And it is 21844
 when using UTF-8 (the real UTF8 not UTF8 :)).
 
-## Why keep MySQL
+## Why keep MySQL then?
 
-Given all these issues why keep MySQL instead of going with something else, seems
-to be a legitimate question. I think I keep it for these reasons and maybe you want
-to keep it too:
+Given all these subtleties why keep MySQL instead of going with something else,
+seems to be a legitimate question. After all some people may be used to the level
+of strictness of some other vendor's products and may not tolerate these "things".
+But just as in every other technological decision there are many other factors
+and forces involved -- dark and light. And in this particular case I think there
+are more light forces than dark. Though these are my personal reasons for keeping
+it I think they will resonate with you:
 
 - Ecosystem (WordPress, Drupal, <insert your favorite CMS here>)
 - It's open source, free, has a great community, and lots of resources to learn
-  from on the web
+  from on the web.
 - It's not that bad, you just have to educate yourself, discipline it by setting
-  the sql mode to be reasonable default server wise, and start taking the warnings
-  it produces seriously.
+  the SQL mode to be reasonable default server wise, and start taking the warnings
+  it produces seriously. Whenever you MySQL says there was a warning, `SHOW` it
+  as to better decide how to proceed from there.
+
+I promised not to make comparisons with other products, but I'd be remiss if I
+didn't mention that if these issues are really bothering you then perhaps you can
+try a different distribution of MySQL other than the default one, which usually
+have more saner defaults out of the box, like: Percona Server, MariaDB, Drizzle
+or WebScaleSQL. They're are MySQL after all.
 
 ---
 
