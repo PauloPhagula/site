@@ -108,7 +108,7 @@ It seems SQL mode won't cut it all times. Simple `SELECT` statements will not be
 fully covered for these kinds of errors, only your table data (what you `INSERT`
 and `UPDATE`) will.
 
-Let's confirm this by looking at another example with `SELECT`s and table data.
+Let's confirm this by looking at another example with `SELECT` s and table data.
 
 [source,sql]
 ----
@@ -129,12 +129,12 @@ mysql> SELECT value/0 FROM test WHERE value=1;
 1 row in set, 1 warning (0.00 sec)
 ----
 
-That's it indeed, for `SELECT`s all we get is a warning, but at least we're covered
+That's it indeed, for `SELECT` s all we get is a warning, but at least we're covered
 from data corruption. It is not perfect but should help a bit, also if your
 database interface allows, you can tell it to convert the warnings into errors
 in which case you would get "full protection". In the absence of that feature a
 technique that I've seen some people use is to try to cover for the zero case by
-using `IF`s or `NULLIF`s, more or less like so:
+using `IF` s or `NULLIF` s, more or less like so:
 
 [source,sql]
 ----
@@ -620,7 +620,7 @@ this matter.
 == Booleans are synonymous with Tiny Integers
 
 In MySQL Booleans are synonymous with tiny integers, actually to be precise
-`BOOL`s are aliases for `TINYINT`s. Let's have a look at the sample code
+`BOOL` s are aliases for `TINYINT` s. Let's have a look at the sample code
 
 [source,sql]
 ----
@@ -675,7 +675,7 @@ and forces involved -- dark and light. And in this particular case I think there
 are more light forces than dark. Though these are my personal reasons for keeping
 it I think they will resonate with you:
 
-* Ecosystem (WordPress, Drupal, )
+* Ecosystem (WordPress, Drupal, `<insert-your-favorite-cms-here>` )
 * It's open source, free, has a great community, and lots of resources to learn
 from on the web.
 * It's not that bad, you just have to educate yourself, discipline it by setting
