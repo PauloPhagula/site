@@ -29,7 +29,7 @@ by default.
 The fact that it's so easy to setup and use, allows almost anyone,
 beginner or not, to just fire it and rock on.
 
-This post is not about ranting about MySQL nor promoting `<insert-your-favorite-db-here>`
+This post is not a rant about MySQL nor a promotion of `<insert-your-favorite-db-here>`
 -- I'll do my best to control my emotions, I promise!. Its about sharing details
 on a set of subtleties I found in my experience (coming from SQL Server and Oracle),
 and how you can go about them so you're not caught off guard as I was.
@@ -550,7 +550,7 @@ mysql> SHOW WARNINGS;
 +---------+------+------------------------------------------+
 ----
 
-Yap your data was truncated just like that. And this also happens on
+Yap, your data was truncated, just like that! And this also happens on
 
 [source,sql]
 ----
