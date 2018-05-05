@@ -1,7 +1,6 @@
 ---
 layout: post
 title: A few MySQL subtleties and how to go about them
-excerpt:
 date: 2018-05-04 00:00:00 +0200
 categories: Coding
 tags: Database MySQL SQL
@@ -611,7 +610,7 @@ Threads: 5  Questions: 289  Slow queries: 0  Opens: 166  Flush tables: 1  Open t
 ) ENGINE=InnoDB DEFAULT CHARSET=greek
 ----
 
-There's nothing with the above. In fact it is a feature and I've had good
+There's nothing wrong with the above. In fact it is a feature and I've had good
 legitimate cases for having two different encodings in use for different parts.
 It's more a good to know thing, as to improve your decisions on configuration,
 and helping in managing your expectations upon the server's behavior regarding
