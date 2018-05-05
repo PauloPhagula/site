@@ -8,8 +8,7 @@ layout: default
   <header>
     <div class="article__meta">
       <i class="fa fa-calendar-o" aria-hidden="true"></i> <time class="article__post-date" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished" content="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%d %b %Y" }}</time> |
-      <i class="fa fa-folder-o" aria-hidden="true"></i> {{ category }} |
-      {% include reading_time.html %}
+      <i class="fa fa-folder-o" aria-hidden="true"></i> {{ category }}
       <br/>
       {% if page.tags.size > 0 %}
       <span class="article__tags">
