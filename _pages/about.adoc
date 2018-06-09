@@ -14,16 +14,16 @@ you spell it in the same way you start saying *Party*
 ]
 and I'm a software engineer mainly interested
 in web development, programming tools and technologies.
-I'm https://www.youtube.com/watch?v=4E3xfR6IBII[not just a code monkey]
+I'm https://www.youtube.com/watch?v=4E3xfR6IBII[not just a code monkey^]
 though, my passion lies in developing software that adds value to businesses and
 people's lives, from idea inception to shipping the final product.
 
 This is my personal blog and brain dump where I share my thoughts and ideas.
 My usual nickname is **dareenzo** 🤦, hence the name of this blog.
 
-I live in sunny https://en.wikipedia.org/wiki/Mozambique[Mozambique]
+I live in sunny https://en.wikipedia.org/wiki/Mozambique[Mozambique^]
 ☀️ 🇲🇿, but have been working in remote teams since forever.
-Presently, I work at http://www.ux.co.mz[UX - Information Technologies] as a
+Presently, I work at http://www.ux.co.mz[UX - Information Technologies^] as a
 software engineer, crafting and managing innovative services to tackle employment,
 education and financial inclusion challenges in emerging economies.
 
@@ -40,11 +40,11 @@ I'm an active contributor to open source projects and maintain a few of my own.
 == Connect with me
 
 If you want to know more about what I'm up to please contact me directly or
-follow me on these social media channels.
+follow me on these channels.
 
 - dareenzo@gmail.com
-- https://github.com/dareenzo[github.com/dareenzo]
-- https://twitter.com/dareenzo[twitter.com/dareenzo]
+- https://github.com/dareenzo[github.com/dareenzo^]
+- https://twitter.com/dareenzo[twitter.com/dareenzo^]
 
 If you're into spy stuff 🕵️ and would like to securely deliver a message to me,
 my link:/key.asc[PGP key] 🔑 is `0x80726DF59BFDC5F0`.
