@@ -35,7 +35,7 @@ layout: default
     <p>
       Share this on:
       <a title="Share article on Email" href="mailto:?subject={{ page.title }}&body={{ page.url | escape | prepend: site.baseurl | prepend: site.url | url_encode}}">Mail</a> -
-      <a title="Share article on Twitter" target="_blank" href="https://twitter.com/intent/tweet?url={{ page.url | escape | prepend: site.baseurl | prepend: site.url | url_encode}}&text={{ page.title }}&via=dareenzo">Twitter</a> -
+      <a title="Share article on Twitter" target="_blank" href="https://twitter.com/intent/tweet?url={{ page.url | escape | prepend: site.baseurl | prepend: site.url | url_encode}}&text={{ page.title | uri_escape }}&via=dareenzo">Twitter</a> -
       <a title="Share article on Facebook" target="_blank" href="https://www.facebook.com/sharer.php?u={{ page.url | escape | prepend: site.baseurl | prepend: site.url | url_encode}}">Facebook</a>
     </p>
   </div>
