@@ -35,6 +35,11 @@ permalink: /blog/:year/:month/:day/:title/
 markdown: kramdown
 highlighter: none
 kramdown:
+  input: GFM
+  hard_wrap: false
+  auto_ids: true
+  toc_levels: 1..6
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
   syntax_highlighter_opts:
     disable : true
 
