@@ -25,7 +25,7 @@ it is what it is.
 To understand why and how things came to be, we need to look a bit and
 understand JavaScript's history.
 In the beginning, when Brendan Eich was creating the language, his intention
-was bring [Scheme](https://en.wikipedia.org/wiki/Scheme_%28programming_language%29)
+was to bring [Scheme](https://en.wikipedia.org/wiki/Scheme_%28programming_language%29)
 into the browser, and that's where JS gets the whole prototype inheritance
 thing (which doesn't exist). Overtime though, as Java was the mainstream
 programming language back then, he was asked to "massage" the language as
@@ -130,7 +130,7 @@ prototype is the term used to speak of the friend object referenced by
 `.__proto__` in any object.
 
 `.prototype` is a property that exists in functions, to hold the reference
-to the future "friend" of the objects created by call the function using
+to the future "friend" of the objects created by calling the function using
 the `new` operator. Quite a mouthful, so let's dig into it.
 
 The first bit that should be clarified is that almost everything in
@@ -152,7 +152,7 @@ sum.__proto__ === Function.prototype // => true
 
 We should turn our focus to the prototype property. What with it?
 
-So, as said before, during the development of JS Brendan Eich was asked
+So, as said before, during the development of JS, Brendan Eich was asked
 to make it look like Java and so he introduced what Douglas Crockford
 calls pseudo-classical inheritance (again doesn't exist for real).
 
