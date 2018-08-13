@@ -194,7 +194,7 @@ This whole "prototype" as a function property construct was made to allow
 the "Java" people to easily embark into JS and the way it works is with
 `new` doing some "stuff" on the background.
 
-If were to implement `new` ourselves it would look like:
+If we were to implement `new` ourselves it would look like:
 
 ```js
 /**
@@ -286,15 +286,15 @@ zezinho.isHuman() // =>
 ## Conclusions
 
 - There's no inheritance in JavaScript. Only property delegation and copying.
-  - If a property is removed from the "friended object" object the other object no longer can use it
-  - As we saw in the `objectCreate`, the `ownProperties` were copied from another object. We can expand on this and compose objects from others further improving reuse.
+  - If a property is removed from the "friended object" the other object no longer can use it
+  - As we saw in the `objectCreate` example, the `ownProperties` were copied from another object. We can expand on this and compose objects from others further improving reuse.
 - There's only one way of creating objects and that's with object literals. `new` and `Object.create` just create the literal internally, add properties to it, link to a prototype and return it. No magic! We can implement this ourselves
 - `__proto__` is a property of all objects (even functions)
-- prototype exists as two concepts:
+- Prototype exists as two concepts:
   1. the friend object to which objects delegate property lookup (`__proto__`) and
-  1. the property of all functions used to keep future friend (read `__proto__`) object of new objects created by calling the function using the `new()` operator
-- Prototypes exist as a form reuse. And the way they've been made / thought-of, they have a beautiful side-effect that the classical inheritance object-oriented form of reuse doesn't have, which is to save memory. That is, in the classical form, each instance of an object has all the details about it (the whole pack of properties it inherited), while with prototypes only references are kept to where to find the properties, so rather than say 1000 copies only 1 exists. This is exceptionally well thought, and is specially useful given the resource constraint limits imposed by the web browsers environment.
-- The decision to add `new` and pseudo-classical pattern just created more confusion and disinformation to the community and language users. It should serve as a lesson to future endeavors
+  1. the property of all functions used to keep the future friend (read `__proto__`) object of new objects created by calling the function using the `new()` operator.
+- Prototypes exist as a form reuse. And the way they've been made / thought-of, has a beautiful side-effect that the classical inheritance object-oriented form of reuse doesn't have, which is to save memory. That is, in the classical form, each instance of an object has all the details about it (the whole pack of properties it inherited), while with prototypes only references are kept to where to find the properties, so rather than say 1000 copies only 1 exists. This is exceptionally well thought, and is specially useful given the resource constraint limits imposed by the web browsers environment.
+- The decision to add `new` and pseudo-classical pattern just created more confusion and disinformation to the community and language users. It should serve as a lesson to future endeavors.
 
 ## Closing
 
