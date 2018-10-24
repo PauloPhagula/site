@@ -1,0 +1,419 @@
+= Test Doubles: A Primer
+:source-highlighter: coderay
+:coderay-css: class
+
+== Introduction
+
+This article emerged as an attempt to provide a more in-depth response to the
+following question, posted by https://twitter.com/ivanbila[Ivan] on the MozDevz group on Telegram:
+
+____
+Hi all,
+
+What’s the difference between a Mock and a Stub?
+Can anyone make this clearer?
+
+Thanks in Advance
+
+-- Ivan (Bilal) Bila, on the MozDevz group on Telegram
+____
+
+In order to ease understanding by all, I'll start by providing a bit more of context
+as to what he's talking about -- test doubles -- , why we need them, and when we
+should use them. Then, address the question more directly by providing a <<taxonomy>>.
+
+[NOTE]
+====
+Even though the example code is written using a particular language,
+testing framework, and mocking library
+(PHP, https://phpunit.de[PHPUnit], and https://github.com/phpspec/prophecy[Prophecy]
+footnote:[
+If you wonder why I didn't use PHPUnit's built-in mocking facilities, its because
+they're pretty much only there to keep backwards compatibility. Sebastian Bergmann
+-- the create of PHPUnit -- himself has said he does not recommend using them,
+and suggests we use Prophecy, so much so he added "native" support for it onto
+PHPUnit.
+]
+),
+the content and ideas are generic and can be used in any other platform with any
+other libraries of choice. I'd be remiss though, if I didn't tell you that,
+depending on your platform of choice, you may not find direct equivalents of the
+constructs used here. Regardless, getting bigger picture is whats important,
+since then you can port the ideas to whatever constructs are more idiomatic to
+your platform.
+====
+
+== What are Test Doubles
+
+Test Double is a generic term for any case where you replace a production
+object or procedure with another for testing purposes. In automated unit
+testing a test double replaces an object on which the SUT depends on.
+
+Test doubles are popularly (and incorrectly) called Mock objects, but in reality
+a mock object is a very specific type of test double.
+
+____
+The word "mock" is sometimes used in an informal way to refer to the
+whole family of objects that are used in tests. They are called test doubles
+
+-- Robert C. Martin
+____
+
+____
+...They were introduced at XP2000 in a paper called
+http://connextra.com/aboutUs/mockobjects.pdf[Endo-Testing: Unit Testing with Mock Objects],
+and it took a long time after that for them to gain popularity.
+Their role in software development was still being fleshed out in 2004 when
+http://jmock.org/oopsla2004.pdf[Mock Roles, Not Objects] was published.
+
+-- https://www.destroyallsoftware.com/blog/2014/tdd-straw-men-and-rhetoric[TDD, Straw Men, and Rhetoric]
+____
+
+**The key reason for tests doubles is to help us design how our objects
+communicate**. They help in verifying indirect output of the SUT, by checking
+that it interacted with its (direct or indirect) collaborators in an expected
+way. We do that by replacing the objects the SUT depends on with doubles that
+record how they are called, such that, we can check if the SUT interacted
+with its dependencies as expected or not, if it did it at all. This is illustrated
+in the figure below.
+
+.Test code stimulating the SUT and checking expectations on test doubles through a Mockery
+image::/content/2018/10/testing-mock-objects.png[Test code stimulating SUT and checking expectations on test doubles]
+
+Mock objects helps us move from state-based testing to interaction-based testing,
+where rather than looking at the objects' state we look at their interactions and
+behaviour. This stops us from having to add unneeded getters to our code just to
+be able to assert they have the right state.
+
+Another reason we use test doubles is for code isolation
+(Read the "<<warning>>" section below before jumping to conclusions).
+When we're testing code that depends on another class, we provide the object with a double
+instance of that class, instead of a real object. That way, we're making sure
+that our test will only fail if the SUT is broken, and not if one of it's
+dependencies is broken.
+
+Doubles also allow us to replace/override/patch some functions on objects so
+that we can ease testing. An example of that is when you have written an
+encoding algorithm which you want to test. This algorithm uses a function
+`getRandomPrime()` from another class (in this example `RandomGenerator`).
+For testing the encoding algorithm you need to know the value of the
+parameters and the resulting return value for your assertions. To solve the
+problem, that the return value depends on a random value you can "stub" the
+class `RandomGenerator` and tell the function `getRandomPrime()` to return 7
+every time it's called during the test.
+
+NOTE: We can also create double objects from interfaces. This makes a lot of sense
+if we think about it. In many cases, we should actually use _doubled_
+interfaces in tests instead of doubled concrete classes. After all, the
+interface is the contract by which classes agree to talk to the outside
+world.
+
+Summarizing, the typical reasons for using test doubles may include:
+
+* "These getters we write for testing are cluttering up the design",
+i.e. adding otherwise unnecessary getters to many objects in order to get
+object state so that we can verify expectations, ultimately cluttering up the
+design
+* Difficulties with integration testing - some parts are slow or expensive to test
+* Non-deterministic behaviour (date & time, web service APIs, pseudo-random functions, etc.)
+* Dependency on an external resource: FS, DB, net, printer
+* improve the performance of our tests
+* real object hasn't been written yet
+* what you're calling has UI/needs human interaction
+* simplify test setup
+* build in smaller increments
+
+____
+Sometimes it is just plain hard to test the system under test (SUT) because
+it depends on other components that cannot be used in the test environment.
+This could be because they aren't available, they will not return the results
+needed for the test or because executing them would have undesirable side
+effects. In other cases, our test strategy requires us to have more control
+or visibility of the internal behaviour of the SUT. When we are writing a
+test in which we cannot (or chose not to) use a real depended-on component
+(DOC), we can replace it with a Test Double. The Test Double doesn't have to
+behave exactly like the real DOC; it merely has to provide the same API as
+the real one so that the SUT thinks it is the real one!
+
+-- xUnit Test Patterns: Refactoring Test Code - Gerard Meszaros, 2007
+____
+
+== Allowances and Expectations
+
+When working with Test Doubles its important to make a distinction
+between allowances and expectations.
+
+Expectations describe the interactions that are essential to the protocol we're
+testing: "if we send this message to the object, we expect to see it send this
+other message to this neighbor".
+
+Allowances support the interaction we're testing. We often use them as
+stubs to feed values into the object, to get the object into the right
+state for the behavior we want to test. We also use them to ignore other
+interactions that aren't relevant to the current test.
+
+All expectations must be met during a test, but allowances may be matched or not.
+
+Depending on the tools we're using it may be very explicit which is which, --
+for instance, In JMock and Mockery the language is very explicit, but Jasmine and
+Prophet not so much -- but what's more important is the concept and having in
+mind what each other is.
+
+TIP: Allow Queries; Expect Commands
+
+[[taxonomy]]
+== A taxonomy of test doubles
+
+Terms like *fakes*, *mocks*, and *stubs* are often used interchangeably,
+however they are not the same. Each replaces a real object in the test
+environment but the behavior can be quite different:
+
+=== Dummy
+
+Replaces an object typically as an input to fill parameter lists, that
+isn't used in the test but is needed for the test setup (arranging).
+
+Its methods just return null or comply with their signature, i.e. if it
+must return a string, it will return an empty string.
+
+You pass it into something when you don't care how it's used.
+
+The example we're going to use if of a simple login system, that requires an
+authorizer object to check for acceptable username/password combinations. Our
+SUT is the `System`.
+
+We'll be using Prophecy, and simply put, the way it works, is by having a prophet
+specify/"predict" the future behavior of objects of interest (prophecies) and then later
+check that the predictions were met or not. PHPUnit has built-in support for Prophecy
+and we can used it in our tests by accessing the variable `$this->prophet`.
+
+[source,php]
+----
+<?php
+
+class System {
+    // ...
+    public function __construct(Authorizer $authorizer) {
+        $this->authorizer = $authorizer;
+    }
+
+    public function logIn($username, $password) {
+        if ($this->authorizer->authorize($username, $password)) {
+            $this->loginCount++;
+        }
+    }
+
+    public function getLoginCount() {
+        $this->loginCount;
+    }
+    // ...
+}
+
+class SystemTest {
+  // ...
+  public function test_newly_created_system_has_no_logged_in_users() {
+      $authProphecy = $this->prophet->prophesize(Authorizer::class); // <1>
+      $system = new System($authProphecy->reveal()); // <2>
+
+      $this->assertEqual(0, $system->getLoginCount()); // <3>
+  }
+  // ...
+}
+----
+<1> Using the `prophet` object we create a new prophecy for an `Authorizer::class`.
+Using the created prophecy object we can specify how the an `Authorizer` object
+will behave and what might our expectations be about it regarding how our SUT
+interacts with it, i.e. we can say what it should do when poked in a certain way.
+Record what is done to it, and be able to check how the SUT interacted with it,
+if it did at all.
+<2> by revealing a prophecy we obtain an actual test double object, which we can
+then use with our SUT. In this example we didn't specify any allowances nor
+expectations on the prophecy, and thus when revealing it all we'll get is a dummy
+for the `Authorizer` class. We know the SUT won't/should not interact with dummy
+during this test and that's why get stay at that. We just need the dummy because
+the `System` demands and `Authorizer`, even though it won't use it.
+<3> Finally we invoke our SUT and assert it behaved correctly.
+
+=== Stub
+
+Provides a preset (canned) answer to method calls that we have decided ahead
+of time, usually not responding at all to anything outside what's programmed
+in for the test.
+
+With stubs, you don't care how many times (if at all) the stub is called.
+Stubs are used to provide "indirect input" to the system under test.
+
+[source,php]
+----
+<?php
+public function test_counts_successfully_authorized_logIns() {
+    $authProphecy = $this->prophet->prophesize(Authorizer::class);
+    $system = new System($authProphecy->reveal());
+
+    $authProphecy->authorize('dareenzo', '123')->willReturn(true); // <1>
+
+    $system->logIn('dareenzo', '123'); // <2>
+
+    $this->assertSame(1, $system->getLoginCount()); // <3>
+}
+----
+<1> In this case we define an allowance. Our SUT or any other involved object in
+our test can interact with the stubbed `Authorizer` object, and call `authorize()`,
+which in turn will return true (regardless of the params in this particular case).
+<2> We invoke the SUT which in turn will interact with the stubbed class, and finally
+raise the number of login counts.
+<3> Lastly we check our expectations on the SUT.
+
+Put simply a stub is a "When I say 'marco', you say 'polo'"
+
+IMPORTANT: We could've constrained the stub to only work for some params and not
+for others, in order to make our test more valid.
+
+=== Spy 🕵️
+
+Acts as a higher level stub, that allows us to also record information about
+what happened with this test double and how it was called (by the tested
+code). One form of this might be an email service that records how many
+messages it has sent or a login service that records what parameters were use
+to call a method on it.
+
+It records what functions were called, with what arguments, when, and how often.
+
+Spies are used for verifying "indirect output" of the tested code, by
+verifying expectations on how the tested code interacted with the test double
+afterwards the tested code is executed.
+
+[source,php]
+----
+<?php
+public function test_counts_successfully_authorized_logins() {
+    $authProphecy = $this->prophet->prophesize(Authorizer::class);
+    $system = new System($authProphecy->reveal());
+
+    $authProphecy->authorize('dareenzo', '123')->willReturn(true);  // <1>
+
+    $system->logIn('dareenzo', '123');
+
+    $authProphecy->authorize('dareenzo', '123')->shouldHaveBeenCalled(); // <3>
+}
+----
+<1> Just like before we stub a method on the authorizer which we know the SUT is
+going to call
+<3> Notice here that we no longer use some form of assertion, instead we use the
+prophecy to check wether the SUT did the right thing and called our spy with the
+expected params `('dareenzo', '123')`. Our verification could be even more thorough,
+say something like checking that it was called only once.
+
+=== Mock
+
+Acts as a higher level stub, that is pre-programmed with expectations,
+including the ability to both respond to calls they know about and don't know
+about, i.e. they're are pre-programmed with expectations which form a
+specification of the calls they expect to receive.
+
+They can throw an exception if they receive a call they don't expect and are
+checked during verification to ensure they got all the calls they were
+expecting.
+
+Mocks are used for verifying "indirect output" of the tested code, by
+defining expectations on how the tested code should interact with the double,
+before the tested code is executed
+
+[source,php]
+----
+<?php
+public function test_counts_successfully_authorized_logins() {
+    $authProphecy = $this->prophet->prophesize(Authorizer::class);
+    $system = new System($authProphecy->reveal());
+
+    $authProphecy->authorize('dareenzo', '123')->willReturn(true); // <1>
+    $authProphecy->authorize()->shouldBeCalled(); // <2>
+
+    $system->logIn('dareenzo', '123'); // <3>
+
+    $this->prophet->checkPredictions(); // <4>
+}
+----
+<1> We start by stubbing some behaviour we know is going to be required by the SUT
+<2> Then we specify our expectation
+<3> Invoke the SUT and hope it will satisfy our expectation
+<4> Finally, we check with our prophet if our predictions were met or not.
+
+=== Fake
+
+Replaces an object for which we need a simplified version of the
+original/real object, typically to achieve speed improvements or to eliminate
+side effects.
+
+Fake objects actually have working implementations, but usually take some
+shortcut which makes them unsuitable for production (an `InMemoryRepository` is
+a good example).
+
+Unlike other test doubles, no mocking framework is used to create fakes.
+
+I'll refrain from showing a coding example, as I think the idea is very clear for
+this one. If you're testing something that interacts with nukes, don't launch
+the bloody nukes, use a paper fake for now.
+
+'''''
+
+Put in a simpler way:
+
+* Dummy -> I do nothing at all but to fill parameter list
+* Stub -> canned Answers
+* Spy -> stubs + interaction recording (for late interaction expectations verification)
+* Mock -> stubs + expectations on interaction
+* Fake -> I seem real but no
+
+Just to further clarify Spies and Mocks are similar, the difference between
+them is that, with Spies we use them and then check expectations afterwards;
+while with Mocks we define the expectations beforehand and only then we use
+them
+
+
+[[warning]]
+== A warning about over-isolating, specially through Mocking
+
+Due to wrong influences, many people fall for relentless isolation and end-up
+finding solace in test doubles as their magic tool for helping in isolating
+parts, yet they're just painting themselves into a corner with a painful cost
+to get out from.
+
+Mocking is about object communication and interface discovery, using it for isolation,
+specially from 3rd party code is a misuse, in fact a general rule of thumb when
+mocking is "do not mock what you don't own". Wrappers and Anti-Corruption Layers
+are more appropriate tools for avoiding contamination by 3rd code than mock objects.
+
+Additionally, over-mocking can usually have the effect of duplicating implementation
+code in the tests as we try to mock the behaviour of objects. This code quickly
+gets outdated as we change the production code, and give us the work of trying to
+keep production and test code in sync. We should refrain from this and try as much
+as possible to use real collaborators when possible, as Sandi Metz and Katrina Owen
+put it:
+
+____
+When your tests use the same collaborators as your application, they always
+break when they should. The value of this cannot be underestimated
+-- Sandi Metz & Katrina Owen
+____
+
+== Resources
+
+The bestest -- pun intended -- resource on Mocking is the
+http://www.growing-object-oriented-software.com[Growing Object-Oriented Software, Guided by Tests (GOOS)]
+book by Steve Freeman and Nat Pryce.
+They're the pioneers of the technique and better than anyone took the time to
+distill their experience with using Mock Objects in the book.
+
+With that said, I can't recommend more the following two talks, they're made by
+the very pillars of testing in PHP community.
+
+Recommended Video on Mocking:
+https://www.youtube.com/watch?v=AHizK2kpukk[Design how your objects talk to each other through mocking - Konstantin Kudryashov]
+
+Recommended video on not over isolating through mocking:
+https://www.youtube.com/watch?v=LdUKfbG713M[Lies You've Been Told About Testing - Adam Wathan - Laracon Online 2017]
+
+== Closing
+
+So what do you say, guys and gals, Bilal, is it clear now?

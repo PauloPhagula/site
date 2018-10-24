@@ -29,6 +29,11 @@ span.icon>.fa {
   text-align: center;
   width: 80px;
 }
+
+.admonitionblock td.content {
+  width: 100%;
+}
+
 .admonitionblock td.icon [class^="fa icon-"] {
   font-size: 1.5em;
   text-shadow: 1px 1px 2px rgba(0,0,0,.5);
@@ -59,4 +64,57 @@ span.icon>.fa {
   content: "\f06a";
   content: "❗";
   color: #bf0000;
+}
+
+pre .conum[data-value] {
+    position: relative;
+    top: -.125em;
+}
+
+.conum[data-value] {
+    display: inline-block;
+    color: #fff!important;
+    background-color: rgba(0,0,0,.8);
+    -webkit-border-radius: 100px;
+    border-radius: 100px;
+    text-align: center;
+    font-size: .75em;
+    width: 1.67em;
+    height: 1.67em;
+    line-height: 1.67em;
+    font-family: "Open Sans","DejaVu Sans",sans-serif;
+    font-style: normal;
+    font-weight: bold;
+}
+
+.conum[data-value]+b {
+    display: none;
+}
+
+.conum[data-value]::after {
+    content: attr(data-value);
+}
+
+.hdlist>table, .colist>table {
+    border: 0;
+    background: none;
+}
+
+.hdlist>table>tbody>tr, .colist>table>tbody>tr {
+    background: none;
+}
+
+.colist td:not([class]):first-child {
+    padding: .4em .75em 0;
+    line-height: 1;
+    vertical-align: top;
+}
+
+.colist td:not([class]):last-child {
+    padding: .25em 0;
+}
+
+.colist > table > tbody > tr,
+.colist > table > tbody > tr > td {
+  border: none;
 }
