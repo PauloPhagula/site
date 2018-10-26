@@ -45,9 +45,9 @@ your platform.
 
 == What are Test Doubles
 
-Test Double is a generic term for any case where you replace a production
-object or procedure with another for testing purposes. In automated unit
-testing a test double replaces an object on which the SUT depends on.
+Test Double is a generic term for any case where you replace a production object
+or procedure with another for testing purposes. In automated unit testing a test
+double replaces an object on which the System Under Test (SUT) depends on.
 
 Test doubles are popularly (and incorrectly) called Mock objects, but in reality
 a mock object is a very specific type of test double.
@@ -80,8 +80,8 @@ in the figure below.
 .Test code stimulating the SUT and checking expectations on test doubles through a Mockery
 image::/content/2018/10/testing-mock-objects.png[Test code stimulating SUT and checking expectations on test doubles]
 
-Mock objects helps us move from state-based testing to interaction-based testing,
-where rather than looking at the objects' state we look at their interactions and
+Mock objects help us move from state-based testing to interaction-based testing,
+where rather than looking at the objects' state, we look at their interactions and
 behaviour. This stops us from having to add unneeded getters to our code just to
 be able to assert they have the right state.
 
@@ -221,16 +221,16 @@ class SystemTest {
 }
 ----
 <1> Using the `prophet` object we create a new prophecy for an `Authorizer::class`.
-Using the created prophecy object we can specify how the an `Authorizer` object
+Using the created prophecy object we can specify how the  `Authorizer` object
 will behave and what might our expectations be about it regarding how our SUT
-interacts with it, i.e. we can say what it should do when poked in a certain way.
-Record what is done to it, and be able to check how the SUT interacted with it,
+interacts with it, i.e. we can say what it should do when poked in a certain way,
+record what is done to it, and be able to check how the SUT interacted with it,
 if it did at all.
 <2> by revealing a prophecy we obtain an actual test double object, which we can
 then use with our SUT. In this example we didn't specify any allowances nor
 expectations on the prophecy, and thus when revealing it all we'll get is a dummy
-for the `Authorizer` class. We know the SUT won't/should not interact with dummy
-during this test and that's why get stay at that. We just need the dummy because
+for the `Authorizer` class. We know the SUT won't/shouldn't interact with dummy
+during this test and that's why we stay at that. We just need the dummy because
 the `System` demands and `Authorizer`, even though it won't use it.
 <3> Finally we invoke our SUT and assert it behaved correctly.
 
@@ -298,7 +298,7 @@ public function test_counts_successfully_authorized_logins() {
 }
 ----
 <1> Just like before we stub a method on the authorizer which we know the SUT is
-going to call
+going to call.
 <3> Notice here that we no longer use some form of assertion, instead we use the
 prophecy to check wether the SUT did the right thing and called our spy with the
 expected params `('dareenzo', '123')`. Our verification could be even more thorough,
@@ -317,7 +317,7 @@ expecting.
 
 Mocks are used for verifying "indirect output" of the tested code, by
 defining expectations on how the tested code should interact with the double,
-before the tested code is executed
+before the tested code is executed.
 
 [source,php]
 ----
