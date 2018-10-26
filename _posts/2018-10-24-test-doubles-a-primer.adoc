@@ -395,6 +395,7 @@ put it:
 ____
 When your tests use the same collaborators as your application, they always
 break when they should. The value of this cannot be underestimated
+
 -- Sandi Metz & Katrina Owen
 ____
 
