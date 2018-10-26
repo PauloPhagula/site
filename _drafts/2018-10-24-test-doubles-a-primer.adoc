@@ -16,12 +16,12 @@ Can anyone make this clearer?
 
 Thanks in Advance
 
--- Ivan (Bilal) Bila, on the MozDevz group on Telegram
+-- Ivan Bila, on the MozDevz group on Telegram
 ____
 
 In order to ease understanding by all, I'll start by providing a bit more of context
 as to what he's talking about -- test doubles -- , why we need them, and when we
-should use them. Then, address the question more directly by providing a <<taxonomy>>.
+should use them. Then, address the question more directly by providing <<taxonomy>>.
 
 [NOTE]
 ====
@@ -29,7 +29,7 @@ Even though the example code is written using a particular language,
 testing framework, and mocking library
 (PHP, https://phpunit.de[PHPUnit], and https://github.com/phpspec/prophecy[Prophecy]
 footnote:[
-If you wonder why I didn't use PHPUnit's built-in mocking facilities, its because
+If you wonder why I didn't use PHPUnit's built-in mocking facilities, it's because
 they're pretty much only there to keep backwards compatibility. Sebastian Bergmann
 -- the creator of PHPUnit -- himself has said he does not recommend using them,
 and suggests we use Prophecy, so much so he added "native" support for it onto
@@ -39,7 +39,7 @@ PHPUnit.
 the content and ideas are generic and can be used in any other platform with any
 other libraries of choice. I'd be remiss though, if I didn't tell you that,
 depending on your platform of choice, you may not find direct equivalents of the
-constructs used here. Regardless, getting bigger picture is whats important,
+constructs used here. Regardless, getting bigger picture is what's important,
 since then you can port the ideas to whatever constructs are more idiomatic to
 your platform.
 ====
@@ -47,15 +47,15 @@ your platform.
 == What are Test Doubles
 
 Test Double is a generic term for any case where you replace a production object
-or procedure with another for testing purposes. In automated unit testing a test
+or procedure with another for testing purposes. In automated unit testing, a test
 double replaces an object on which the System Under Test (SUT) depends on.
 
-Test doubles are popularly (and incorrectly) called Mock objects, but in reality
+Test doubles are popularly (and incorrectly) called Mock objects, but in reality,
 a mock object is a very specific type of test double.
 
 ____
 The word "mock" is sometimes used in an informal way to refer to the
-whole family of objects that are used in tests. They are called test doubles
+whole family of objects that are used in tests. They are called test doubles.
 
 -- Robert C. Martin
 ____
@@ -72,10 +72,10 @@ ____
 
 **The key reason for tests doubles is to help us design how our objects
 communicate**. They help in verifying indirect output of the SUT, by checking
-that it interacted with its (direct or indirect) collaborators in an expected
+that it interacted with it's (direct or indirect) collaborators in an expected
 way. We do that by replacing the objects the SUT depends on with doubles that
 record how they are called, such that, we can check if the SUT interacted
-with its dependencies as expected or not, if it did it at all. This is illustrated
+with it's dependencies as expected or not, if it did it at all. This is illustrated
 in the figure below.
 
 .Test code stimulating the SUT and checking expectations on test doubles through a Mockery
@@ -141,7 +141,7 @@ ____
 
 == Allowances and Expectations
 
-When working with Test Doubles its important to make a distinction
+When working with Test Doubles it's important to make a distinction
 between allowances and expectations.
 
 Expectations describe the interactions that are essential to the protocol we're
@@ -174,7 +174,7 @@ environment but the behavior can be quite different:
 Replaces an object typically as an input to fill parameter lists, that
 isn't used in the test but is needed for the test setup (arranging).
 
-Its methods just return null or comply with their signature, i.e. if it
+It's methods just return null or comply with their signature, i.e. if it
 must return a string, it will return an empty string.
 
 You pass it into something when you don't care how it's used.
@@ -417,4 +417,4 @@ https://www.youtube.com/watch?v=LdUKfbG713M[Lies You've Been Told About Testing 
 
 == Closing
 
-So what do you say, guys and gals, Bilal, is it clear now?
+So what do you say, guys and gals, Ivan, is it clear now?
