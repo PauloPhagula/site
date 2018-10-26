@@ -5,7 +5,8 @@
 == Introduction
 
 This article emerged as an attempt to provide a more in-depth response to the
-following question, posted by https://twitter.com/ivanbila[Ivan] on the MozDevz group on Telegram:
+following question, posted by https://twitter.com/ivanbila[Ivan] on the
+http://mozdevz.org/en/[MozDevz] https://t.me/MozDevz[group on Telegram]:
 
 ____
 Hi all,
@@ -30,7 +31,7 @@ testing framework, and mocking library
 footnote:[
 If you wonder why I didn't use PHPUnit's built-in mocking facilities, its because
 they're pretty much only there to keep backwards compatibility. Sebastian Bergmann
--- the create of PHPUnit -- himself has said he does not recommend using them,
+-- the creator of PHPUnit -- himself has said he does not recommend using them,
 and suggests we use Prophecy, so much so he added "native" support for it onto
 PHPUnit.
 ]
