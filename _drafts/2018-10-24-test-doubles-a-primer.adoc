@@ -45,9 +45,9 @@ your platform.
 
 == What are Test Doubles
 
-Test Double is a generic term for any case where you replace a production
-object or procedure with another for testing purposes. In automated unit
-testing a test double replaces an object on which the SUT depends on.
+Test Double is a generic term for any case where you replace a production object
+or procedure with another for testing purposes. In automated unit testing a test
+double replaces an object on which the System Under Test (SUT) depends on.
 
 Test doubles are popularly (and incorrectly) called Mock objects, but in reality
 a mock object is a very specific type of test double.
@@ -230,7 +230,7 @@ if it did at all.
 then use with our SUT. In this example we didn't specify any allowances nor
 expectations on the prophecy, and thus when revealing it all we'll get is a dummy
 for the `Authorizer` class. We know the SUT won't/shouldn't interact with dummy
-during this test and that's why ?get stay at that. We just need the dummy because
+during this test and that's why we stay at that. We just need the dummy because
 the `System` demands and `Authorizer`, even though it won't use it.
 <3> Finally we invoke our SUT and assert it behaved correctly.
 
