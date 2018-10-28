@@ -3,9 +3,9 @@ layout: post
 title: Splitting and naming test cases better
 excerpt: >
   A short discussion of test case naming
-date: 2018-04-22
+date: 2018-10-30
 categories: coding
-tags: [XUnit, XSpec, Unit Testing]
+tags: [Testing, Naming, XUnit, XSpec]
 ---
 
 When writing unit tests one questionable thing that I've noticed people doing
@@ -159,7 +159,3 @@ describe('Stack', function() {
 
 > A test case should be just that: it should correspond to a single case.
 > -- Kevlin Henney, Seven ineffective coding habits of many programmers
-
-Refs:
-
-- Seven ineffective coding habits of many programmers by Kevlin Henney
