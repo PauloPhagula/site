@@ -18,7 +18,7 @@ I'm https://www.youtube.com/watch?v=4E3xfR6IBII[not just a code monkey^]
 though, my passion lies in developing software that adds value to businesses and
 people's lives, from idea inception to shipping the final product.
 
-This is my personal blog and brain dump where I share my thoughts and ideas.
+This is my personal blog and brain dump, where I share my ideas and thoughts.
 My usual nickname is **dareenzo** 🤦, hence the name of this blog.
 
 I live in sunny https://en.wikipedia.org/wiki/Mozambique[Mozambique^]
@@ -39,7 +39,7 @@ I'm an active contributor to open source projects and maintain a few of my own.
 
 == Connect with me
 
-If you want to know more about what I'm up to please contact me directly or
+If you want to know more about what I'm up to, please contact me directly or
 follow me on these channels.
 
 - dareenzo@gmail.com
