@@ -11,6 +11,8 @@ share_image: "/content/2018/10/testing-mock-objects.png"
 :source-highlighter: coderay
 :coderay-css: class
 
+== Introduction
+
 This article emerged as an attempt to provide a more in-depth response to the
 following question, posted by https://twitter.com/ivanbila[Ivan] on the
 http://mozdevz.org/en/[MozDevz] https://t.me/MozDevz[group on Telegram]:
