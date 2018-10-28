@@ -1,0 +1,174 @@
+---
+layout: post
+title: Splitting and naming test cases better
+excerpt: >
+  A short discussion of test case naming
+date: 2018-10-30
+categories: coding
+tags: [Testing, Naming, XUnit, XSpec, PHPUnit, Kahlan]
+---
+:page-liquid:
+:source-highlighter: coderay
+:coderay-css: class
+
+When writing unit tests, one questionable thing that I've noticed people doing,
+is having a production class, and for it create a "respective" test class, and
+then fill it with tests.
+
+Usually, these tests are named after the methods of the production class.
+This is a known bad-practice, since by doing that we're tying our tests to
+the implementation. Which means that soon when the production class changes,
+we'll have to cascade the changes into our tests so they can still run,
+breaking the premise of unit tests serving as a safety-net for preventing
+regressions.
+
+Luckily, there are many articles warning against this practice, so pretty
+much everyone gets over it after a reasonable while.
+
+The next stage developers move to, is to start naming the tests more properly
+as phrases. That improves things a lot, however, particularly when using
+XUnit frameworks like https://phpunit.de[PHPUnit], there's still one
+under-addressed step that should be taken: Splitting and naming test cases
+properly.
+
+The idea is: if state influences behaviour, then we should specify what is
+the expected behavior of something under all interesting states/contexts/cases.
+For instance, the way a banking account should behave when in overdraft is
+different from when the account has balance.
+
+Getting back to what I said earlier, the typical test case for a Stack would
+be written like this:
+
+[source,php]
+----
+<?php
+class StackTest extends TestCase {
+  // body with tests
+}
+----
+
+The problem with this is that test cases like this don't live up to what
+they claim to be. They claim to be test cases (`extends TestCase`) but no one
+can identify from their names what is the case under test, if not only the
+system under test (SUT). And as a result, they end-up containing tests for all
+kinds of cases. Making it difficult for someone to infer what are the special
+cases for the behavior of the stack -- or whatever is the SUT.
+Test cases like these, don't serve as good documentation, which is one
+of the roles that tests should play.
+
+A test case should be named as to represent the interesting case under which
+the SUT will be tested. If our production class is for instance a `Stack`
+then we probably want to have `A_new_stack, An_empty_stack` or `A_non_empty_stack`
+test cases.
+
+In XUnit this would be something like:
+
+[source,php]
+----
+<?php
+namespace StackSpec;
+
+class A_new_stack_Test extends TestCase {
+  function test_has_no_depth() {}
+}
+
+class An_empty_stack_Test extends TestCase {
+  function test_throws_an_error_when_queried_for_its_top_item() {}
+  function test_throws_when_popped() {}
+  function test_acquires_depth_by_retaining_a_pushed_item_as_its_top() {}
+}
+
+class A_non_empty_stack_Test extends TestCase {
+  function test_becomes_deeper_by_retaining_a_pushed_item_as_its_top() {}
+  function test_when_popping_reveals_tops_in_reverse_order_of_pushing() {}
+}
+----
+
+Notice how the code makes more sense now. Those classes are real Test Cases.
+When you have a test case named `StackTest`, what is really the case? But when
+you have `An_empty_stack_Test` then the subject and case under test become clear.
+
+Knowing this, some people choose to embed the case inside the function
+names, more or less like so:
+
+[source,php]
+----
+<?php
+class StackTest extends TestCase {
+  function test_when_empty_has_no_depth() {}
+  function test_when_not_empty_reveals_tops_in_reverse_order_of_pushing_when_popping() {}
+  // ...
+}
+----
+
+I think this is very good, but I still prefer the first option for these
+reasons:
+
+* with the second option, we have to repeat the case at the beginning of
+each individual test, and depending on how easy it is to describe the
+case we render the test name very long and to an extent unreadable
+* with the second option, we bundle many cases under what is supposed to
+be a single one (see, it says `extends TestCase`).
+* being more granular and having the split provides me with some
+advantages like being able to run just the tests for a designated case.
+(To be fair it works with the long names too by using some filtering
+like `phpunit --filter "test_when_not_empty"`)
+* finally, if we were to put both options through TestDox look how the
+output would come for each of the forms
+
+----
+A new Stack
+  - has no depth
+An empty stack
+  - throws when queried for its top item
+  - throws when popped
+  - acquires depth by retaining a pushed item as its top
+A non-empty stack
+  - becomes deeper by retaining a pushed item as its top
+  - when popping reveals tops in reverse order of pushing
+
+# VS
+
+Stack
+  - when new has no depth
+  - when empty throws when queried for its top item
+  - when empty throws when popped
+  - when empty acquires depth by retaining a pushed item as its top
+  - when not empty becomes deeper by retaining a pushed item as its top
+  - when not empty reveals tops in reverse order of pushing when popping
+----
+
+'''''
+
+Using XSpec frameworks like https://kahlan.github.io/docs[Kahlan] simplifies
+this as we have a "proper" construct to split the cases -- the `context`
+function -- which allows us to logically group related test cases without
+having to resort to multiple classes.
+
+Going back to our Stack example we would have something like:
+
+[source,php]
+----
+describe('Stack', function() {
+  context('when new', function() {
+    it('has no depth', function () {});
+  });
+
+  context('when empty', function() {
+    it('throws an error when queried for its top item', function() {});
+    it('throws an error when popped', function() {});
+    it('acquires depth by retaining a pushed item as its top', function() {});
+  });
+
+  context('when not empty', function() {
+    it('becomes deeper by retaining a pushed item as its top', function() {});
+    it('reveals tops in reverse order of pushing when popped', function() {});
+  });
+});
+----
+
+____
+A test case should be just that: it should correspond to a single case.
+
+-- Kevlin Henney, https://youtu.be/ZsHMHukIlJY[Seven ineffective coding habits of many programmers]
+____

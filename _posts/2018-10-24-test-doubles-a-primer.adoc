@@ -1,4 +1,13 @@
-= Test Doubles: A Primer
+---
+layout: post
+title: >
+  Test Doubles: A Primer
+date: 2018-10-24 00:00:00 +0200
+categories: Coding
+tags: Testing Mocking TDD PHP PHPUnit Prophecy Mockery
+share_image: "/content/2018/10/testing-mock-objects.png"
+---
+:page-liquid:
 :source-highlighter: coderay
 :coderay-css: class
 
@@ -11,7 +20,7 @@ http://mozdevz.org/en/[MozDevz] https://t.me/MozDevz[group on Telegram]:
 ____
 Hi all,
 
-What’s the difference between a Mock and a Stub?
+What's the difference between a Mock and a Stub?
 Can anyone make this clearer?
 
 Thanks in Advance
@@ -295,12 +304,12 @@ public function test_counts_successfully_authorized_logins() {
 
     $system->logIn('dareenzo', '123');
 
-    $authProphecy->authorize('dareenzo', '123')->shouldHaveBeenCalled(); // <3>
+    $authProphecy->authorize('dareenzo', '123')->shouldHaveBeenCalled(); // <2>
 }
 ----
 <1> Just like before we stub a method on the authorizer which we know the SUT is
 going to call.
-<3> Notice here that we no longer use some form of assertion, instead we use the
+<2> Notice here that we no longer use some form of assertion, instead we use the
 prophecy to check wether the SUT did the right thing and called our spy with the
 expected params `('dareenzo', '123')`. Our verification could be even more thorough,
 say something like checking that it was called only once.
