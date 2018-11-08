@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Splitting and naming test cases better
+title: Splitting and Naming Test Cases Better
 excerpt: >
   A short discussion of test case naming
-date: 2018-10-30
+date: 2018-11-08
 categories: coding
 tags: [Testing, Naming, XUnit, XSpec, PHPUnit, Kahlan]
 ---
