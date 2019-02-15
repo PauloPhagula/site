@@ -120,9 +120,9 @@ Note:
   that if we add properties to animal, dog will be able to access them
   as if they were its own.
 
-  ```js
-    dog.hasOwnProperty('makeSound') // => false
-  ```
+    ```js
+      dog.hasOwnProperty('makeSound') // => false
+    ```
 
 ## prototype vs `.prototype` vs `.__proto__`
 
