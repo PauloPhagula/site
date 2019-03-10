@@ -1,8 +1,15 @@
-# Cloud Study Jam Maputo - a short summary
-
-Today, we had another Google Cloud Study Jam Maputo event. This time it was
-focused on introducing the participants to Data Science concepts and how
-to apply them using Google Cloud Platform’s tools.
+---
+layout: post
+title: Cloud Study Jam Maputo - a short summary
+date: 2019-03-09
+categories: Coding
+tags: community GCP event review
+excerpt: >
+  Today, we had another Google Cloud Study Jam Maputo event. This time it was
+  focused on introducing the participants to Data Science concepts and how
+  to apply them using Google Cloud Platform’s tools.
+permalink: /2019/03/10/cloud-study-jam-maputo-summary
+---
 
 Aided by Qwiklabs, as the tool for delivering the content i.e. the explanation,
 exercises and tracking progress we looked into:
