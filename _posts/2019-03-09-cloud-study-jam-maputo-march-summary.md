@@ -9,6 +9,7 @@ excerpt: >
   focused on introducing the participants to Data Science concepts and how
   to apply them using Google Cloud Platform’s tools.
 permalink: /2019/03/10/cloud-study-jam-maputo-summary
+share_image: "/content/2019/03/GDG-Cloud-Study-Jam-Maputo-Cover.png"
 ---
 
 Aided by Qwiklabs, as the tool for delivering the content i.e. the explanation,
