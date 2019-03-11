@@ -21,6 +21,9 @@ have created a list of famous Vim users and hope it will (mis)guide newbies.
 This list will be updated occasionally (the latest updates will be on the top)
 and revision is highly welcomed.
 
+NOTE: Where possible I made the videos start exactly where Vim is used so you
+don’t have to look it up for yourself.
+
 ## Rasmus Lerdorf - the creator of PHP
 
 Rasmus Lerdorf is a Danish-Canadian programmer. He created the PHP scripting
@@ -122,8 +125,9 @@ and has some for print on sale at [Wizard Zines](https://wizardzines.com).
 
 ## Doctor Krieger
 
-Rumor has it that “everyone’s favorite Hitler” clone on [Archer](https://www.fxnetworks.com/archer) uses Vim.
-Proof is yet to be acquired.
+Doctor Krieger, “everyone’s favorite Hitler clone” from [Archer](https://www.fxnetworks.com/archer)
+uses Vim, and you can see him editing and saving a document with it on
+[The Untold Truth Of Archer](https://youtu.be/rxROY4laFRU?t=322) YouTube video by Looper.
 
 ## Refs
 
