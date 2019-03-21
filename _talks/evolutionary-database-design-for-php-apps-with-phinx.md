@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Evolutionary Database Design for PHP Apps with Phinx
-date: 2019-03-21 20:00:00 +0200
+date: 2019-03-21 15:30:00 +0200
 categories: Coding
 tags: [Talk, Database, Design, Migrations, PHP, Phinx]
 excerpt: >
