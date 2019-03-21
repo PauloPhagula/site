@@ -7,7 +7,7 @@ tags: [Talk, Database, Design, Migrations, PHP, Phinx]
 excerpt: >
   Abstract and Slides from my talk on Evolutionary Database Design for PHP Apps with Phinx presented at the UX R&D&D&D Weednesdays meetup
   held on 2019-03-21
-slide_deck_url:
+slide_deck_url: https://speakerdeck.com/pphagula/evolutionary-database-design-for-php-apps-with-phinx
 video_url:
 
 event:
