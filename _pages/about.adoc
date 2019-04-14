@@ -42,7 +42,7 @@ I'm an active contributor to open source projects and maintain a few of my own.
 If you want to know more about what I'm up to, please contact me directly or
 follow me on these channels.
 
-- dareenzo@gmail.com
+- paulo.phagula@gmail.com
 - https://github.com/dareenzo[github.com/dareenzo^]
 - https://twitter.com/dareenzo[twitter.com/dareenzo^]
 
