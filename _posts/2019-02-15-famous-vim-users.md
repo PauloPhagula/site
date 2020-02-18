@@ -3,7 +3,7 @@ layout: post
 title: Famous Vim users (that are not famous for using Vim)
 excerpt: >
   Having read “Famous Emacs users (that are not famous for using Emacs)”,
-  I thought I’d do the same for Vim, just to keep the war going :trollface:.
+  I thought I’d do the same for Vim, just to keep the war going :trollface:
 date: 2019-02-15
 categories: Coding
 tags: Vim
@@ -14,9 +14,10 @@ I don’t think using Vim could make you a better programmer, nor do I think tha
 having a couple of relatively famous middle or old aged people using (or
 previously using) Vim could prove that Vim has some unique power.
 
-However, when I started, there were a few Vim users that I have high respect
-for, which is one of the reasons that made me continue to play with Vim. Here I
-have created a list of famous Vim users and hope it will (mis)guide newbies.
+However, when I started using it, there were a few Vim users that I have high
+respect for, which is one of the reasons that made me continue to play with it.
+Here I have created a list of famous Vim users and hope it will (mis)guide
+newbies.
 
 This list will be updated occasionally (the latest updates will be on the top)
 and revision is highly welcomed.
@@ -82,11 +83,15 @@ and [Preparing Vim for Apple’s Touch Bar](https://csswizardry.com/2017/01/prep
 
 ## Gary Bernhardt - Destroy all Software
 
-Gary Bernhardt is the fastest developer I have ever seen. Yes, even faster than Jeffrey Way.
-He’s most know for his [WAT](https://www.destroyallsoftware.com/talks/wat) lightning talk presented at CodeMash 2012,
-which inspired many spin-offs for other programming languages.
+Gary Bernhardt is the fastest developer I have ever seen. Yes, even faster than
+Jeffrey Way. He’s most known for his
+[WAT](https://www.destroyallsoftware.com/talks/wat)
+lightning talk presented at CodeMash 2012, which inspired many spin-offs for
+other programming languages.
 
-If you’re not convinced checkout his talk [The UNIX chainsaw](https://www.youtube.com/watch?v=sCZJblyT_XM) for a preview on how he combines UNIX tooling to get a more productive environment.
+If you’re not convinced checkout his talk, [The UNIX chainsaw](https://www.youtube.com/watch?v=sCZJblyT_XM)
+for a preview on how he combines UNIX tooling to get a more productive
+environment.
 
 ## Jeffrey Way - Laracasts founder
 
