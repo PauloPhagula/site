@@ -223,9 +223,10 @@ DEPENDENCIES
   coderay (~> 1.1)
   github-pages (= 157)
   jekyll-asciidoc
+  jekyll-feed
   jekyll-redirect-from
   jekyll-sitemap
   jemoji
 
 BUNDLED WITH
-   1.16.4
+   1.17.3

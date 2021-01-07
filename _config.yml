@@ -45,9 +45,10 @@ kramdown:
 
 plugins:
   - jekyll-asciidoc
+  - jekyll-feed
+  - jekyll-redirect-from
   - jekyll-sitemap
   - jemoji
-  - jekyll-redirect-from
 
 asciidoctor:
   attributes:
@@ -68,6 +69,10 @@ compress_html:
   blanklines: false
   profile: false
   startings: [html, head, body]
+
+# RSS feed
+feed:
+  path: feed.atom.xml
 
 tags:
 
