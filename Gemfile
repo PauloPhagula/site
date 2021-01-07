@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 group :jekyll_plugins do
-  gem 'github-pages', 157
+  gem 'github-pages'
   gem 'jekyll-asciidoc'
   gem 'jekyll-feed'
   gem 'jekyll-redirect-from'

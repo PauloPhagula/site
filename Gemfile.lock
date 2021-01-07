@@ -221,7 +221,7 @@ PLATFORMS
 
 DEPENDENCIES
   coderay (~> 1.1)
-  github-pages (= 157)
+  github-pages
   jekyll-asciidoc
   jekyll-feed
   jekyll-redirect-from
