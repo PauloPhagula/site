@@ -1,6 +1,6 @@
 # dareenzo.github.io
 
-[![Build Status](https://travis-ci.org/dareenzo/dareenzo.github.io.svg?branch=develop)](https://travis-ci.org/dareenzo/dareenzo.github.io)
+![Build](https://github.com/dareenzo/dareenzo.github.io/workflows/Build/badge.svg)
 
 ![Blog screenshot](/screenshot.png)
 
