@@ -95,7 +95,7 @@ exclude:
   - LICENSE.md
   - tags/*.md
   - Rakefile
-  - build.sh
-  - .travis.yml
+  - Makefile
   - screenshot.png
   - vendor
+  - post.sh

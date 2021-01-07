@@ -1,0 +1,49 @@
+name: Build
+on:
+  push:
+    branches:
+      - develop
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout develop
+        uses: actions/checkout@v2
+        with:
+          path: 'develop'
+      - name: Build
+        run: |
+          cd develop
+          mkdir _site && chmod 777 _site
+          # build site with jekyll, by default to `_site' folder
+          docker run --rm -p 5000:4000 --volume="$(pwd):/srv/jekyll" jekyll/jekyll:3.8 jekyll build --verbose
+      - name: Checkout master
+        uses: actions/checkout@v2
+        with:
+          ref: 'master'
+          path: 'master'
+          fetch-depth: '0' # so we can commit back
+      - name: Copy
+        run: |
+          # copy generated HTML site to `master' branch
+          cd master
+          git ls-files | xargs rm
+          cd ..
+          cp -R develop/_site/* master/
+      - name: Commit
+        env:
+          BUILD_NUMBER: ${{ github.run_id }}
+        run: |
+          # commit and push generated content to `master' branch
+          # since repository was cloned in write mode with token auth - we can push there
+          cd master
+          git config user.email "dareenzo@gmail.com"
+          git config user.name "Paulo Phagula"
+          git add -A .
+          git commit -a -m "GitHub build #$BUILD_NUMBER"
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GH_TOKEN }}
+          branch: master
+          directory: 'master'
