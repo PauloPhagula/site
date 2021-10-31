@@ -22,7 +22,11 @@ This is my personal blog and brain dump, where I share my ideas and thoughts.
 My usual nickname is **dareenzo** 🤦, hence the name of this blog.
 
 I live in sunny https://en.wikipedia.org/wiki/Mozambique[Mozambique^]
-☀️ 🇲🇿, but have been working in remote teams since forever.
+☀️ 🇲🇿 footnote:[
+The only country in the world whose name is made of a single word containing all vowels.
+And also one of the 4 countries in the world with an AK-47 on its flag
+]
+, but have been working in remote teams since forever.
 Presently, I work at http://www.ux.co.mz[UX - Information Technologies^] as a
 software engineer, crafting and managing innovative services to tackle employment,
 education and financial inclusion challenges in emerging economies.

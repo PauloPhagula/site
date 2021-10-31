@@ -34,7 +34,7 @@ The convention promises to address questions like:
 To put things into perspective let's see a practical example of how we would use
 this for the simple login widget bellow
 
-<img src="/content/2016/08/login-widget.png" style="width:50%">
+<img src="login-widget.png" style="width:50%">
 
 First the login widget as a whole could be considered a block, so its markup
 would look like
@@ -67,7 +67,8 @@ in the future.
 Do you think this can really address the questions above? Let me know by dropping
 a comment bellow.
 
-----
+---
+
 References:
 
 - [Official BEM site](https://en.bem.info/methodology/)

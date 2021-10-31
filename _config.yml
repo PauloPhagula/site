@@ -29,7 +29,7 @@ google_tag_manager: GTM-NCKZVZ
 google_plus: PauloPhagula
 
 # Permalinks
-permalink: /blog/:year/:month/:day/:title/
+permalink: /:year/:month/:day/:title/
 
 # Build settings
 markdown: kramdown
@@ -46,9 +46,10 @@ kramdown:
 plugins:
   - jekyll-asciidoc
   - jekyll-feed
+  - jekyll-paginate
   - jekyll-redirect-from
   - jekyll-sitemap
-  - jemoji
+  # - jemoji
 
 asciidoctor:
   attributes:
