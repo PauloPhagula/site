@@ -7,7 +7,9 @@ group :jekyll_plugins do
   gem 'jekyll-feed'
   gem 'jekyll-redirect-from'
   gem 'jekyll-sitemap'
-  gem 'jemoji'
+  # gem 'jemoji'
 end
 
 gem 'coderay', '~> 1.1'
+
+gem "webrick", "~> 1.7"
