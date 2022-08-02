@@ -5,7 +5,7 @@ excerpt: About & Bio
 permalink: /about/
 ---
 
-Ahoy, my name is Paulo Phagula
+Yo, my name is Paulo Phagula
 footnote:[
 Well actually, I'm *Pagula* but the folks at the registry messed up.
 You may also find other variants of the name written as *Pacula* or *Pacule*.
@@ -13,7 +13,7 @@ Also the *h* in *Pha* is silent, so you don't spell it like an "eff" as in "Phar
 you spell it in the same way you start saying *Party*
 ]
 and I'm a software engineer mainly interested
-in web development, programming tools and technologies.
+in web development, programming tools, and technologies.
 I'm https://www.youtube.com/watch?v=4E3xfR6IBII[not just a code monkey^]
 though, my passion lies in developing software that adds value to businesses and
 people's lives, from idea inception to shipping the final product.
@@ -35,6 +35,8 @@ Along my career, I've worked in many domains, like Banking & Finances, Human Res
 Basically, I'm a tech enthusiast who loves to change people's lives by enhancing
 their capabilities through software.
 I'm an active contributor to open source projects and maintain a few of my own.
+
+BTW, on Sundays I practice the Evil cult of Vim at the church of Emacs.
 
 == Connect with me
 
