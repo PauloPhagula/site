@@ -19,7 +19,7 @@ layout: compress
 
   <header class="header">
     <article class="about">
-      <a href="{{ site.baseurl }}/"><img class="logo" src="{{ "/assets/images/avatar.svg" | prepend: site.baseurl}}" alt="{{ site.title }}" /></a>
+      <a href="{{ site.baseurl }}/"><img class="logo" src="{{ "/assets/images/avatar.svg" | prepend: site.baseurl | prepend: site.url }}" alt="{{ site.title }}" /></a>
       <h2>{{ site.title }}</h2>
       <p>{{ site.tagline }}</p>
       <!--
