@@ -1,4 +1,6 @@
+---
+---
 # www.robotstxt.org/
 User-agent: *
-Sitemap: https://dareenzo.github.io/sitemap.xml
+Sitemap: {{ site.url }}/sitemap.xml
 Disallow:
