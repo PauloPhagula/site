@@ -14,12 +14,12 @@
     }
   ;
 
-  var humanCheckX  = parseInt(Math.random(0,1) * 10 + 1),
-    humanCheckY  = parseInt(Math.random(0,1) * 10 + 1),
-    $form        = document.getElementById('contact-form'),
-    $error       = document.getElementById('contact-form-msg'),
-    $humanCheck  = document.getElementById('human-check'),
-    $userEmail   = document.getElementById('user_email'),
+  var humanCheckX = parseInt(Math.random(0,1) * 10 + 1),
+    humanCheckY = parseInt(Math.random(0,1) * 10 + 1),
+    $form = document.getElementById('contact-form'),
+    $error = document.getElementById('contact-form-msg'),
+    $humanCheck = document.getElementById('human-check'),
+    $userEmail = document.getElementById('user_email'),
     $userMessage = document.getElementById('user_message')
   ;
 
@@ -55,8 +55,8 @@
       xhr.addEventListener('load', function(event) {
         feedback('success');
         self.reset();
-        humanCheckX  = parseInt(Math.random(0,1) * 10 + 1);
-        humanCheckY  = parseInt(Math.random(0,1) * 10 + 1);
+        humanCheckX = parseInt(Math.random(0,1) * 10 + 1);
+        humanCheckY = parseInt(Math.random(0,1) * 10 + 1);
         $humanCheck.setAttribute('placeholder', humanCheckX + '+' + humanCheckY + '=?');
       });
 
