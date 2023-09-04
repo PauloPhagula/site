@@ -1,6 +1,13 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
+
+gem 'jekyll', '~> 4.0'
+
+gem "webrick", "~> 1.7"
+
+gem 'coderay', '~> 1.1'
+
 group :jekyll_plugins do
   gem 'jekyll-asciidoc'
   gem 'jekyll-feed'
@@ -9,8 +16,10 @@ group :jekyll_plugins do
   # gem 'jemoji'
 end
 
-gem 'jekyll', '~> 4.0'
+group :development do
+  gem "rake"
+end
 
-gem 'coderay', '~> 1.1'
-
-gem "webrick", "~> 1.7"
+group :test do
+  gem "html-proofer"
+end
