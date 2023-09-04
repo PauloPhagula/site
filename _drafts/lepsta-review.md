@@ -1,3 +1,7 @@
+---
+
+---
+
 The "pull request" is dead, long live "streams"! I just had a demo of @_lepsta with @sithembiso_k and I can tell you it
 is the future of version control.
 
@@ -6,7 +10,7 @@ flow and along with it the way to facilitate reviews. PRs are good, and they wor
 Committing just to sync changes is neither natural nor easy work, and that is what modern tools force us to do.
 
 Commit based PRs, pretty as much like backups and SANs that used to work for sysadmins, -- who said Dropbox is not
-necessary and would not be a thing -- will be replaced by code syncing. And @_lepsta is in the frontline when it comes
+necessary and would not be a thing -- will be replaced by code syncing. And @_lepsta is in the front-line when it comes
 to a compelling offering for this market. They've invented the concept of "streams" which make for a more natural way of
 collaborating.
 
