@@ -19,3 +19,6 @@ indent_size = 4
 
 #[*.{md, adoc, rst}]
 #trim_trailing_whitespace = false
+
+[Makefile]
+indent_style = tab

@@ -1,9 +1,15 @@
+---
+title: USSD apps in Moz
+layout: post
+language: pt
+---
+
 :weary: Já havia respondido a essa pergunta aqui alguma vez.
 Gostava que estivesse numa espécie de fórum, e pudéssemos apenas colocar aqui um link.
 
-De qualquer mode, mais uma vez, aqui vai:
+De qualquer modo, mais uma vez, aqui vai:
 
-Antes de mais não recomendo que use esses simuladores. Nenhum funciona da forma particular como os GWs USSD dos operadores cá em Moçambique funcionam.
+Antes de mais, não recomendo que use esses simuladores. Nenhum funciona da forma particular como os GWs USSD dos operadores cá em Moçambique funcionam.
 Na melhor da hipóteses, vais aprender apenas um pouco sobre o protocolo. Mas para usares a app que "já fizeste" com os operadores de cá, não vais apenas trocar parametros.
 
 Do que sei, há duas formas de fazeres a tua app USSD funcionar cá em Moçambique.
@@ -42,7 +48,7 @@ Conselhos não pedidos:
 - Quando escolhes usar uma ferramenta precisar entender bem não só modelo de funcionamento, mas também o modelo de falhas.
 
   Pense nestas questões: como vais lidar com drops de conexões, como vais re-engajar com o teu user, como vais saber onde os teus users pararam num certo workflow.
-  Tudas estas perguntas envolvem
+  Todas estas perguntas envolvem
 
 Se preferes passar a batata quente a terceiros recomendo
 

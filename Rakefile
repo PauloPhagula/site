@@ -1,5 +1,13 @@
-task default: %w[serve]
+task :default => :jekyll_serve
 
-task :serve do
-	system "docker run --rm -p 5000:4000 --volume='#{Dir.pwd}:/srv/jekyll' -it jekyll/jekyll:3.8 jekyll serve --watch --verbose"
+desc 'Serve site from container'
+task :jekyll_serve do
+  sh "docker run --rm -p 4000:4000 --volume='#{__dir__}:/srv/jekyll' -it jekyll/jekyll:4 jekyll serve --watch --verbose --drafts"
+end
+
+task :test do
+  require "html-proofer"
+  HTMPProofer.check_directory(
+    "./_site"
+  ).run
 end

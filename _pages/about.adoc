@@ -1,25 +1,24 @@
 ---
 layout: page
 title: About
-excerpt: Learn about Chops & Craft and it's author
+excerpt: About & Bio
 permalink: /about/
 ---
 
-Ahoy, my name is Paulo Phagula
+Yo, my name is Paulo Phagula
 footnote:[
-Well actually, I'm *Pagula* but the folks at the registry messed things up.
+Well actually, I'm *Pagula* but the folks at the registry messed up.
 You may also find other variants of the name written as *Pacula* or *Pacule*.
 Also the *h* in *Pha* is silent, so you don't spell it like an "eff" as in "Pharmacy",
 you spell it in the same way you start saying *Party*
 ]
 and I'm a software engineer mainly interested
-in web development, programming tools and technologies.
+in web development, programming tools, and technologies.
 I'm https://www.youtube.com/watch?v=4E3xfR6IBII[not just a code monkey^]
 though, my passion lies in developing software that adds value to businesses and
 people's lives, from idea inception to shipping the final product.
 
 This is my personal blog and brain dump, where I share my ideas and thoughts.
-My usual nickname is **dareenzo** 🤦, hence the name of this blog.
 
 I live in sunny https://en.wikipedia.org/wiki/Mozambique[Mozambique^]
 ☀️ 🇲🇿 footnote:[
@@ -41,15 +40,13 @@ Basically, I'm a tech enthusiast who loves to change people's lives by enhancing
 their capabilities through software.
 I'm an active contributor to open source projects and maintain a few of my own.
 
+BTW, on Sundays I practice the Evil cult of Vim at the church of Emacs.
+
 == Connect with me
 
 If you want to know more about what I'm up to, please contact me directly or
 follow me on these channels.
 
 - paulo.phagula@gmail.com
-- https://github.com/dareenzo[github.com/dareenzo^]
-- https://twitter.com/dareenzo[twitter.com/dareenzo^]
-
-If you're into spy stuff 🕵️ and would like to securely deliver a message to me,
-my link:/key.asc[PGP key] 🔑 is `0x80726DF59BFDC5F0`.
-The fingerprint is `31DD 9E65 D6F7 C19F 78DA 51FA 8072 6DF5 9BFD C5F0`
+- https://github.com/paulophagula[github.com/paulophagula^]
+- https://twitter.com/paulophagula[twitter.com/paulophagula^]

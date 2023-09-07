@@ -1,49 +1,53 @@
+# Based on https://github.com/actions/starter-workflows/blob/main/pages/jekyll.yml
 name: Build
+
 on:
+  # Runs on pushes targeting the main branch
   push:
     branches:
-      - develop
+      - main
+
+  # Allows you to run workflow manually from the actions tab
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment of GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 jobs:
+  # Build job
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout develop
-        uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
         with:
-          path: 'develop'
-      - name: Build
-        run: |
-          cd develop
-          mkdir _site && chmod 777 _site
-          # build site with jekyll, by default to `_site' folder
-          docker run --rm -p 5000:4000 --volume="$(pwd):/srv/jekyll" jekyll/jekyll:3.8 jekyll build --verbose
-      - name: Checkout master
-        uses: actions/checkout@v2
-        with:
-          ref: 'master'
-          path: 'master'
-          fetch-depth: '0' # so we can commit back
-      - name: Copy
-        run: |
-          # copy generated HTML site to `master' branch
-          cd master
-          git ls-files | xargs rm
-          cd ..
-          cp -R develop/_site/* master/
-      - name: Commit
-        env:
-          BUILD_NUMBER: ${{ github.run_id }}
-        run: |
-          # commit and push generated content to `master' branch
-          # since repository was cloned in write mode with token auth - we can push there
-          cd master
-          git config user.email "dareenzo@gmail.com"
-          git config user.name "Paulo Phagula"
-          git add -A .
-          git commit -a -m "GitHub build #$BUILD_NUMBER"
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GH_TOKEN }}
-          branch: master
-          directory: 'master'
+          ruby-version: '3.1' # Not needed with a .ruby-version file
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+          cache-version: 0 # Increment this number if you need to re-download cache gems
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v1
+      - run: JEKYLL_ENV=production bundle exec jekyll build --baseurl ${{steps.pages.outputs.base_path}} # defaults output to '/_site'
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v1 # This will automatically upload an artifact from the '/_site' directory
+  # Deployment job
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1

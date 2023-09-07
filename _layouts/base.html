@@ -19,7 +19,7 @@ layout: compress
 
   <header class="header">
     <article class="about">
-      <a href="{{ site.baseurl }}/"><img class="logo" src="{{ "/assets/images/avatar.svg" | prepend: site.baseurl}}" alt="{{ site.title }}" /></a>
+      <a href="/"><img class="logo" src="{{ "/assets/images/avatar.svg" | prepend: site.baseurl | prepend: site.url }}" alt="{{ site.title }}" /></a>
       <h2>{{ site.title }}</h2>
       <p>{{ site.tagline }}</p>
       <!--
@@ -60,10 +60,10 @@ layout: compress
   <footer class="footer">
     <ul class="social">
       <li><a href="mailto:{{site.author.email}}" target="_blank" title="Drop me an email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
-      <li><a href="https://github.com/dareenzo" target="_blank" title="Fork my code on Github"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+      <li><a href="https://github.com/PauloPhagula" target="_blank" title="Fork my code on Github"><i class="fa fa-github" aria-hidden="true"></i></a></li>
       <li><a href="https://stackoverflow.com/users/6270740/paulo-phagula" target="_blank" title="Help me out with some questions on StackOverflow"><i class="fa fa-stack-overflow" aria-hidden="true"></i></a></li>
-      <li><a href="https://www.linkedin.com/in/paulo-phagula" target="_blank" title="Connect with me on Linkedin if you, too, need to put up with this crap against your will"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-      <li><a href="https://twitter.com/dareenzo" target="_blank" title="Follow me on Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+      <li><a href="https://www.linkedin.com/in/paulophagula" target="_blank" title="Connect with me on Linkedin if you, too, need to put up with this crap against your will"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+      <li><a href="https://twitter.com/PauloPhagula" target="_blank" title="Follow me on Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
       <li><a href="/feed.rss.xml" target="_blank" title="Stay up-to-date with all the blog posts via RSS"><i class="fa fa-feed" aria-hidden="true"></i></a></li>
     </ul>
     <p class="copyright">
@@ -72,14 +72,11 @@ layout: compress
     </p>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.11.0/prism.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.11.0/plugins/toolbar/prism-toolbar.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.11.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.11.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.12.2/components/prism-python.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.12.2/components/prism-php.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.12.2/components/prism-ruby.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.12.2/components/prism-sql.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/components/prism-core.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/plugins/autoloader/prism-autoloader.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/plugins/toolbar/prism-toolbar.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
 
   {% for js_name in page.extra_js %}
     <script src="{{ js_name }}"></script>

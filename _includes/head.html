@@ -29,18 +29,18 @@
   <meta http-equiv="cleartype" content="on">
 
   <meta name="mobile-web-app-capable" content="yes">
-  <link rel="icon" sizes="192x192" href="{{ "/assets/images/favicons/android-chrome-192x192.png" | prepend: site.baseurl }}">
-  <link rel="manifest" href="{{ "/manifest.json" | prepend: site.baseurl }}">
+  <link rel="icon" sizes="192x192" href="{{ "assets/images/favicons/android-chrome-192x192.png" | prepend: site.baseurl | prepend: site.url }}">
+  <link rel="manifest" href="{{ "manifest.json" | prepend: site.baseurl | prepend: site.url }}">
   <meta name="theme-color" content="#333">
 
-  <link rel="mask-icon" href="{{"/assets/images/favicons/safari-pinned-tab.svg" | prepend: site.baseurl }}" color="#333">
+  <link rel="mask-icon" href="{{"assets/images/favicons/safari-pinned-tab.svg" | prepend: site.baseurl | prepend: site.url }}" color="#333">
 
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="{{ site.title }}">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <link rel="apple-touch-icon" sizes="180x180" href="{{ "/assets/images/favicons/apple-touch-icon.png" | prepend: site.baseurl }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ "assets/images/favicons/apple-touch-icon.png" | prepend: site.baseurl | prepend: site.url }}">
 
-  <meta name="generator" content="jekyll">
+  <meta name="generator" content="Jekyll {{ jekyll.version }}" />
   {% if page.robots and jekyll.environment == 'production' %}
   <meta name="robots" content="{{ page.robots }}">
   {% endif %}
@@ -50,12 +50,12 @@
   <link rel="author" href="/about">
   <meta name="contact" content="{{ site.author.email }}" />
   <meta name="geography" content="Mozambique">
-  <meta name="source" content="https://github.com/dareenzo/dareenzo.github.io">
+  <meta name="source" content="https://github.com/PauloPhagula/site">
 
   <!-- twitter meta -->
   <meta name="twitter:card" content="{% if page.share_image %}summary_large_image{% else %}summary{% endif %}" />
-  <meta name="twitter:site" content="@dareenzo" />
-  <meta name="twitter:creator" content="@dareenzo">
+  <meta name="twitter:site" content="@PauloPhagula" />
+  <meta name="twitter:creator" content="@PauloPhagula">
   <meta name="twitter:url" content="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}" />
 
   <!-- opengraph -->
@@ -68,19 +68,19 @@
     {% if page.share_image %}
       {{ page.share_image }}
     {% else %}
-      /assets/images/facebook-share.png
+      assets/images/facebook-share.png
     {% endif %}
   {% endcapture %}
   <meta property="og:title" name="twitter:title" itemprop="title name" content="{% if page.title %}{{ page.title }} &middot; {{ site.title }}{% else %}{{ site.title }} &middot; {{ site.tagline }}{% endif %}" />
   <meta property="og:description" name="twitter:description" itemprop="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}" />
   <meta property="og:image" name="twitter:image" itemprop="image primaryImageOfPage" content="{{ share_image_url | strip | prepend: site.baseurl | prepend: site.url }}" />
 
-  <link rel="alternate" type="application/atom+xml" title="{{ site.title }} &raquo; Atom Feed" href="{{ "/feed.atom.xml" | prepend: site.baseurl | prepend: site.url }}">
+  <link rel="alternate" type="application/atom+xml" title="{{ site.title }} &raquo; Atom Feed" href="{{ "feed.atom.xml" | prepend: site.baseurl | prepend: site.url }}">
 
   <meta name="google-site-verification" content="hXGNVG1mBEAHY0UFP_2RAzcWhzVKmQmWLbAtqPAafog" />
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.11.0/themes/prism.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.11.0/plugins/toolbar/prism-toolbar.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/plugins/toolbar/prism-toolbar.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
   <style type="text/css">
   {% capture styles %}

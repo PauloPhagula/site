@@ -1,10 +1,10 @@
-# dareenzo.github.io
+# paulophagula.com
 
-![Build](https://github.com/dareenzo/dareenzo.github.io/workflows/Build/badge.svg)
+![Build](https://github.com/PauloPhagula/site/workflows/Build/badge.svg)
 
 ![Blog screenshot](/screenshot.png)
 
-[dareenzo.github.io](https://dareenzo.github.io)
+[paulophagula.com](https://paulophagula.com)
 
 ## How to build and run
 
