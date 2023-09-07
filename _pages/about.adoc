@@ -10,7 +10,7 @@ footnote:[
 Well actually, I'm *Pagula* but the folks at the registry messed up.
 You may also find other variants of the name written as *Pacula* or *Pacule*.
 Also the *h* in *Pha* is silent, so you don't spell it like an "eff" as in "Pharmacy",
-you spell it in the same way you start saying *Party*
+you spell it in the same way you start saying *Party*.
 ]
 and I'm a software engineer mainly interested
 in web development, programming tools, and technologies.
@@ -21,10 +21,13 @@ people's lives, from idea inception to shipping the final product.
 This is my personal blog and brain dump, where I share my ideas and thoughts.
 
 I live in sunny https://en.wikipedia.org/wiki/Mozambique[Mozambique^]
-☀️ 🇲🇿, but have been working in remote teams since forever.
-Presently, I work at http://www.ux.co.mz[UX - Information Technologies^] as a
-software engineer, crafting and managing innovative services to tackle employment,
-education and financial inclusion challenges in emerging economies.
+☀️ 🇲🇿 footnote:[
+The only country in the world whose name is made of a single word containing all vowels.
+And also one of the 4 countries in the world with an AK-47 on its flag.
+]
+, but have been working in remote teams since forever.
+Presently, I work at https://factorialhr.com[Factorial,role=external,window=_blank] as a
+senior software engineer, helping customers manage payroll on time and error-free.
 
 Along my career, I've worked in many domains, like Banking & Finances, Human Resources
 & Recruiting, e-Governance, e-Commerce, and more.
@@ -36,7 +39,9 @@ Basically, I'm a tech enthusiast who loves to change people's lives by enhancing
 their capabilities through software.
 I'm an active contributor to open source projects and maintain a few of my own.
 
-BTW, on Sundays I practice the Evil cult of Vim at the church of Emacs.
+---
+
+Fun fact: On Sundays I practice the Evil cult of Vim at the church of Emacs.
 
 == Connect with me
 
