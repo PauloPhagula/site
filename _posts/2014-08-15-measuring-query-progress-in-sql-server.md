@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Measuring query progress in SQL Server with DBCC!
+title: Medindo o progresso de queries em SQL Server com DBCC!
 date: 2014-07-25 15:09:42 +0200
 categories: Coding
 tags: SQLServer DBCC
