@@ -7,23 +7,30 @@ layout: base
   <h1 class="article__title">{{ page.title }}</h1>
   <header>
     <div class="article__meta">
-      <i class="fa fa-calendar-o" aria-hidden="true"></i> <time class="article__post-date" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished" content="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%d %b %Y" }}</time> |
-      <i class="fa fa-folder-o" aria-hidden="true"></i> {{ category }}
+      <i class="fa fa-calendar-o" aria-hidden="true"></i>
+      <time
+        class="article__post-date"
+        datetime="{{ page.date | date_to_xmlschema }}"
+        itemprop="datePublished"
+        content="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%d %b %Y" }}</time>
+      |
+      <i class="fa fa-folder-o" aria-hidden="true"></i>
+      {{ category }}
       <br/>
       {% if page.tags.size > 0 %}
-      <span class="article__tags">
-        <i class="fa fa-tags" aria-hidden="true"></i>
-        {% for tag in sorted_tags %}
-        {{ tag }}&nbsp;
-        {% endfor %}
-      </span>
+        <span class="article__tags">
+          <i class="fa fa-tags" aria-hidden="true"></i>
+          {% for tag in sorted_tags %}
+            {{ tag }}&nbsp;
+          {% endfor %}
+        </span>
       {% endif %}
     </div>
 
     {% if page.excerpt %}
-    <p class="article__excerpt">
-    {{ page.excerpt }}
-    </p>
+      <p class="article__excerpt">
+        {{ page.excerpt }}
+      </p>
     {% endif %}
   </header>
 
@@ -34,17 +41,30 @@ layout: base
   <div class="sharing">
     <p>
       Share this on:
-      <a title="Share article on Email" href="mailto:?subject={{ page.title }}&body={{ page.url | escape | prepend: site.baseurl | prepend: site.url | url_encode}}">Mail</a> -
-      <a title="Share article on Twitter" target="_blank" href="https://twitter.com/intent/tweet?url={{ page.url | escape | prepend: site.baseurl | prepend: site.url | url_encode}}&text={{ page.title | uri_escape }}&via=dareenzo">Twitter</a> -
-      <a title="Share article on Facebook" target="_blank" href="https://www.facebook.com/sharer.php?u={{ page.url | escape | prepend: site.baseurl | prepend: site.url | url_encode}}">Facebook</a>
+      <a title="Share article on Email" href="mailto:?subject={{ page.title }}&body={{ page.url | escape | prepend: site.baseurl | prepend: site.url | url_encode}}">Mail</a>
+      -
+      <a
+        title="Share article on Twitter"
+        target="_blank"
+        href="https://twitter.com/intent/tweet?url={{ page.url | escape | prepend: site.baseurl | prepend: site.url | url_encode}}&text={{ page.title | uri_escape }}&via=dareenzo">Twitter</a>
+      -
+      <a
+        title="Share article on Facebook"
+        target="_blank"
+        href="https://www.facebook.com/sharer.php?u={{ page.url | escape | prepend: site.baseurl | prepend: site.url | url_encode}}">Facebook</a>
     </p>
   </div>
 
   <div class="pagination">
     {% if page.previous %}
       <div class="pagination__previous-url">
-        <a href="{{ page.previous.url }}" title="{{ page.previous.title }}" rel="prev">
-          <span class="pagination__previous-arrow"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></span>
+        <a
+          href="{{ page.previous.url }}"
+          title="{{ page.previous.title }}"
+          rel="prev">
+          <span class="pagination__previous-arrow">
+            <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+          </span>
           <span class="pagination__previous-title">{{ page.previous.title }}</span>
         </a>
       </div>
@@ -52,9 +72,14 @@ layout: base
 
     {% if page.next %}
       <div class="pagination__next-url">
-        <a href="{{ page.next.url }}" title="{{ page.next.title }}" rel="next">
+        <a
+          href="{{ page.next.url }}"
+          title="{{ page.next.title }}"
+          rel="next">
           <span class="pagination__next-title">{{ page.next.title }}</span>
-          <span class="pagination__next-arrow"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></span>
+          <span class="pagination__next-arrow">
+            <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+          </span>
         </a>
       </div>
     {% endif %}
@@ -62,27 +87,33 @@ layout: base
   </div>
 
   <div class="related-posts">
-  {% if content and page.related %}
-    <h5>RELATED POSTS:</h5>
-    <ul class="tags">
-      {% for post in site.posts %}
-        {% if page.related contains post.title or page.related contains post.url %}
-        <li><a href="{{ post.url }}" title="{{ post.title }} {{ post.content | trim: 200 }}">{{ post.title }}</a></li>
-        {% endif %}
-      {% endfor %}
-    </ul>
+    {% if content and page.related %}
+      <h5>RELATED POSTS:</h5>
+      <ul class="tags">
+        {% for post in site.posts %}
+          {% if page.related contains post.title or page.related contains post.url %}
+            <li>
+              <a href="{{ post.url }}" title="{{ post.title }} {{ post.content | trim: 200 }}">{{ post.title }}</a>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+
+  <hr/>
+
+  {% if jekyll.environment == "production" %}
+    <div class="comments">
+      <p>Please, use
+        <a href="https://help.disqus.com/customer/portal/articles/665057-syntax-highlighting">syntax highlighting</a>
+        in your comments, to make them more readable.</p>
+      <div id="disqus_thread"></div>
+      <noscript>Please, enable JavaScript to see the
+        <a href="http://disqus.com/?ref_noscript">comments</a>
+      </noscript>
+    </div>
   {% endif %}
-  </div>
-
-  <hr />
-
-{% if jekyll.environment == "production" %}
-  <div class="comments">
-    <p>Please, use <a href="https://help.disqus.com/customer/portal/articles/665057-syntax-highlighting">syntax highlighting</a> in your comments, to make them more readable.</p>
-    <div id="disqus_thread"></div>
-    <noscript>Please, enable JavaScript to see the <a href="http://disqus.com/?ref_noscript">comments</a></noscript>
-  </div>
-{% endif %}
 </article>
 
 {% if jekyll.environment == "production" %}
