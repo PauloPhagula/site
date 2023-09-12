@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Deploying Magento 2 sites with Deployer
+excerpt: Learn how to deploy your Magento2 apps easily with Deployer
 ---
 
 ## What

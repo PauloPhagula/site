@@ -1,6 +1,7 @@
 ---
 layout: post
 title: All Things M-Pesa API
+excerpt: Learn everything there's to know about the M-Pesa API
 ---
 
 ## What is it?
