@@ -10,7 +10,7 @@ excerpt: >
   [wesbos/awesome-uses repository on GitHub](https://github.com/wesbos/awesome-uses).
 permalink: /uses
 last_update: Mar, 2021
-published: false
+published: true
 ---
 
 Since I'll never be interviewed for [Uses This](https://usesthis.com){:target="_blank"}{:rel="noopener noreferrer"},

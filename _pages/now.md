@@ -2,7 +2,7 @@
 layout: page
 title: What I’m Doing Now
 permalink: /now
-published: false
+published: true
 ---
 
 - [https://factorialhr.com](https://factorialhr.com)
