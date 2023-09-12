@@ -1,21 +1,28 @@
-#+TITLE: All Things M-Pesa API
+---
+layout: post
+title: All Things M-Pesa API
+---
 
-* What is it?
-* How to integrate?
-* Requirements
-Transactions Costs
+## What is it?
 
-* Tools
+## How to integrate?
+
+## Requirements
+
+## Transactions Costs
+
+## Tools
 
 - Postman
 - MPesa UAT =*150*154#=
 
-* Existing SDKs
+## Existing SDKs
 
 - {name} for {platform} by {author}
 
-* Refs
-* FAQs
+## Refs
+
+## FAQs
 
 - How much does it cost?
 - Is there anyone who can help me?

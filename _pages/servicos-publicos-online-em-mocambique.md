@@ -39,4 +39,3 @@ Ver o estado da sua carta, muitas
 Autoridade Tributária
 Quem precisa de NUIT
 [https://nuit.at.gov.mz/nuit/bootstrap/theme/work/Impressao_Carta.aspx](https://nuit.at.gov.mz/nuit/bootstrap/theme/work/Impressao_Carta.aspx){:target="_blank"}{:rel="noopener noreferrer"}
-
