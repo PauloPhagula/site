@@ -2,11 +2,11 @@
 layout: compress
 ---
 <!DOCTYPE html>
-<html class="no-js">
+<html lang="{{ page.lang | default: site.lang | default: "en" }} class="no-js" >
 
 {% include head.html %}
 
-<body lang="{{ page.lang | default: site.lang | default: "en" }}">
+<body">
   {% if site.google_tag_manager and jekyll.environment == 'production' %}
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{site.google_tag_manager}}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
