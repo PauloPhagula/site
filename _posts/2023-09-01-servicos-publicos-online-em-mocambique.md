@@ -13,7 +13,6 @@ excerpt: >
   Irei fazer o esforço para enriquecer a lista e mante-la actualizada.
 
 lang: pt
-permalink: /servicos-publicos-online-em-mocambique
 published: true
 ---
 
