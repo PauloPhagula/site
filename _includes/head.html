@@ -2,24 +2,44 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <meta http-equiv="x-dns-prefetch-control" content="on"/>
+  <meta http-equiv="x-dns-prefetch-control" content="on" />
   <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
   <link rel="dns-prefetch" href="https://www.googletagmanager.com">
   <link rel="dns-prefetch" href="https://www.google-analytics.com">
 
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous">
-  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous">
-  <link rel="preconnect" href="https://www.google-analytics.com" crossorigin="anonymous">
+  <link
+    rel="preconnect"
+    href="https://cdnjs.cloudflare.com"
+    crossorigin="anonymous">
+  <link
+    rel="preconnect"
+    href="https://www.googletagmanager.com"
+    crossorigin="anonymous">
+  <link
+    rel="preconnect"
+    href="https://www.google-analytics.com"
+    crossorigin="anonymous">
 
   {% if page.next %}<link rel="prerender" href="{{ page.next.url }}" />{% endif %}
   {% if page.previous %}<link rel="prerender" href="{{ page.previous.url }}" />{% endif %}
 
-  <title>{% if page.title %}{{ page.title }} &middot; {{ site.title }}{% else %}{{ site.title }} &middot; {{ site.tagline }}{% endif %}</title>
+  <title>
+    {% if page.title %}
+      {{ page.title }} &middot; {{ site.title }}
+    {% else %}
+      {{ site.title }} &middot; {{ site.tagline }}{% endif %}
+  </title>
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
-  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+  <link rel="canonical" href="{{ page.url | replace: 'index.html', '' | prepend: site.baseurl | prepend: site.url }}">
 
-  {% if page.previous %}<link rel="prev" href="{{ page.previous.url }}" title="{{ page.previous.title }}" />{% endif %}
-  {% if page.next %}<link rel="next" href="{{ page.next.url }}" title="{{ page.next.title }}" />{% endif %}
+  {% if page.previous %}<link
+      rel="prev"
+      href="{{ page.previous.url }}"
+      title="{{ page.previous.title }}" />{% endif %}
+  {% if page.next %}<link
+      rel="next"
+      href="{{ page.next.url }}"
+      title="{{ page.next.title }}" />{% endif %}
 
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
@@ -29,20 +49,29 @@
   <meta http-equiv="cleartype" content="on">
 
   <meta name="mobile-web-app-capable" content="yes">
-  <link rel="icon" sizes="192x192" href="{{ "assets/images/favicons/android-chrome-192x192.png" | prepend: site.baseurl | prepend: site.url }}">
+  <link
+    rel="icon"
+    sizes="192x192"
+    href="{{ "assets/images/favicons/android-chrome-192x192.png" | prepend: site.baseurl | prepend: site.url }}">
   <link rel="manifest" href="{{ "manifest.json" | prepend: site.baseurl | prepend: site.url }}">
   <meta name="theme-color" content="#333">
 
-  <link rel="mask-icon" href="{{"assets/images/favicons/safari-pinned-tab.svg" | prepend: site.baseurl | prepend: site.url }}" color="#333">
+  <link
+    rel="mask-icon"
+    href="{{"assets/images/favicons/safari-pinned-tab.svg" | prepend: site.baseurl | prepend: site.url }}"
+    color="#333">
 
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="{{ site.title }}">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <link rel="apple-touch-icon" sizes="180x180" href="{{ "assets/images/favicons/apple-touch-icon.png" | prepend: site.baseurl | prepend: site.url }}">
+  <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="{{ "assets/images/favicons/apple-touch-icon.png" | prepend: site.baseurl | prepend: site.url }}">
 
   <meta name="generator" content="Jekyll {{ jekyll.version }}" />
   {% if page.robots and jekyll.environment == 'production' %}
-  <meta name="robots" content="{{ page.robots }}">
+    <meta name="robots" content="{{ page.robots }}">
   {% endif %}
   <meta name="revisit-after" content="1 DAYS">
   <meta name="author" content="{{ site.author.name }}" />
@@ -71,11 +100,27 @@
       assets/images/facebook-share.png
     {% endif %}
   {% endcapture %}
-  <meta property="og:title" name="twitter:title" itemprop="title name" content="{% if page.title %}{{ page.title }} &middot; {{ site.title }}{% else %}{{ site.title }} &middot; {{ site.tagline }}{% endif %}" />
-  <meta property="og:description" name="twitter:description" itemprop="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}" />
-  <meta property="og:image" name="twitter:image" itemprop="image primaryImageOfPage" content="{{ share_image_url | strip | prepend: site.baseurl | prepend: site.url }}" />
+  <meta
+    property="og:title"
+    name="twitter:title"
+    itemprop="title name"
+    content="{% if page.title %}{{ page.title }} &middot; {{ site.title }}{% else %}{{ site.title }} &middot; {{ site.tagline }}{% endif %}" />
+  <meta
+    property="og:description"
+    name="twitter:description"
+    itemprop="description"
+    content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}" />
+  <meta
+    property="og:image"
+    name="twitter:image"
+    itemprop="image primaryImageOfPage"
+    content="{{ share_image_url | strip | prepend: site.baseurl | prepend: site.url }}" />
 
-  <link rel="alternate" type="application/atom+xml" title="{{ site.title }} &raquo; Atom Feed" href="{{ "feed.atom.xml" | prepend: site.baseurl | prepend: site.url }}">
+  <link
+    rel="alternate"
+    type="application/atom+xml"
+    title="{{ site.title }} &raquo; Atom Feed"
+    href="{{ "feed.atom.xml" | prepend: site.baseurl | prepend: site.url }}">
 
   <meta name="google-site-verification" content="hXGNVG1mBEAHY0UFP_2RAzcWhzVKmQmWLbAtqPAafog" />
 
@@ -86,22 +131,21 @@
 
 
   <script>
+    // js class
     var htmlElement = document.getElementsByTagName('html')[0];
-    htmlElement.style.display  = 'none';
-    htmlElement.className = htmlElement.className.replace('no-js', 'js');
+    htmlElement.style.display = 'none';
     htmlElement.style.overflow = 'hidden';
+    htmlElement.className = htmlElement.className.replace('no-js', 'js');
 
-    // Redirect to https
+// Redirect to https
     var host = "{{ site.url }}";
     if (host == window.location.host && window.location.protocol != "https:") {
       window.location.protocol = "https";
     }
   </script>
 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Yrsa|Open+Sans">
-
   {% for css_name in page.extra_css %}
-  <link rel="stylesheet" href="{{ css_name }}">
+    <link rel="stylesheet" href="{{ css_name }}">
   {% endfor %}
 
   {% if site.google_tag_manager and jekyll.environment == 'production' %}
@@ -112,4 +156,5 @@
     {% include collecttags.html %}
   {% endif %}
 
+  {% seo %}
 </head>

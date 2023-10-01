@@ -23,29 +23,16 @@ layout: compress
   <![endif]-->
 
   <header class="header">
-    <article class="about">
-      <a href="/"><img class="logo" src="{{ '/assets/images/avatar.svg' | prepend: site.baseurl | prepend: site.url }}" alt="{{ site.title }}" /></a>
-      <h2>{{ site.title }}</h2>
-      <p>{{ site.tagline }}</p>
-      <!--
-      <p class="navigation">
-        <a href="/about#work" title="Check out some of my work and projects">#work</a>
-        <a href="https://github.com/dareenzo" title="Have a look at my code on github" target="_blank">#code</a>
-        <a href="https://kodikos-io.github.io" title="Check out my Startup Kodikos" target="_blank">#startup</a>
-      </p>
-      -->
-    </article>
-
     <nav class="header__navigation">
+      <a href="/">Paulo Phagula</a>
       <ul class="navigation">
-        <li><a class="page-link" href="/blog" title="Read my articles">Articles</a></li>
-        <li><a class="page-link" href="/talks" title="">Talks</a></li>
         <li><a class="page-link" href="/about" title="Learn more about me and this site">About</a></li>
+        <li><a class="page-link" href="/blog" title="Read my articles">Articles</a></li>
+        <li><a class="page-link" href="/talks" title="Talks">Talks</a></li>
+        <li><a class="page-link" href="/now" title="Check out what I can do for you">Now</a></li>
+        <li><a class="page-link" href="/uses" title="The tools I use to get work done">Uses</a></li>
         <!--
-        <li><a class="page-link" href="/services" title="Check out what I can do for you">Services</a></li>
-        <li><a class="page-link" href="/work" title="View some my most notable work and projects">Portfolio</a></li>
-
-        <li><a class="page-link" href="/contact" title="Get my contacts details so you can reach out to me">Contact</a></li>
+        <li><a class="page-link" href="/consulting" title="Check out what I can do for youCheck out what I can do for you">Consulting</a></li>
         -->
       </ul>
     </nav>
@@ -88,6 +75,7 @@ layout: compress
   {% endfor %}
 
   <script type="text/javascript">
+   var htmlElement = document.getElementsByTagName('html')[0];
     htmlElement.style.display = 'block';
     htmlElement.style.overflow = '';
   </script>

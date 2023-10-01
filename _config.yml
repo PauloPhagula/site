@@ -7,16 +7,19 @@
 
 # Site settings
 title: Paulo Phagula
-tagline: Musings and Scribbles on Software Development
+tagline: Full-stack Developer & aspiring entrepreneur
 description: > # this means to ignore newlines until next "key:"
-  Paulo Phagula's Blog on Software Development and related topics
+  Paulo Phagula's site and blog
 url: "https://paulophagula.com" # the base hostname & protocol for your site
-baseurl: "" # the subpath of your site, e.g. /blog
 timezone: Africa/Maputo
 
 author:
   name: Paulo Phagula
   email: paulo.phagula@gmail.com
+
+header_links:
+  - url: about
+    title: Learn more bout me and this site
 
 footer_links:
   twitter: PauloPhagula
@@ -48,6 +51,7 @@ plugins:
   - jekyll-feed
   - jekyll-redirect-from
   - jekyll-sitemap
+  - jekyll-seo-tag
   # - jemoji
 
 asciidoctor:
