@@ -34,3 +34,6 @@ Ver o estado da sua carta, muitas
 Autoridade Tributária
 Quem precisa de NUIT
 [https://nuit.at.gov.mz/nuit/bootstrap/theme/work/Impressao_Carta.aspx](https://nuit.at.gov.mz/nuit/bootstrap/theme/work/Impressao_Carta.aspx){:target="_blank"}{:rel="noopener noreferrer"}
+
+PGR - Denúncias de Fraudes
+[https://fraude-denuncias.pgr.gov.mz](https://fraude-denuncias.pgr.gov.mz/){:target="_blank"}{:rel="noopener noreferrer"}
