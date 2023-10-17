@@ -52,6 +52,7 @@ plugins:
   - jekyll-redirect-from
   - jekyll-sitemap
   - jekyll-seo-tag
+  - jekyll-target-blank
   # - jemoji
 
 asciidoctor:
