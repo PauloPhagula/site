@@ -6,6 +6,7 @@ date: 2018-10-24 00:00:00 +0200
 categories: Coding
 tags: Testing Mocking TDD PHP PHPUnit Prophecy Mockery
 share_image: "/content/2018/10/testing-mock-objects.png"
+excerpt: An attempt at answering what is the difference between a Mock and a Stub
 ---
 :page-liquid:
 :source-highlighter: coderay

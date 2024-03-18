@@ -1,8 +1,8 @@
 ---
 layout: page
 title: What I’m Doing Now
-published: false
-permalink: /now/
+permalink: /now
+published: true
 ---
 
 - [https://factorialhr.com](https://factorialhr.com)

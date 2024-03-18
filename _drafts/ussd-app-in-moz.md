@@ -2,6 +2,7 @@
 title: USSD apps in Moz
 layout: post
 language: pt
+excerpt: Mas Paulo o que eh necessario para construir uma app USSD?
 ---
 
 :weary: Já havia respondido a essa pergunta aqui alguma vez.

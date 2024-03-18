@@ -4,7 +4,7 @@ title: Colocando Proxy no Ubuntu
 date: 2014-08-23 17:20:19 +0200
 categories: Coding
 tags: Note bash
-excerpt:
+excerpt: Como configurar um proxy de rede no Ubuntu
 lang: pt
 ---
 
