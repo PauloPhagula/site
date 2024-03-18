@@ -1,4 +1,6 @@
-task :default => :serve
+# frozen_string_literal: true
+
+task default: :serve
 
 desc 'Serve site from container'
 task :serve do
@@ -6,8 +8,8 @@ task :serve do
 end
 
 task :test do
-  require "html-proofer"
+  require 'html-proofer'
   HTMPProofer.check_directory(
-    "./_site"
+    './_site'
   ).run
 end
