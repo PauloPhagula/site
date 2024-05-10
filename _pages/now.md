@@ -1,6 +1,7 @@
 ---
 layout: page
 title: What I’m Doing Now
+description: What I am up to now.
 permalink: /now
 published: true
 ---

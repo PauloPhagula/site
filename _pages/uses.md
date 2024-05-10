@@ -1,6 +1,7 @@
 ---
 layout: page
 title: The Setup / Uses / Use this
+description: Things I use and enjoy
 excerpt: >
   This is a complete list of the tools, apps, services and hardware I use on a
   regular basis. The list contains tools I use in my work as a web developer but
