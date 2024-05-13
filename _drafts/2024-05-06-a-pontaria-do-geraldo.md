@@ -50,7 +50,6 @@ havisto Geraldo e seu Elísio, onde quer que estejam, espero que estejam bem e e
 gozo de boa saúde. Espero que a mesma pontaria dos bilas tenha se traduzido em
 pontaria em outros aspectos mais positivos da vida.
 
-
 <!-- Local Variables: -->
 <!-- ispell-local-dictionary: "portuguese" -->
 <!-- End: -->

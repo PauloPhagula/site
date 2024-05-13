@@ -4,7 +4,7 @@
     return;
   }
 
-  var config = { form_url: 'https://formspree.io/pphagula+dareenzo.github.io@gmail.com' },
+  const config = { form_url: 'https://formspree.io/pphagula+dareenzo.github.io@gmail.com' },
     texts = {
       'error-email-label': 'Invalid Email',
       'error-message-label': 'Invalid message',
@@ -14,8 +14,8 @@
     }
   ;
 
-  var humanCheckX = parseInt(Math.random(0,1) * 10 + 1),
-    humanCheckY = parseInt(Math.random(0,1) * 10 + 1),
+  const humanCheckX = Math.round(Math.random() * 10 + 1),
+    humanCheckY = Math.round(Math.random() * 10 + 1),
     $form = document.getElementById('contact-form'),
     $error = document.getElementById('contact-form-msg'),
     $humanCheck = document.getElementById('human-check'),
