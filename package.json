@@ -1,0 +1,32 @@
+{
+  "name": "site",
+  "version": "0.0.1",
+  "description": "Paulo Phagula's site",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/PauloPhagula/site"
+  },
+  "keywords": [
+    "site",
+    "blog",
+    "portfolio",
+    "notes"
+  ],
+  "author": "Paulo Phagula <paulo.phagula@gmail.com> (https://paulophagula.com/)",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "browser-sync": "^3.0.2",
+    "gulp": "^5.0.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2"
+  },
+  "lint-staged": {
+    ".md": "markdownlint",
+    "*.org": "org-lint"
+  }
+}
