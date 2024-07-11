@@ -23,7 +23,7 @@ class SomeClass
     errors.add(
       :base,
       :a_or_b_required,
-      message: 'either a or b must be present'
+      message: 'either a or b must be present, but not both'
     )
   end
 end
