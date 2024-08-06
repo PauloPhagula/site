@@ -1,5 +1,6 @@
 ---
-
+layout: post
+title: Lepsta - A review
 ---
 
 The "pull request" is dead, long live "streams"! I just had a demo of @_lepsta with @sithembiso_k and I can tell you it

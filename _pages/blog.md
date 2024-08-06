@@ -1,28 +1,28 @@
 ---
 layout: page
-title: Blog
+title: Articles
 excerpt: Find here the listing of all blog entries and register for notifications on future updates
 permalink: /blog/
 ---
 
 <div>
-{% for post in site.posts %}
-  {% capture currentyear %}{{ post.date | date: "%Y" }}{% endcapture %}
-  {% if currentyear != year %}
-    {% unless forloop.first %}</ul>{% endunless %}
-    <h2>{{ currentyear }}</h2>
-    <ul class="no-list posts-list">
-    {% capture year %}{{ currentyear }}{% endcapture %}
-  {% endif %}
-  {% if post.url %}
-    <li class="posts-list-item">
-      {% if post.category == "speaking" %}
-        <i class="fa fa-microphone"></i>
+  <ul class="no-list posts-list">
+    {% for post in site.posts %}
+      {% if post.url %}
+        <article>
+          <h2>
+            <a href="{{ post.url }}" title="{{post.title}}">{{ post.title }}</a>
+          </h2>
+          <p>
+            <span class="">{{ post.date | date: "%b %d, %Y" }}</span>
+            {% if post.categories.size > 0 %}
+            &middot;
+            <span class="">{{ post.categories }}</span>
+            {% endif %}
+          </p>
+          <p>{{ post.excerpt }}</p>
+        </article>
       {% endif %}
-      <time class="post-meta">{{ post.date | date: "%b %d" }}</time>
-      <a class="post-link" href="{{ post.url }}" title="{{post.title}}">{{ post.title }}</a>
-    </li>
-  {% endif%}
-{% endfor %}
-</ul>
+    {% endfor %}
+  </ul>
 </div>

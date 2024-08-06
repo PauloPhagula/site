@@ -2,10 +2,24 @@
 version: 2
 updates:
   - package-ecosystem: github-actions
-    directory: "/"
+    directory: '/'
     schedule:
-      interval: daily
+      interval: weekly
     open-pull-requests-limit: 10
     commit-message:
-      prefix: "chore"
-      include: "scope"
+      prefix: 'chore'
+      include: 'scope'
+  - package-ecosystem: 'bundler'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+    allow:
+      - dependency-type: 'all'
+    groups:
+      bundler-dependencies:
+        patterns:
+          - '*'
+    open-pull-requests-limit: 10
+    commit-message:
+      prefix: 'chore'
+      include: 'scope'
