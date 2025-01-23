@@ -1,6 +1,6 @@
 ---
 layout: post
-title: A pontaria do geraldo
+title: A pontaria do Geraldo
 date: 2024-05-06 19:50:00 +0200
 categories: life
 tags: life childhood memories
