@@ -16,7 +16,7 @@ excerpt: >
 
 In the stillness of the night, beneath the luminous gaze of the moon, our
 family convened around the table, eager to indulge in a delicacy from the
-verdant and mountainous realm known as Catalan.
+verdant and mountainous realm known as Catalonia.
 
 Bearing the name Carquinyolis, these biscuits, adorned with chocolate, bestowed
 upon our senses a dual sensation: a firmness that challenged our teeth yet
