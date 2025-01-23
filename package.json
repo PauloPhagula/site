@@ -20,7 +20,7 @@
   "author": "Paulo Phagula <paulo.phagula@gmail.com> (https://paulophagula.com/)",
   "license": "UNLICENSED",
   "devDependencies": {
-    "browser-sync": "^3.0.2",
+    "browser-sync": "^3.0.3",
     "gulp": "^5.0.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2"
