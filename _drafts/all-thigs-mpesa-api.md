@@ -15,7 +15,7 @@ excerpt: Learn everything there's to know about the M-Pesa API
 ## Tools
 
 - Postman
-- MPesa UAT =*150*154#=
+- MPesa UAT `*150*154#`
 
 ## Existing SDKs
 
@@ -26,7 +26,11 @@ excerpt: Learn everything there's to know about the M-Pesa API
 ## FAQs
 
 - How much does it cost?
+  It depends on the negotiation you make with Vodacom; As of 2022 the standard rate is 6%
+
 - Is there anyone who can help me?
-Yes, the certified developers (Me, Osvaldo, Rui Cossa, Edson Mutombene)and community. Was that self-promotion? Yes, of course!
+  Yes, the certified developers (Me, Osvaldo, Rui Cossa, Sarifo, Edson Mutombene) and community. Was that self-promotion? Yes, of course!
+
 - How do I reach the MPesa team?
+
 - How do I integrate it with my service
