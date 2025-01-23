@@ -2,7 +2,7 @@
 
 ![Build](https://github.com/PauloPhagula/site/workflows/Build/badge.svg)
 
-![Blog screenshot](/screenshot.png)
+![Blog screenshot](/screenshot.jpg)
 
 [paulophagula.com](https://paulophagula.com)
 
