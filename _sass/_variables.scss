@@ -30,9 +30,9 @@ $color-grey: #828282;
 $color-grey-light: lighten($color-grey, 40%);
 $color-grey-dark: darken($color-grey, 25%);
 
-$color-link: #4492ff;
+// $color-link: #4492ff;
 $color-link: #000;
 $color-link-hover: #09c;
 
-$on-palm:600px;
-$on-laptop:800px;
+$on-palm: 600px;
+$on-laptop: 800px;

@@ -15,6 +15,7 @@ body {
   font-family: $font-family-base;
   line-height: $line-height-base;
   height: 100%;
+  min-height: 100vh;
   margin: 0 auto;
   overflow-y: scroll;
   visibility: visible;
@@ -126,22 +127,27 @@ img.emoji {
  * Customize the background color to match your design.
  */
 ::selection {
-  background: #b3d4fc;
+  background: #none;
   text-shadow: none;
 }
 
 ::-moz-selection {
-  background: #b3d4fc;
+  background: none;
   text-shadow: none;
 }
 
+a {
+  text-decoration: underline;
+}
+
 a:link, a:visited {
-  text-decoration: none;
+  text-decoration: underline;
   color: $color-link;
 }
 
-a:hover {
+a:hover,a:active {
   text-decoration: underline;
+  color: $color-link;
 }
 
 b,
@@ -198,7 +204,7 @@ pre > code {
 
 blockquote {
   font-style: italic;
-  border-left: 2px solid #4492ff;
+  border-left: 2px solid $color-link;
   padding-left: 15px;
   margin-left: 0;
 }
@@ -430,6 +436,7 @@ label {
 
 main {
   width: 740px;
+  min-height: 50vh;
   margin: 0 auto;
 }
 
@@ -448,7 +455,7 @@ main {
 }
 
 .header a {
-  // text-decoration: underline;
+  text-decoration: none;
   font-weight: bold;
 }
 
@@ -493,6 +500,10 @@ nav ul li:last-child:after {
 .posts-list {
   list-style: none outside;
   margin: 0;
+}
+
+.posts-list a {
+  text-decoration: none;
 }
 
 .posts-list-item {
@@ -648,7 +659,8 @@ footer {
   margin-bottom: 120px;
   margin-top: 120px;
 }
-/*SOCIAL*/
+
+/* Social */
 .social {
   list-style-type: none;
   text-align: center;
@@ -680,47 +692,15 @@ aside {
   display: none;
 }
 
+/* Sharing */
+.sharing a {
+  text-decoration: none;
+}
 
 /* Pagination */
 .pagination {
   width: 100%;
-  margin-bottom:20px;
-}
-
-.pagination div {
-  width: 50%;
-  height: 10px;
-}
-
-.pagination__previous-url {
-  text-align: left;
-  float: left;
-}
-
-.pagination__next-url {
-  text-align: right;
-  float: right;
-}
-
-.pagination__previous-arrow,
-.pagination__next-arrow {
-  width: 10%;
-  display: inline-block;
-  vertical-align: middle;
-  text-align: center
-}
-
-.pagination__previous-title,
-.pagination__next-title {
-  width: 85%;
-  display: inline-block;
-  vertical-align: middle;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  margin-bottom: 20px;
 }
 
 /* Projects */
@@ -768,21 +748,32 @@ aside {
 }
 
 /* Media Queries */
-@media screen and (max-width:740px) {
+@media screen and (max-width: 740px) {
   .header,main {
-    display: flexbox;
-    display: -ms-flexbox;
-    display: -webkit-box;
-    /*display: -moz-box; firefox is magic*/
-    display: -ms-flexbox;
-    -moz-box-orient: vertical;
-    -webkit-box-orient: vertical;
-    -moz-box-align: center;
-    -webkit-box-align: center;
-    -ms-flex-flow: column;
-    flex-flow: column;
+    display: flex;
+    flex-direction: column;
     width: 100%;
   }
+
+
+  .header {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    height: 100px;
+  }
+
+  .header__navigation {
+    // margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  // .home-link {
+  //   display: block;
+  // }
 
   #side, #content {
     flex: 1;
@@ -794,8 +785,9 @@ aside {
     position: relative;
   }
 
-  #content {
-    margin-left: 0px;
+  #content article {
+    marging: 10px;
+    padding: 10px;
   }
 
   aside {
@@ -803,7 +795,7 @@ aside {
   }
 }
 
-@media screen and (max-width:480px) {
+@media screen and (max-width: 480px) {
   #content img {
     display: block;
     width: 100%;
