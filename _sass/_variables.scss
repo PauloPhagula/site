@@ -1,5 +1,6 @@
 //== Font stack
 // See:
+// - https://github.com/system-fonts/modern-font-stacks
 // - http://markdotto.com/2018/02/07/github-system-fonts/
 // - https://make.wordpress.org/core/2016/07/07/native-fonts-in-4-6/
 // - https://woorkup.com/system-font/
@@ -29,8 +30,9 @@ $color-grey: #828282;
 $color-grey-light: lighten($color-grey, 40%);
 $color-grey-dark: darken($color-grey, 25%);
 
-$color-link: #4492ff;
+// $color-link: #4492ff;
+$color-link: #000;
 $color-link-hover: #09c;
 
-$on-palm:600px;
-$on-laptop:800px;
+$on-palm: 600px;
+$on-laptop: 800px;
