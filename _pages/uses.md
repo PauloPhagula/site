@@ -10,15 +10,15 @@ excerpt: >
   If you're interested in similar lists, I highly recommend that you visit the
   [wesbos/awesome-uses repository on GitHub](https://github.com/wesbos/awesome-uses).
 permalink: /uses
-last_update: Mar, 2021
+last_update: Jan, 2025
 published: true
-share_image: "/content/2017/01/design-by-contract.png"
+share_image: '/content/2017/01/design-by-contract.png'
 ---
 
-Since I'll never be interviewed for [Uses This](https://usesthis.com){:target="_blank"}{:rel="noopener noreferrer"},
+Since I'll never be interviewed for [Uses This](https://usesthis.com){:target="\_blank"}{:rel="noopener noreferrer"},
 I have interviewed myself!
 
-Last Updated: **2024-04-01**
+Last Updated: **2025-01-24**
 
 ## Who are you, and what do you do?
 
@@ -28,7 +28,7 @@ See [/about](/about)
 
 - Laptop: MacBook Pro (13-inch, 2021, Apple M1 Pro Chip, 16GB RAM)
 - Keyboard: Microsoft Sculp Ergnonomic Keyboard
-- Mouse: Logitech trackball
+- Mouse: Jelly Comb Vertical Mouse
 - Wireless headphones: Bose QC35 II
 
 ## And what software?
@@ -37,7 +37,7 @@ Software is important to me. It helps me solve my problems on a daily basis. If
 a service is great I don't hesitate to pay a monthly subscription or a one-time
 fee.
 
-- Terminal emulator: wezterm
+- Terminal emulator: WezTerm
 - Note-taking: Org-mode plain text files
 - Browser: Safari & Chrome
 - Calendar: Google Calendar
