@@ -229,5 +229,5 @@ Test to assert if it is indeed working properly.
 ## Aside
 
 From the idea of the CQS principle, [Gregory Young](https://twitter.com/gregyoung)
-and [Udi Dahan](http://udidahan.com) derived [CQRS](https://msdn.microsoft.com/en-us/library/dn568103.aspx),
+and [Udi Dahan](https://udidahan.com/) derived [CQRS](https://msdn.microsoft.com/en-us/library/dn568103.aspx),
 which is essentially applying CQS at an architectural level.
