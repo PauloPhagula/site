@@ -81,8 +81,8 @@ Following is the key I need for `libObject` and last is whichever params the
 library will pass into the fn when calling.
 
 Last but not least, as I pointed above ... this was the the naive way... In the
-very end, since this was a NodeJS project and we were already using [PM2](http://pm2.keymetrics.io),
-we just created n [different processes each with it's own configuration](http://pm2.keymetrics.io/docs/usage/application-declaration/)
+very end, since this was a NodeJS project and we were already using [PM2](https://pm2.keymetrics.io/),
+we just created n [different processes each with it's own configuration](https://pm2.keymetrics.io/docs/usage/application-declaration/)
 and didn't need to change the code.
 
 Despite that I'm thankful I found this issue for now I've learned this lesson.
