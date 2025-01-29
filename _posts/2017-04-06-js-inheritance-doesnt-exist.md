@@ -300,7 +300,7 @@ zezinho.isHuman() // =>
 
 Last but not least, I was only able to figure this out after watching the
 [Object creation YouTube video series](https://www.youtube.com/playlist?list=PL0zVEGEvSaeHBZFy6Q8731rcwk0Gtuxub)
-on [funfunfunction](http://www.youtube.com/channel/UCO1cgjhGzsSYb1rsB4bFe4Q)
+on [funfunfunction](https://www.youtube.com/channel/UCO1cgjhGzsSYb1rsB4bFe4Q)
 by [Matthias Johansson](https://twitter.com/mpjme), so I strongly recommend
 watching those to all JS people out there.
 

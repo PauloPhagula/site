@@ -59,7 +59,7 @@ and Hacker News.
 He is the author of several programming books, such as: On Lisp (1993),
 ANSI Common Lisp (1995), and Hackers & Painters (2004).
 
-The first Question on his [Programming FAQ](http://paulgraham.com/pfaq.html) is
+The first Question on his [Programming FAQ](https://paulgraham.com/pfaq.html) is
 “What editor do you use?” and the answer is a short and big two letter word: “vi”.
 
 ## Harry Roberts - inuit.css and ITCSS methodology developer
