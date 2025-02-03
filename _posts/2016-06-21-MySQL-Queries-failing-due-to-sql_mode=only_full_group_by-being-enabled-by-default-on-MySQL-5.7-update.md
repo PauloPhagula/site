@@ -12,7 +12,7 @@ categories: Coding
 tags: Database MySQL SQL
 ---
 
-On v5.7.8, MySQL, introduced a new kind of field: the almighty [JSON field](https://dev.mysql.com/doc/refman/5.7/en/json.html),
+On v5.7.8, MySQL, introduced a new kind of field: the almighty [JSON field](https://web.archive.org/web/20160616111907/http://dev.mysql.com:80/doc/refman/5.7/en/json.html),
 famous for its versatility and glory in the NoSQL world.
 
 In a quest for staying up-to-date, using, benefiting and profiting from its awesome
@@ -66,6 +66,6 @@ But, in the end we'll have to upgrade our queries to be compliant with the new
 
 References:
 
-- [MySQL Error caused by sql_mode=only_full_group_by](http://www.anujgakhar.com/2015/12/23/mysql-error-caused-by-sql_modeonly_full_group_by/)
-- [Changes in MySQL 5.6.10 (2013-02-05, General Availability)](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-10.html)
-- [SQL Mode Changes in MySQL 5.7](https://dev.mysql.com/doc/refman/5.7/en/sql-mode.html#sql-mode-changes)
+- [MySQL Error caused by sql_mode=only_full_group_by](https://web.archive.org/web/20160702084752/http://www.anujgakhar.com:80/2015/12/23/mysql-error-caused-by-sql_modeonly_full_group_by/)
+- [Changes in MySQL 5.6.10 (2013-02-05, General Availability)](https://web.archive.org/web/20160527113655/http://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-10.html)
+- [SQL Mode Changes in MySQL 5.7](https://web.archive.org/web/20160619211221/https://dev.mysql.com/doc/refman/5.7/en/sql-mode.html)
