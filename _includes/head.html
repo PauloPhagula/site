@@ -137,7 +137,7 @@
     htmlElement.style.overflow = 'hidden';
     htmlElement.className = htmlElement.className.replace('no-js', 'js');
 
-// Redirect to https
+    // Redirect to https
     var host = "{{ site.url }}";
     if (host == window.location.host && window.location.protocol != "https:") {
       window.location.protocol = "https";

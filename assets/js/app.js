@@ -1,3 +1,18 @@
+function sharePost () {
+  const title = document.querySelector('.article__title')?.textContent?.trim() || 'Check out this post!';
+  const url = window.location.href;
+
+  if (navigator.share) {
+    navigator.share({
+      title: title,
+      url: url
+    })
+    .catch(console.error);
+  } else {
+    window.open(`https://x.com/intent/post?text="${encodeURIComponent(title)}"&url=${encodeURIComponent(url)}&via=PauloPhagula`);
+  }
+}
+
 (function(){
 
   if (window.location.href.split('/').filter(function(part) { return part.length; }).pop() !== 'contact') {
@@ -23,8 +38,8 @@
     $userMessage = document.getElementById('user_message')
   ;
 
-  $humanCheck.setAttribute('placeholder', humanCheckX + '+' + humanCheckY + '=?');
-  $form.addEventListener('submit', function (e) {
+  $humanCheck?.setAttribute('placeholder', humanCheckX + '+' + humanCheckY + '=?');
+  $form?.addEventListener('submit', function (e) {
     var self = this,
       formData,
       xhr;
@@ -36,8 +51,8 @@
       return;
 
     var data = {
-      'user_email': $userEmail.value,
-      'user_message': $userMessage.value,
+      'user_email': $userEmail?.value,
+      'user_message': $userMessage?.value,
       '_subject': 'New submission from dareenzo.github.io!',
       '_gotcha': null
     };
