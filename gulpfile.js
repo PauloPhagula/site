@@ -14,13 +14,15 @@ import sourcemaps from 'gulp-sourcemaps';
 const messages = {
   jekyllBuild: 'Running: $ jekyll build --drafts',
 };
+const __dirname = import.meta.dirname
 /*
  * Build the Jekyll Site
  * runs a child process in node that runs the jekyll commands
  */
 export const jekyllBuild = (done) => {
   browserSync.notify(messages.jekyllBuild);
-  return childProcess.spawn('rake', ['build'], { stdio: 'inherit' }).on('close', done);
+  // return childProcess.spawn('rake', ['build'], { stdio: 'inherit' }).on('close', done);
+  return childProcess.spawn('docker', ['run', '--rm', '-it', '-v', `${__dirname}/vendor/bundle:/usr/local/bundle:Z`, '-v',`${__dirname}:/srv/jekyll:Z`, '-p', '4000:4000', 'jekyll/jekyll:4', 'jekyll', 'build'], { stdio: 'inherit' }).on('close', done);
 };
 /*
  * Rebuild Jekyll & reload page
