@@ -6,7 +6,7 @@ permalink: /now
 published: true
 ---
 
-- [https://factorialhr.com](https://factorialhr.com)
+- Making Payroll easy for customers through [https://factorialhr.com](https://factorialhr.com)
 - Consulting
 - One-Punch Man Workout
 - Learning Functional Programming and F#

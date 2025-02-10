@@ -2,3 +2,5 @@
 MD013: false
 # Don't care about html in markdown
 MD033: false
+# Don't care about bare URLs
+MD034: false
