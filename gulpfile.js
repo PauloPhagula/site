@@ -95,3 +95,5 @@ export const watch = () => {
   gulp.watch(['_drafts/*.md', '_posts/*.md', '*html', '_includes/*html', '_layouts/*.html'], gulp.series(jekyllRebuild));
 };
 export default gulp.series(js, compileSass, fonts, browserSyncServe, watch);
+
+export const build = gulp.series(js, compileSass, fonts, jekyllBuild);
