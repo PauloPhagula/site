@@ -20,10 +20,10 @@
   "author": "Paulo Phagula <paulo.phagula@gmail.com> (https://paulophagula.com/)",
   "license": "UNLICENSED",
   "devDependencies": {
-    "browser-sync": "^3.0.2",
+    "browser-sync": "^3.0.3",
     "gulp": "^5.0.0",
-    "husky": "^9.0.11",
-    "lint-staged": "^15.2.2"
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.3"
   },
   "lint-staged": {
     ".md": "markdownlint",
@@ -33,11 +33,23 @@
     "autoprefixer": "^10.4.20",
     "gulp-concat": "^2.6.1",
     "gulp-csso": "^4.0.1",
-    "gulp-imagemin": "^2.4.0",
+    "gulp-imagemin": "^9.1.0",
     "gulp-plumber": "^1.2.1",
     "gulp-sass": "^5.1.0",
-    "gulp-sourcemaps": "^3.0.0",
+    "gulp-sourcemaps": "^2.6.5",
     "gulp-uglify": "^3.0.2",
-    "sass": "^1.43.4"
+    "sass": "^1.84.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "got@<11.8.5": ">=11.8.5",
+      "http-cache-semantics@<4.1.1": ">=4.1.1",
+      "semver-regex@<3.1.3": ">=3.1.3",
+      "semver-regex@<3.1.4": ">=3.1.4",
+      "micromatch@<4.0.8": ">=4.0.8",
+      "cookie@<0.7.0": ">=0.7.0",
+      "cross-spawn@<6.0.6": ">=6.0.6",
+      "cross-spawn@>=7.0.0 <7.0.5": ">=7.0.5"
+    }
   }
 }
