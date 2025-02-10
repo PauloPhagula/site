@@ -127,7 +127,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/plugins/toolbar/prism-toolbar.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href='{{ "/assets/css/critical.css" | prepend: site.baseurl | prepend: site.url }}' />
+  <link rel="stylesheet" href='{{ "/assets/css/main.css" | prepend: site.baseurl }}' />
 
 
   <script>
@@ -137,7 +137,7 @@
     htmlElement.style.overflow = 'hidden';
     htmlElement.className = htmlElement.className.replace('no-js', 'js');
 
-// Redirect to https
+    // Redirect to https
     var host = "{{ site.url }}";
     if (host == window.location.host && window.location.protocol != "https:") {
       window.location.protocol = "https";

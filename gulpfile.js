@@ -1,115 +1,97 @@
-import gulp from 'gulp'
-import uglify from 'gulp-uglify'
-import concat from 'gulp-concat'
-import plumber from 'gulp-plumber'
-
-import dartSass from 'sass'
-import gulpSass from 'gulp-sass'
-const sass = gulpSass(dartSass)
-
-import childProcess from 'child_process'
-import browserSync from 'browser-sync'
-
-import postcss from 'gulp-postcss'
-import cssnano from 'cssnano'
-import autoprefixer from 'autoprefixer'
-import sourcemaps from 'gulp-sourcemaps'
-
+import gulp from 'gulp';
+import uglify from 'gulp-uglify';
+import concat from 'gulp-concat';
+import plumber from 'gulp-plumber';
+import dartSass from 'sass';
+import gulpSass from 'gulp-sass';
+const sass = gulpSass(dartSass);
+import childProcess from 'child_process';
+import browserSync from 'browser-sync';
+import postcss from 'gulp-postcss';
+import cssnano from 'cssnano';
+import autoprefixer from 'autoprefixer';
+import sourcemaps from 'gulp-sourcemaps';
 const messages = {
-  jekyllBuild: '<span style="color: grey">Running:</span> $ jekyll build --drafts',
-}
-
+  jekyllBuild: 'Running: $ jekyll build --drafts',
+};
 /*
  * Build the Jekyll Site
  * runs a child process in node that runs the jekyll commands
  */
-gulp.task('jekyll-build', function (done) {
-  browserSync.notify(messages.jekyllBuild)
-  return childProcess.spawn('rake', ['build'], { stdio: 'inherit' }).on('close', done)
-})
-
+export const jekyllBuild = (done) => {
+  browserSync.notify(messages.jekyllBuild);
+  return childProcess.spawn('rake', ['build'], { stdio: 'inherit' }).on('close', done);
+};
 /*
  * Rebuild Jekyll & reload page
  */
-gulp.task(
-  'jekyll-rebuild',
-  gulp.series(['jekyll-build'], (done) => {
-    browserSync.reload()
-    done()
-  })
-)
-
+export const jekyllRebuild = gulp.series(jekyllBuild, (done) => {
+  browserSync.reload();
+  done();
+});
 /*
  * Compile and minify sass
  */
-gulp.task('sass', () => {
-  const plugins = [autoprefixer({ browsers: ['last 1 version'] }), cssnano()]
+export const compileSass = () => {
   return gulp
-    .src('_sass/*.scss')
+    .src('src/css/**/*.scss')
     .pipe(sourcemaps.init())
-    .pipe(
-      sass({
-        includePaths: ['_scss'],
-      })
-    )
-    .pipe(postcss(plugins))
+    .pipe(sass().on('error', sass.logError))
+    .pipe(postcss( [autoprefixer(), cssnano()]))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('_site/assets/css'))
     .pipe(browserSync.reload({ stream: true }))
-    .pipe(gulp.dest('assets/css/'))
-})
-
-/*
- * Build the jekyll site and launch browser-sync
- */
-gulp.task(
-  'browser-sync',
-  gulp.series('sass', 'jekyll-build', (done) => {
-    browserSync({
-      server: {
-        baseDir: '_site',
-        serveStaticOptions: {
-          extensions: ["html"]
-        }
-      },
-      port: 3005,
-    })
-    done()
-  })
-)
-
-/*
- * Compile fonts
- */
-gulp.task('fonts', () => {
-  return gulp.src('src/fonts/**/*.{ttf,woff,woff2}').pipe(plumber()).pipe(gulp.dest('assets/fonts/'))
-})
-
-/*
- * Minify images
- */
-gulp.task('imagemin', async () => {
-  const imagemin = (await import('gulp-imagemin')).default
-  return gulp
-    .src('src/img/**/*.{jpg,png,gif}')
-    .pipe(plumber())
-    .pipe(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true }))
-    .pipe(gulp.dest('assets/img/'))
-})
-
+    .pipe(gulp.dest('assets/css/'));
+};
 /**
  * Compile and minify js
  */
-gulp.task('js', () => {
-  return gulp.src('src/js/**/*.js').pipe(plumber()).pipe(concat('main.js')).pipe(uglify()).pipe(gulp.dest('assets/js/'))
-})
+export const js = () => {
+  return gulp.src('src/js/**/*.js')
+    .pipe(plumber())
+    .pipe(concat('main.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('assets/js/'));
+};
+/*
+ * Build the jekyll site and launch browser-sync
+ */
+export const browserSyncServe = gulp.series(compileSass, jekyllBuild, (done) => {
+  browserSync({
+    port: 3005,
+    server: {
+      baseDir: '_site',
+      serveStaticOptions: {
+        extensions: ["html"]
+      },
+    }
+  });
+  done();
+});
+/*
+ * Compile fonts
+ */
+export const fonts = () => {
+  return gulp.src('src/fonts/**/*.{ttf,woff,woff2}')
+    .pipe(plumber())
+    .pipe(gulp.dest('assets/fonts/'));
+};
+/*
+ * Minify images
+ */
+export const imagemin = async () => {
+  const imagemin = (await import('gulp-imagemin')).default;
+  return gulp
+    .src('src/img/**/*.{jpg,png,gif}')
+    .pipe(plumber())
+    .pipe(imagemin())
+    .pipe(gulp.dest('assets/img/'));
+};
 
-gulp.task('watch',  () => {
-  gulp.watch('src/styles/**/*.scss', gulp.series('sass', 'jekyll-rebuild'))
-  gulp.watch('src/js/**/*.js', gulp.series('js'))
-  // gulp.watch('src/fonts/**/*.{tff,woff,woff2}', gulp.series('fonts'))
-  gulp.watch('src/img/**/*.{jpg,png,gif}', gulp.series('imagemin'))
-  gulp.watch(['*html', '_includes/*html', '_layouts/*.html'], gulp.series('jekyll-rebuild'))
-})
-
-gulp.task('default', gulp.series(['js', 'sass', 'fonts', 'browser-sync', 'watch']))
+export const watch = () => {
+  gulp.watch('src/css/**/*.scss', gulp.series(compileSass));
+  gulp.watch('src/js/**/*.js', gulp.series(js));
+  gulp.watch('src/img/**/*.{jpg,png,gif}', gulp.series(imagemin));
+  gulp.watch(['_drafts/*.md', '_posts/*.md', '*html', '_includes/*html', '_layouts/*.html'], gulp.series(jekyllRebuild));
+};
+export default gulp.series(js, compileSass, fonts, browserSyncServe, watch);

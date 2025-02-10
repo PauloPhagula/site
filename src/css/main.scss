@@ -1,5 +1,4 @@
 
-
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import
   "normalize",
@@ -14,3 +13,7 @@
   // "syntax-highlighting",
   // https://csswizardry.com/2013/04/shame-css/
   "shame";
+
+  .test {
+    color: red;
+  }
