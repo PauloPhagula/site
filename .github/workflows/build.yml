@@ -27,27 +27,27 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Install pnpm
-        uses: pnpm/action-setup@v3
+        uses: pnpm/action-setup@v4
         with:
-          version: 9
+          version: 10
           run_install: false
       - name: Setup node
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.1'  # Not needed with a .ruby-version file
           bundler-cache: true  # runs 'bundle install' and caches installed gems automatically
           cache-version: 0  # Increment this number if you need to re-download cache gems
-      - name: Install dependencies
-        run: pnpm install
       - name: Setup GitHub Pages
         id: pages
         uses: actions/configure-pages@v5
-        if: github.ref == 'refs/heads/master'
+        if: github.ref == 'refs/heads/main'
       - name: Build with Gulp
         # Outputs to the '/_site' directory
         run: pnpm exec gulp build
@@ -56,7 +56,7 @@ jobs:
       - name: Upload Artifact
         # Automatically uploads an artifact from the '/_site' directory
         uses: actions/upload-pages-artifact@v3
-        if: github.ref == 'refs/heads/master'
+        if: github.ref == 'refs/heads/main'
   # Deployment job
   deploy:
     environment:
