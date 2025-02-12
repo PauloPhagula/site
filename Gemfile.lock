@@ -140,7 +140,7 @@ PLATFORMS
 DEPENDENCIES
   coderay (~> 1.1)
   html-proofer
-  jekyll (~> 4.4)
+  jekyll (~> 4.2)
   jekyll-asciidoc
   jekyll-feed
   jekyll-redirect-from
