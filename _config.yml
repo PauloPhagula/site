@@ -57,11 +57,6 @@ asciidoctor:
   attributes:
   - icons=font
 
-# sass compression
-sass:
-  sass_dir: _sass
-  style: compressed
-
 # HTML compression
 compress_html:
   clippings: all
@@ -90,6 +85,7 @@ collections:
 
 include:
   - _pages
+
 # Exclude these files from your production _site
 exclude:
   - autoprefixer.yml
@@ -100,5 +96,8 @@ exclude:
   - Rakefile
   - Makefile
   - screenshot.png
-  - vendor
   - post.sh
+  - 'package.json'
+  - 'src'
+  - 'node_modules'
+  - 'vendor'
