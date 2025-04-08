@@ -22,7 +22,8 @@ const __dirname = import.meta.dirname
 export const jekyllBuild = (done) => {
   browserSync.notify(messages.jekyllBuild);
   // return childProcess.spawn('rake', ['build'], { stdio: 'inherit' }).on('close', done);
-  return childProcess.spawn('docker', ['run', '--rm', '-e', 'JEKYLL_ROOTLESS=1', '-v', `${__dirname}/vendor/bundle:/usr/local/bundle:Z`, '-v',`${__dirname}:/srv/jekyll:Z`, '-p', '4000:4000', 'jekyll/jekyll:4', 'jekyll', 'build'], { stdio: 'inherit' }).on('close', done);
+  const environment = process.env.JEKYLL_ENV || 'development';
+  return childProcess.spawn('docker', ['run', '--rm', '-e', 'JEKYLL_ROOTLESS=1', '-e', `JEKYLL_ENV=${environment}`, '-v', `${__dirname}/vendor/bundle:/usr/local/bundle:Z`, '-v',`${__dirname}:/srv/jekyll:Z`, '-p', '4000:4000', 'jekyll/jekyll:4', 'jekyll', 'build'], { stdio: 'inherit' }).on('close', done);
 };
 /*
  * Rebuild Jekyll & reload page
