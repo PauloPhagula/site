@@ -4,7 +4,7 @@
   "description": "Paulo Phagula's site",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "preinstall": "npx only-allow pnpm",
     "prepare": "husky"
   },
   "repository": {
