@@ -34,7 +34,7 @@
     "*.org": "org-lint"
   },
   "dependencies": {
-    "autoprefixer": "^10.4.20",
+    "autoprefixer": "^10.4.21",
     "gulp-concat": "^2.6.1",
     "gulp-imagemin": "^9.1.0",
     "gulp-plumber": "^1.2.1",
