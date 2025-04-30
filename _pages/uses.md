@@ -15,7 +15,7 @@ published: true
 share_image: '/content/2017/01/design-by-contract.png'
 ---
 
-Since I'll never be interviewed for [Uses This](https://usesthis.com){:target="\_blank"}{:rel="noopener noreferrer"},
+Since I'll never be interviewed for [Uses This](https://usesthis.com){:target="\_blank"}{:rel="noopener noreferrer"} 😢,
 I have interviewed myself!
 
 Last Updated: **2025-01-24**
@@ -54,7 +54,7 @@ fee.
 - Git: lazygit
 - npm package manager: pnpm
 - macOS package manager: Homebrew
-- Colors: catppuccin
+- Colors: Night Owl
 - Font: JetBrains Nerd Font
 
 ## What would be your dream setup?
