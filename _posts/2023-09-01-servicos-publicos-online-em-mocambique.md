@@ -21,7 +21,7 @@ Pré marcação para pedidos de Bilhete de Identidade BI
 [https://www.dnic.gov.mz/](https://www.dnic.gov.mz/){:target="_blank"}{:rel="noopener noreferrer"}
 
 Registos e Notariados
-Link para pre marcação: [https://www.utente.srn.gov.mz/mclient/acsscl](https://www.utente.srn.gov.mz/mclient/acsscl){:target="_blank"}{:rel="noopener noreferrer"}
+Link para pre marcação: [https://www.utente.srn.gov.mz/mclient/acsscl](https://web.archive.org/web/20221117182050/https://www.utente.srn.gov.mz/mclient/acsscl){:target="_blank"}{:rel="noopener noreferrer"}
 
 Migração-SENAMI,
 Pré marcação para pedido de documentos de viagem, passaportes, DIRE, etc.
