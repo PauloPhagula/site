@@ -1,15 +1,18 @@
 # frozen_string_literal: true
+require "jekyll"
 
 task default: :serve
 
 desc "Serve site from container"
 task :serve do
-  sh "docker run --rm -it -v '#{__dir__}/vendor/bundle:/usr/local/bundle:Z' -v '#{__dir__}:/srv/jekyll:Z' -p 4000:4000 jekyll/jekyll:4 jekyll serve --watch --verbose --drafts"
+  Jekyll::Commands::Serve.process(
+    { "watch" => true, "verbose" => true, "drafts" => true, "port" => 4000 }
+  )
 end
 
 desc "Build site from container"
 task :build do
-  sh "docker run --rm -it -v '#{__dir__}/vendor/bundle:/usr/local/bundle:Z' -v '#{__dir__}:/srv/jekyll:Z' jekyll/jekyll:4 jekyll build --verbose --drafts"
+  Jekyll::Commands::Build.process({ "verbose" => true, "drafts" => true })
 end
 
 task :test do
