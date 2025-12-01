@@ -87,4 +87,4 @@ and didn't need to change the code.
 
 Despite that I'm thankful I found this issue for now I've learned this lesson.
 BTW, in FP circles developers call this thing we tried to do with `bind`
-[currying](https://www.sitepoint.com/currying-in-functional-javascript/).
+[currying](https://web.archive.org/web/20161227115944/https://www.sitepoint.com/currying-in-functional-javascript/).
