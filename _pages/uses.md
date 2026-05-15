@@ -27,7 +27,7 @@ See [/about](/about)
 ## What hardware do you use?
 
 - Laptop: MacBook Pro (13-inch, 2021, Apple M1 Pro Chip, 16GB RAM)
-- Keyboard: Microsoft Sculp Ergnonomic Keyboard
+- Keyboard: Microsoft Sculpt Ergonomic Keyboard
 - Mouse: Jelly Comb Vertical Mouse
 - Wireless headphones: Bose QC35 II
 
@@ -51,11 +51,15 @@ fee.
 - Multiplexer: tmux
 - Shell: fish
 - Editor: Code
-- Git: lazygit
+- Git: Lazygit
 - npm package manager: pnpm
 - macOS package manager: Homebrew
 - Colors: Night Owl
 - Font: JetBrains Nerd Font
+
+## Others
+
+- Internet: [Starlink](https://www.starlink.com/residential?referral=RC-DF-5674482-30565-53)
 
 ## What would be your dream setup?
 
@@ -63,4 +67,5 @@ I'd love to have a standing desk and a walking pad
 
 ---
 
-For someone who claims not to be Google fanboy I surely do use many of their services
+> [!NOTE]
+> This page contains referral links

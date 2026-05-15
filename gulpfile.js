@@ -11,10 +11,12 @@ import postcss from 'gulp-postcss';
 import cssnano from 'cssnano';
 import autoprefixer from 'autoprefixer';
 import sourcemaps from 'gulp-sourcemaps';
+
 const messages = {
   jekyllBuild: 'Running: $ jekyll build --drafts',
 };
 const __dirname = import.meta.dirname
+
 /*
  * Build the Jekyll Site
  * runs a child process in node that runs the jekyll commands
@@ -25,6 +27,7 @@ export const jekyllBuild = (done) => {
   const environment = process.env.JEKYLL_ENV || 'development';
   return childProcess.spawn('docker', ['run', '--rm', '-e', 'JEKYLL_ROOTLESS=1', '-e', `JEKYLL_ENV=${environment}`, '-v', `${__dirname}/vendor/bundle:/usr/local/bundle:Z`, '-v',`${__dirname}:/srv/jekyll:Z`, '-p', '4000:4000', 'jekyll/jekyll:4', 'jekyll', 'build'], { stdio: 'inherit' }).on('close', done);
 };
+
 /*
  * Rebuild Jekyll & reload page
  */
@@ -32,6 +35,7 @@ export const jekyllRebuild = gulp.series(jekyllBuild, (done) => {
   browserSync.reload();
   done();
 });
+
 /*
  * Compile and minify sass
  */
@@ -46,6 +50,7 @@ export const compileSass = () => {
     .pipe(browserSync.reload({ stream: true }))
     .pipe(gulp.dest('assets/css/'));
 };
+
 /**
  * Compile and minify js
  */
@@ -56,6 +61,7 @@ export const js = () => {
     .pipe(uglify())
     .pipe(gulp.dest('assets/js/'));
 };
+
 /*
  * Build the jekyll site and launch browser-sync
  */
@@ -71,6 +77,7 @@ export const browserSyncServe = gulp.series(compileSass, jekyllBuild, (done) => 
   });
   done();
 });
+
 /*
  * Compile fonts
  */
@@ -79,6 +86,7 @@ export const fonts = () => {
     .pipe(plumber())
     .pipe(gulp.dest('assets/fonts/'));
 };
+
 /*
  * Minify images
  */

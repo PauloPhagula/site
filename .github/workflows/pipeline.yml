@@ -5,6 +5,8 @@ name: Pipeline
 on:
   # Runs on pushes targeting the main branch
   push:
+    branches:
+      - main
   # Allows you to run workflow manually from the actions tab
   workflow_dispatch:
 
@@ -16,7 +18,7 @@ permissions:
 
 # Allow one concurrent deployment
 concurrency:
-  group: "pages"
+  group: 'pages'
   cancel-in-progress: true
 
 jobs:
@@ -42,9 +44,9 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.3'  # Not needed with a .ruby-version file
-          bundler-cache: true  # runs 'bundle install' and caches installed gems automatically
-          cache-version: 1  # Increment this number if you need to re-download cache gems
+          ruby-version: '3.3' # Not needed with a .ruby-version file
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+          cache-version: 1 # Increment this number if you need to re-download cache gems
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5

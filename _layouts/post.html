@@ -27,6 +27,14 @@ layout: base
       {% endif %}
     </div>
 
+    {% if page.deprecation_warning %}
+      <div class="article__deprecation_warning">
+        <p>
+        {{ page.deprecation_warning | markdownify }}
+        </p>
+      </div>
+    {% endif %}
+
     {% if page.excerpt %}
       <p class="article__excerpt">
         {{ page.excerpt }}

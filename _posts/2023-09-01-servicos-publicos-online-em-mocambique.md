@@ -3,6 +3,10 @@ layout: post
 title: Serviços públicos online em Moçambique
 date: 2023-09-01
 tags: community Mozambique services government
+deprecation_warning: >
+  Esta página está obsoleta. [Israel Matusse](https://www.linkedin.com/in/israel-matusse-0828a3239/)
+  fez um trabalho melhor e construiu um site com informação melhor organizada e actualizada.
+  Consulte a página em https://servicos-moz.israelmatusse.com/
 excerpt: >
   Esta página contém uma colecção de links para os serviços públicos online em
   Moçambique. O artigo original não é de minha autoria. Apenas tenho observado

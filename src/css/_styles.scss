@@ -586,6 +586,12 @@ background-color: white;
   content: "";
 }
 
+.article__deprecation_warning {
+  font-style: italic;
+  padding: 10px;
+  border: 2px solid $color-link;
+}
+
 .article__excerpt {
   font-style: italic;
   padding: 10px;
