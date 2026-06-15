@@ -16,7 +16,7 @@ on:
 jobs:
   zizmor:
     name: Workflow security scan
-    runs-on: ubuntu-slim
+    runs-on: ubuntu-latest
     permissions:
       contents: read
       security-events: write
@@ -29,3 +29,5 @@ jobs:
         uses: zizmorcore/zizmor-action@5f14fd08f7cf1cb1609c1e344975f152c7ee938d  # v0.5.6
         with:
           upload-sarif: true
+          advanced-security: false
+          annotations: true
