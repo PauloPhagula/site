@@ -6,9 +6,14 @@ on:
 jobs:
   check:
     runs-on: ubuntu-slim
+    permissions:
+      contents: read
+      pull-requests: write
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10  # v6
+        with:
+          persist-credentials: false
       - name: Fix links
-        uses: tmcw/notfoundbot@v3.0.0
+        uses: tmcw/notfoundbot@1f97e4c79fa3aeaa9b2b87b8cd2533f645fed82d  # v3.0.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
