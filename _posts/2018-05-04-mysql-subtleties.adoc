@@ -6,6 +6,7 @@ categories: Coding
 tags: Database MySQL SQL
 ---
 :page-liquid:
+:toc:
 
 MySQL is the most widely used database in the world. It is in the LAMP stack
 commonly used by Web Developers and supports many software bundles like
