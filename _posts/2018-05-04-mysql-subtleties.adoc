@@ -4,6 +4,10 @@ title: A few MySQL subtleties and how to go about them
 date: 2018-05-04 00:00:00 +0200
 categories: Coding
 tags: Database MySQL SQL
+excerpt: >
+  A walkthrough of MySQL quirks and gotchas — division by zero returning NULL,
+  zero dates, ignored CHECK constraints, encoding traps, and more — and how to
+  work around them.
 ---
 :page-liquid:
 :toc:

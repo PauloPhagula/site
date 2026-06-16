@@ -29,7 +29,7 @@ layout: base
 
     {% if page.excerpt %}
       <p class="article__excerpt">
-        {{ page.excerpt }}
+        {{ page.excerpt | strip_html | strip_newlines }}
       </p>
     {% endif %}
   </header>
