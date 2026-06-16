@@ -55,6 +55,68 @@
   pre {
     overflow-x: auto;
   }
+
+  /* Heading scale (preflight resets these; restore for non-prose contexts) */
+  h1, h2, h3, h4, h5, h6 {
+    margin: 20px 0 14px;
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--color-text);
+  }
+
+  h1 { font-size: 2em; }
+  h2 { font-size: 1.5em; }
+  h3 { font-size: 1.17em; }
+
+  /* Home page intro layout */
+  .intro {
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 600px) {
+    .intro {
+      flex-direction: column-reverse;
+    }
+  }
+
+  .img--circle {
+    border-radius: 50%;
+  }
+
+  /* Footer social icons */
+  .social a {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    color: #404040;
+  }
+
+  .social svg {
+    fill: #848d95;
+    width: 16px;
+    height: 16px;
+  }
+
+  html.dark .social svg {
+    fill: #9ca3af;
+  }
+
+  /* Screen-reader-only utility */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
 }
 
 @import "./asciidoctor.css";
