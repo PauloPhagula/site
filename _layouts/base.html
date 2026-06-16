@@ -7,54 +7,48 @@ layout: compress
   It seems you are interested in the source code, did you
   know it's open-source? See: https://github.com/PauloPhagula/site
 -->
-<html lang="{{ page.lang | default: site.lang | default: 'en' }}" class="no-js">
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
 
 {% include head.html %}
 
-<body>
+<body class="bg-[var(--color-background)] text-[var(--color-text)]">
   {% if site.google_tag_manager and jekyll.environment == 'production' %}
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{site.google_tag_manager}}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
   {% endif %}
 
-  <!--[if lte IE 9]>
-    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-  <![endif]-->
-
-  <header class="header">
-    <nav class="header__navigation">
-      <a href="/" class="home-link">Paulo Phagula</a>
-      <ul class="navigation">
-        <li><a class="page-link" href="/about" title="Learn more about me and this site">About</a></li>
-        <li><a class="page-link" href="/blog" title="Read my articles">Articles</a></li>
-        <li><a class="page-link" href="/talks" title="Talks">Talks</a></li>
-        <li><a class="page-link" href="/now" title="Check out what I can do for you">Now</a></li>
-        <li><a class="page-link" href="/uses" title="The tools I use to get work done">Uses</a></li>
-        <!--
-        <li><a class="page-link" href="/consulting" title="Check out what I can do for youCheck out what I can do for you">Consulting</a></li>
-        -->
+  <header class="header border-b border-zinc-200 dark:border-zinc-700">
+    <nav class="header__navigation mx-auto flex max-w-3xl items-center justify-between px-4 py-4">
+      <a href="/" class="home-link font-bold text-[var(--color-text)] no-underline">Paulo Phagula</a>
+      <ul class="navigation flex list-none gap-4 p-0">
+        <li><a class="page-link text-[var(--color-text)] hover:text-[var(--color-brand)] no-underline" href="/about" title="Learn more about me and this site">About</a></li>
+        <li><a class="page-link text-[var(--color-text)] hover:text-[var(--color-brand)] no-underline" href="/blog" title="Read my articles">Articles</a></li>
+        <li><a class="page-link text-[var(--color-text)] hover:text-[var(--color-brand)] no-underline" href="/talks" title="Talks">Talks</a></li>
+        <li><a class="page-link text-[var(--color-text)] hover:text-[var(--color-brand)] no-underline" href="/now" title="Check out what I can do for you">Now</a></li>
+        <li><a class="page-link text-[var(--color-text)] hover:text-[var(--color-brand)] no-underline" href="/uses" title="The tools I use to get work done">Uses</a></li>
       </ul>
+      <button id="theme-toggle"
+              class="ml-4 rounded border border-zinc-300 px-2 py-1 text-sm dark:border-zinc-700"
+              aria-label="Toggle dark mode">
+        <span class="dark:hidden">🌙</span>
+        <span class="hidden dark:inline">☀️</span>
+      </button>
     </nav>
-
-    <!--
-    {% include search.html %}
-    -->
   </header>
 
-  <main>
+  <main class="mx-auto max-w-3xl px-4 py-8">
     <section id="content">
       {{ content }}
     </section>
-    <div class="clearfix"></div>
   </main>
 
-  <footer class="footer">
-    <ul class="social">
-      <li><a href="mailto:{{site.author.email}}" target="_blank" title="Drop me an email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
-      <li><a href="https://github.com/PauloPhagula" target="_blank" title="Fork my code on Github"><i class="fa fa-github" aria-hidden="true"></i></a></li>
-      <li><a href="https://www.linkedin.com/in/paulophagula" target="_blank" title="Connect with me on Linkedin if you, too, need to put up with this crap against your will"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-      <li><a href="/feed.rss.xml" target="_blank" title="Stay up-to-date with all the blog posts via RSS"><i class="fa fa-feed" aria-hidden="true"></i></a></li>
+  <footer class="footer border-t border-zinc-200 dark:border-zinc-700 py-8 text-center text-sm text-zinc-500">
+    <ul class="social flex justify-center gap-4 list-none p-0 mb-4">
+      <li><a href="mailto:{{site.author.email}}" target="_blank" title="Drop me an email" class="hover:text-[var(--color-brand)]">Email</a></li>
+      <li><a href="https://github.com/PauloPhagula" target="_blank" title="Fork my code on Github" class="hover:text-[var(--color-brand)]">GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/paulophagula" target="_blank" title="Connect with me on Linkedin" class="hover:text-[var(--color-brand)]">LinkedIn</a></li>
+      <li><a href="/feed.rss.xml" target="_blank" title="Stay up-to-date with all the blog posts via RSS" class="hover:text-[var(--color-brand)]">RSS</a></li>
     </ul>
     <p class="copyright">
       Copyright &copy; 2014 - {{ site.time | date: '%Y' }} {{ site.author.name }}.<br/>
@@ -62,20 +56,15 @@ layout: compress
     </p>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
-
   {% for js_name in page.extra_js %}
     <script src="{{ js_name }}"></script>
   {% endfor %}
 
-  <script type="text/javascript">
-    var htmlElement = document.getElementsByTagName('html')[0];
-    htmlElement.style.display = 'block';
-    htmlElement.style.overflow = '';
+  <script>
+    document.getElementById('theme-toggle').addEventListener('click', function () {
+      var nowDark = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', nowDark ? 'dark' : 'light');
+    });
   </script>
 </body>
 </html>
