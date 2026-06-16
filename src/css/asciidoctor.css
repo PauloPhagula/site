@@ -97,3 +97,12 @@ pre .conum[data-value] {
 .colist > table > tbody > tr > td {
   border: none;
 }
+
+/* Dark mode overrides */
+html.dark .admonitionblock td.icon .icon-tip:before {
+  color: #e8e8e8;
+}
+
+html.dark .conum[data-value] {
+  background-color: rgba(255, 255, 255, 0.2);
+}
