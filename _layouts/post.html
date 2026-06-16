@@ -3,32 +3,30 @@ layout: base
 ---
 {% assign sorted_tags = page.tags | sort %}
 {% assign category = page.categories | sort | limit1 %}
-<article>
-  <h1 class="article__title">{{ page.title }}</h1>
-  <header>
-    <div class="article__meta">
-      <i class="fa fa-calendar-o" aria-hidden="true"></i>
+<article class="prose prose-lg dark:prose-invert mx-auto max-w-[70ch]
+                prose-headings:font-sans
+                prose-code:font-mono prose-code:before:content-none prose-code:after:content-none
+                prose-pre:bg-zinc-50 dark:prose-pre:bg-zinc-900">
+
+  <header class="not-prose mb-8">
+    <h1 class="article__title text-3xl font-bold mb-2">{{ page.title }}</h1>
+    <div class="article__meta text-sm text-zinc-500">
       <time
         class="article__post-date"
         datetime="{{ page.date | date_to_xmlschema }}"
         itemprop="datePublished"
         content="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%d %b %Y" }}</time>
-      |
-      <i class="fa fa-folder-o" aria-hidden="true"></i>
-      {{ category }}
-      <br/>
+      {% if category %} · {{ category }}{% endif %}
       {% if page.tags.size > 0 %}
         <span class="article__tags">
-          <i class="fa fa-tags" aria-hidden="true"></i>
-          {% for tag in sorted_tags %}
-            {{ tag }}&nbsp;
-          {% endfor %}
+          ·
+          {% for tag in sorted_tags %}{{ tag }}{% unless forloop.last %}, {% endunless %}{% endfor %}
         </span>
       {% endif %}
     </div>
 
     {% if page.excerpt %}
-      <p class="article__excerpt">
+      <p class="article__excerpt mt-3 text-zinc-600 dark:text-zinc-400">
         {{ page.excerpt | strip_html | strip_newlines }}
       </p>
     {% endif %}
@@ -36,77 +34,42 @@ layout: base
 
   {{ content }}
 
-  <hr/>
-
-  <div class="sharing">
-    <p>
-      Share this on:
-      <a title="Share article on Email" href="mailto:?subject={{ page.title }}&body={{ page.url | escape | prepend: site.baseurl | prepend: site.url | url_encode}}">Mail</a>
-      -
-      <a
+  <div class="not-prose mt-8 pt-6 border-t border-zinc-200 dark:border-zinc-700">
+    <div class="sharing text-sm text-zinc-500">
+      Share:
+      <a class="hover:text-[var(--color-brand)]" title="Share article on Email" href="mailto:?subject={{ page.title }}&body={{ page.url | escape | prepend: site.baseurl | prepend: site.url | url_encode}}">Email</a>
+      ·
+      <a class="hover:text-[var(--color-brand)]"
         title="Share article on Twitter"
         target="_blank"
         href="https://twitter.com/intent/tweet?url={{ page.url | escape | prepend: site.baseurl | prepend: site.url | url_encode}}&text={{ page.title | uri_escape }}&via=dareenzo">Twitter</a>
-      -
-      <a
+      ·
+      <a class="hover:text-[var(--color-brand)]"
         title="Share article on Facebook"
         target="_blank"
         href="https://www.facebook.com/sharer.php?u={{ page.url | escape | prepend: site.baseurl | prepend: site.url | url_encode}}">Facebook</a>
-    </p>
-  </div>
+    </div>
 
-  <div class="pagination" style="display: none !important">
-    {% if page.previous %}
-      <div class="pagination__previous-url">
-        <a
-          href="{{ page.previous.url }}"
-          title="{{ page.previous.title }}"
-          rel="prev">
-          <span class="pagination__previous-arrow">
-            <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
-          </span>
-          <span class="pagination__previous-title">{{ page.previous.title }}</span>
-        </a>
-      </div>
-    {% endif %}
-
-    {% if page.next %}
-      <div class="pagination__next-url">
-        <a
-          href="{{ page.next.url }}"
-          title="{{ page.next.title }}"
-          rel="next">
-          <span class="pagination__next-title">{{ page.next.title }}</span>
-          <span class="pagination__next-arrow">
-            <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-          </span>
-        </a>
-      </div>
-    {% endif %}
-    <div class="clearfix"></div>
-  </div>
-
-  <div class="related-posts">
     {% if content and page.related %}
-      <h5>RELATED POSTS:</h5>
-      <ul class="tags">
-        {% for post in site.posts %}
-          {% if page.related contains post.title or page.related contains post.url %}
-            <li>
-              <a href="{{ post.url }}" title="{{ post.title }} {{ post.content | trim: 200 }}">{{ post.title }}</a>
-            </li>
-          {% endif %}
-        {% endfor %}
-      </ul>
+      <div class="related-posts mt-6">
+        <h5 class="text-xs font-semibold uppercase tracking-wide text-zinc-500 mb-2">Related Posts</h5>
+        <ul class="tags list-none p-0 space-y-1">
+          {% for post in site.posts %}
+            {% if page.related contains post.title or page.related contains post.url %}
+              <li>
+                <a class="hover:text-[var(--color-brand)]" href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
     {% endif %}
   </div>
-
-  <hr/>
 
   {% if jekyll.environment == "production" %}
-    <div class="comments">
-      <p>Please, use
-        <a href="https://help.disqus.com/customer/portal/articles/665057-syntax-highlighting">syntax highlighting</a>
+    <div class="not-prose comments mt-8 pt-6 border-t border-zinc-200 dark:border-zinc-700">
+      <p class="text-sm text-zinc-500 mb-4">Please, use
+        <a href="https://help.disqus.com/customer/portal/articles/665057-syntax-highlighting" class="hover:text-[var(--color-brand)]">syntax highlighting</a>
         in your comments, to make them more readable.</p>
       <div id="disqus_thread"></div>
       <noscript>Please, enable JavaScript to see the

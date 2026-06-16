@@ -1,8 +1,9 @@
 ---
 layout: base
 ---
-<article>
-  <h1>{{ page.title }}</h1>
-  <div class="clearfix"></div>
+<article class="prose prose-lg dark:prose-invert mx-auto max-w-[70ch]
+                prose-headings:font-sans
+                prose-code:font-mono prose-code:before:content-none prose-code:after:content-none">
+  <h1 class="not-prose text-3xl font-bold mb-6">{{ page.title }}</h1>
   {{ content }}
 </article>
