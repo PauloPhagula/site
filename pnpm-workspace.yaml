@@ -1,0 +1,10 @@
+allowBuilds:
+  '@parcel/watcher': true
+  gifsicle: true
+  mozjpeg: true
+  optipng-bin: true
+onlyBuiltDependencies:
+  - '@parcel/watcher'
+  - gifsicle
+  - mozjpeg
+  - optipng-bin

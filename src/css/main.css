@@ -1,0 +1,135 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* Use class-based dark mode (toggled via localStorage) instead of prefers-color-scheme */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@source "../../_layouts/**/*.html";
+@source "../../_includes/**/*.html";
+@source "../../_pages/**/*";
+@source "../../_posts/**/*";
+@source "../../_drafts/**/*";
+@source "../../_talks/**/*";
+
+@theme {
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-heading: "Lora", Georgia, "Times New Roman", serif;
+  --font-serif: Georgia, "Times New Roman", Times, serif;
+  --font-mono: Menlo, Monaco, Consolas, "Liberation Mono", "Roboto Mono",
+    "Courier New", Courier, monospace;
+
+  --text-base: 18px;
+  --leading-base: 1.5;
+
+  --color-brand: #2a7ae2;
+  --color-text: #111;
+  --color-background: #fdfdfd;
+  --color-link: #000;
+  --color-link-hover: #09c;
+  --color-grey: #828282;
+  --color-grey-light: color-mix(in srgb, #828282 60%, #fff);
+  --color-grey-dark: color-mix(in srgb, #828282 75%, #000);
+}
+
+@layer base {
+  html {
+    color: var(--color-text);
+    background-color: var(--color-background);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: var(--leading-base);
+  }
+
+  html.dark {
+    --color-text: #e8e8e8;
+    --color-background: #111;
+    --color-link: #e8e8e8;
+    --color-link-hover: #4492ff;
+  }
+
+  code,
+  pre {
+    font-family: var(--font-mono);
+  }
+
+  pre {
+    overflow-x: auto;
+  }
+
+  /* Heading scale (preflight resets these; restore for non-prose contexts) */
+  h1, h2, h3, h4, h5, h6 {
+    margin: 20px 0 14px;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--color-text);
+  }
+
+  h1 { font-size: 2em; }
+  h2 { font-size: 1.5em; }
+  h3 { font-size: 1.17em; }
+
+  /* Home page intro layout */
+  .intro {
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 600px) {
+    .intro {
+      flex-direction: column-reverse;
+    }
+  }
+
+  .img--circle {
+    border-radius: 50%;
+  }
+
+  /* Footer social icons */
+  .social a {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    color: #404040;
+  }
+
+  .social svg {
+    fill: #848d95;
+    width: 16px;
+    height: 16px;
+  }
+
+  html.dark .social svg {
+    fill: #9ca3af;
+  }
+
+  /* Screen-reader-only utility */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+}
+
+@import "./asciidoctor.css";
+@import "./code-highlight.css";
+
+@media print {
+  .no-print,
+  .header,
+  .footer,
+  .sharing,
+  .comments {
+    display: none !important;
+  }
+}

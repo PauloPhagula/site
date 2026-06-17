@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "prepare": "husky"
+    "prepare": "husky",
+    "css:dev": "tailwindcss -i src/css/main.css -o assets/css/main.css --watch",
+    "css:build": "tailwindcss -i src/css/main.css -o assets/css/main.css --minify"
   },
   "repository": {
     "type": "git",
@@ -20,28 +22,23 @@
   "author": "Paulo Phagula <paulo.phagula@gmail.com> (https://paulophagula.com/)",
   "license": "UNLICENSED",
   "devDependencies": {
+    "@tailwindcss/cli": "^4.1.0",
+    "@tailwindcss/typography": "^0.5.16",
     "browser-sync": "^3.0.4",
-    "cssnano": "^7.1.2",
     "gulp": "^5.0.1",
     "gulp-cli": "^3.1.0",
-    "gulp-postcss": "^10.0.0",
     "husky": "^9.1.7",
-    "lint-staged": "^16.2.7",
-    "postcss": "^8.5.6"
+    "lint-staged": "^16.2.7"
   },
   "lint-staged": {
     ".md": "markdownlint",
     "*.org": "org-lint"
   },
   "dependencies": {
-    "autoprefixer": "^10.4.23",
     "gulp-concat": "^2.6.1",
     "gulp-imagemin": "^9.2.0",
     "gulp-plumber": "^1.2.1",
-    "gulp-sass": "^6.0.1",
-    "gulp-sourcemaps": "^3.0.0",
-    "gulp-uglify": "^3.0.2",
-    "sass": "^1.97.3"
+    "gulp-uglify": "^3.0.2"
   },
   "pnpm": {
     "overrides": {
