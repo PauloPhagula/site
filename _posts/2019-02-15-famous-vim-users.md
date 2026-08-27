@@ -137,6 +137,6 @@ uses Vim, and you can see him editing and saving a document with it on
 ## Refs
 
 - [Famous Emacs users (that are not famous for using Emacs) - Original Post for Emacs](http://wenshanren.org/?p=418)
-- [Reddit Thread in response to the Emacs post](https://www.reddit.com/r/vim/comments/34vffh/famous_vim_users/)
+- [Reddit Thread in response to the Emacs post](https://web.archive.org/web/20230604234907/https://www.reddit.com/r/vim/comments/34vffh/famous_vim_users/)
 - [Quora - Who are famous Perl Programmers who use Vim/gVim?](https://www.quora.com/Who-are-famous-Perl-Programmers-who-use-Vim-gVim)
 

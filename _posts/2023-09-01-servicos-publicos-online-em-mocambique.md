@@ -21,7 +21,7 @@ Pré marcação para pedidos de Bilhete de Identidade BI
 [https://www.dnic.gov.mz/](https://www.dnic.gov.mz/){:target="_blank"}{:rel="noopener noreferrer"}
 
 Registos e Notariados
-Link para pre marcação: [https://www.utente.srn.gov.mz/mclient/acsscl](https://www.utente.srn.gov.mz/mclient/acsscl){:target="_blank"}{:rel="noopener noreferrer"}
+Link para pre marcação: [https://www.utente.srn.gov.mz/mclient/acsscl](https://web.archive.org/web/20221117182050/https://www.utente.srn.gov.mz/mclient/acsscl){:target="_blank"}{:rel="noopener noreferrer"}
 
 Migração-SENAMI,
 Pré marcação para pedido de documentos de viagem, passaportes, DIRE, etc.
@@ -29,11 +29,11 @@ Pré marcação para pedido de documentos de viagem, passaportes, DIRE, etc.
 
 INATRO
 Ver o estado da sua carta, muitas
-[http://consulta.inatter.gov.mz/multa](http://consulta.inatter.gov.mz/multa){:target="_blank"}{:rel="noopener noreferrer"}
+[http://consulta.inatter.gov.mz/multa](https://web.archive.org/web/20220325112815/http://consulta.inatter.gov.mz/multa){:target="_blank"}{:rel="noopener noreferrer"}
 
 Autoridade Tributária
 Quem precisa de NUIT
 [https://nuit.at.gov.mz/nuit/bootstrap/theme/work/Impressao_Carta.aspx](https://nuit.at.gov.mz/nuit/bootstrap/theme/work/Impressao_Carta.aspx){:target="_blank"}{:rel="noopener noreferrer"}
 
 PGR - Denúncias de Fraudes
-[https://fraude-denuncias.pgr.gov.mz](https://fraude-denuncias.pgr.gov.mz/){:target="_blank"}{:rel="noopener noreferrer"}
+[https://fraude-denuncias.pgr.gov.mz](https://web.archive.org/web/20230203130619/https://fraude-denuncias.pgr.gov.mz/){:target="_blank"}{:rel="noopener noreferrer"}
