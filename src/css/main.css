@@ -16,7 +16,7 @@
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   --font-heading: "Libre Baskerville", Georgia, "Times New Roman", serif;
   --font-serif: Georgia, "Times New Roman", Times, serif;
-  --font-mono: "Geist Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Roboto Mono",
+  --font-mono: "DM Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Roboto Mono",
     "Courier New", Courier, monospace;
 
   --leading-base: 1.5;
@@ -64,7 +64,7 @@
   h1, h2, h3, h4, h5, h6 {
     margin: 20px 0 14px;
     font-family: var(--font-heading);
-    font-weight: 700;
+    font-weight: 600;
     line-height: 1.25;
     color: var(--color-text);
   }
@@ -133,6 +133,11 @@
 .prose blockquote p::before,
 .prose blockquote p::after {
   content: none;
+}
+
+/* Inline code uses the medium weight (prose-code:font-medium); blocks stay regular */
+.prose pre code {
+  font-weight: 400;
 }
 
 /* Unlayered so these beat the prose link styles */
