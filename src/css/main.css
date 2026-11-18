@@ -128,6 +128,13 @@
   }
 }
 
+/* The blockquote border already marks a quotation. prose would add quote marks to every
+   paragraph, because AsciiDoctor wraps each one in its own div. Unlayered so it beats prose. */
+.prose blockquote p::before,
+.prose blockquote p::after {
+  content: none;
+}
+
 /* Unlayered so these beat the prose link styles */
 .heading-anchor {
   display: inline-block;
