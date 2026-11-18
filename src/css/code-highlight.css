@@ -1,0 +1,12 @@
+/*
+ * Code block layout, shared by Markdown (kramdown) and AsciiDoc (Asciidoctor) blocks.
+ * Both are highlighted by Rouge; the token colours live in rouge.css.
+ */
+pre.highlight {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  line-height: 1.45;
+  border-radius: 4px;
+  padding: 0.75em 1em;
+  overflow-x: auto;
+}

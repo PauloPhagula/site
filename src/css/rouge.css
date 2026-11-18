@@ -1,0 +1,234 @@
+/* Rouge token colours (GitHub theme). Generated: bundle exec rougify style github.light|github.dark --scope <scope> */
+pre.highlight table td { padding: 5px; }
+pre.highlight table pre { margin: 0; }
+pre.highlight, pre.highlight .w {
+  color: #24292f;
+  background-color: #f6f8fa;
+}
+pre.highlight .k, pre.highlight .kd, pre.highlight .kn, pre.highlight .kp, pre.highlight .kr, pre.highlight .kt, pre.highlight .kv {
+  color: #cf222e;
+}
+pre.highlight .gr {
+  color: #f6f8fa;
+}
+pre.highlight .gd {
+  color: #82071e;
+  background-color: #ffebe9;
+}
+pre.highlight .nb {
+  color: #953800;
+}
+pre.highlight .nc {
+  color: #953800;
+}
+pre.highlight .no {
+  color: #953800;
+}
+pre.highlight .nn {
+  color: #953800;
+}
+pre.highlight .sr {
+  color: #116329;
+}
+pre.highlight .na {
+  color: #116329;
+}
+pre.highlight .nt {
+  color: #116329;
+}
+pre.highlight .gi {
+  color: #116329;
+  background-color: #dafbe1;
+}
+pre.highlight .ges {
+  font-weight: bold;
+  font-style: italic;
+}
+pre.highlight .kc {
+  color: #0550ae;
+}
+pre.highlight .l, pre.highlight .ld, pre.highlight .m, pre.highlight .mb, pre.highlight .mf, pre.highlight .mh, pre.highlight .mi, pre.highlight .il, pre.highlight .mo, pre.highlight .mx {
+  color: #0550ae;
+}
+pre.highlight .sb {
+  color: #0550ae;
+}
+pre.highlight .bp {
+  color: #0550ae;
+}
+pre.highlight .ne {
+  color: #0550ae;
+}
+pre.highlight .nl {
+  color: #0550ae;
+}
+pre.highlight .py {
+  color: #0550ae;
+}
+pre.highlight .nv, pre.highlight .vc, pre.highlight .vg, pre.highlight .vi, pre.highlight .vm {
+  color: #0550ae;
+}
+pre.highlight .o, pre.highlight .ow {
+  color: #0550ae;
+}
+pre.highlight .gh {
+  color: #0550ae;
+  font-weight: bold;
+}
+pre.highlight .gu {
+  color: #0550ae;
+  font-weight: bold;
+}
+pre.highlight .s, pre.highlight .sa, pre.highlight .sc, pre.highlight .dl, pre.highlight .sd, pre.highlight .s2, pre.highlight .se, pre.highlight .sh, pre.highlight .sx, pre.highlight .s1, pre.highlight .ss {
+  color: #0a3069;
+}
+pre.highlight .nd {
+  color: #8250df;
+}
+pre.highlight .nf, pre.highlight .fm {
+  color: #8250df;
+}
+pre.highlight .err {
+  color: #f6f8fa;
+  background-color: #82071e;
+}
+pre.highlight .c, pre.highlight .ch, pre.highlight .cd, pre.highlight .cm, pre.highlight .cp, pre.highlight .cpf, pre.highlight .c1, pre.highlight .cs {
+  color: #6e7781;
+}
+pre.highlight .gl {
+  color: #6e7781;
+}
+pre.highlight .gt {
+  color: #6e7781;
+}
+pre.highlight .ni {
+  color: #24292f;
+}
+pre.highlight .si {
+  color: #24292f;
+}
+pre.highlight .ge {
+  color: #24292f;
+  font-style: italic;
+}
+pre.highlight .gs {
+  color: #24292f;
+  font-weight: bold;
+}
+
+html.dark pre.highlight table td { padding: 5px; }
+html.dark pre.highlight table pre { margin: 0; }
+html.dark pre.highlight, html.dark pre.highlight .w {
+  color: #c9d1d9;
+  background-color: #161b22;
+}
+html.dark pre.highlight .k, html.dark pre.highlight .kd, html.dark pre.highlight .kn, html.dark pre.highlight .kp, html.dark pre.highlight .kr, html.dark pre.highlight .kt, html.dark pre.highlight .kv {
+  color: #ff7b72;
+}
+html.dark pre.highlight .gr {
+  color: #f0f6fc;
+}
+html.dark pre.highlight .gd {
+  color: #ffdcd7;
+  background-color: #67060c;
+}
+html.dark pre.highlight .nb {
+  color: #ffa657;
+}
+html.dark pre.highlight .nc {
+  color: #ffa657;
+}
+html.dark pre.highlight .no {
+  color: #ffa657;
+}
+html.dark pre.highlight .nn {
+  color: #ffa657;
+}
+html.dark pre.highlight .sr {
+  color: #7ee787;
+}
+html.dark pre.highlight .na {
+  color: #7ee787;
+}
+html.dark pre.highlight .nt {
+  color: #7ee787;
+}
+html.dark pre.highlight .gi {
+  color: #aff5b4;
+  background-color: #033a16;
+}
+html.dark pre.highlight .ges {
+  font-weight: bold;
+  font-style: italic;
+}
+html.dark pre.highlight .kc {
+  color: #79c0ff;
+}
+html.dark pre.highlight .l, html.dark pre.highlight .ld, html.dark pre.highlight .m, html.dark pre.highlight .mb, html.dark pre.highlight .mf, html.dark pre.highlight .mh, html.dark pre.highlight .mi, html.dark pre.highlight .il, html.dark pre.highlight .mo, html.dark pre.highlight .mx {
+  color: #79c0ff;
+}
+html.dark pre.highlight .sb {
+  color: #79c0ff;
+}
+html.dark pre.highlight .bp {
+  color: #79c0ff;
+}
+html.dark pre.highlight .ne {
+  color: #79c0ff;
+}
+html.dark pre.highlight .nl {
+  color: #79c0ff;
+}
+html.dark pre.highlight .py {
+  color: #79c0ff;
+}
+html.dark pre.highlight .nv, html.dark pre.highlight .vc, html.dark pre.highlight .vg, html.dark pre.highlight .vi, html.dark pre.highlight .vm {
+  color: #79c0ff;
+}
+html.dark pre.highlight .o, html.dark pre.highlight .ow {
+  color: #79c0ff;
+}
+html.dark pre.highlight .gh {
+  color: #1f6feb;
+  font-weight: bold;
+}
+html.dark pre.highlight .gu {
+  color: #1f6feb;
+  font-weight: bold;
+}
+html.dark pre.highlight .s, html.dark pre.highlight .sa, html.dark pre.highlight .sc, html.dark pre.highlight .dl, html.dark pre.highlight .sd, html.dark pre.highlight .s2, html.dark pre.highlight .se, html.dark pre.highlight .sh, html.dark pre.highlight .sx, html.dark pre.highlight .s1, html.dark pre.highlight .ss {
+  color: #a5d6ff;
+}
+html.dark pre.highlight .nd {
+  color: #d2a8ff;
+}
+html.dark pre.highlight .nf, html.dark pre.highlight .fm {
+  color: #d2a8ff;
+}
+html.dark pre.highlight .err {
+  color: #f0f6fc;
+  background-color: #8e1519;
+}
+html.dark pre.highlight .c, html.dark pre.highlight .ch, html.dark pre.highlight .cd, html.dark pre.highlight .cm, html.dark pre.highlight .cp, html.dark pre.highlight .cpf, html.dark pre.highlight .c1, html.dark pre.highlight .cs {
+  color: #8b949e;
+}
+html.dark pre.highlight .gl {
+  color: #8b949e;
+}
+html.dark pre.highlight .gt {
+  color: #8b949e;
+}
+html.dark pre.highlight .ni {
+  color: #c9d1d9;
+}
+html.dark pre.highlight .si {
+  color: #c9d1d9;
+}
+html.dark pre.highlight .ge {
+  color: #c9d1d9;
+  font-style: italic;
+}
+html.dark pre.highlight .gs {
+  color: #c9d1d9;
+  font-weight: bold;
+}

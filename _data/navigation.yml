@@ -1,0 +1,15 @@
+- title: About
+  url: /about
+  hint: Learn more about me and this site
+- title: Articles
+  url: /blog
+  hint: Read my articles
+- title: Talks
+  url: /talks
+  hint: Talks
+- title: Now
+  url: /now
+  hint: Check out what I can do for you
+- title: Uses
+  url: /uses
+  hint: The tools I use to get work done

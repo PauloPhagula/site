@@ -7,54 +7,68 @@ layout: compress
   It seems you are interested in the source code, did you
   know it's open-source? See: https://github.com/PauloPhagula/site
 -->
-<html lang="{{ page.lang | default: site.lang | default: 'en' }}" class="no-js">
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
 
 {% include head.html %}
 
-<body>
+<body class="bg-[var(--color-background)] text-[var(--color-text)]">
   {% if site.google_tag_manager and jekyll.environment == 'production' %}
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{site.google_tag_manager}}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
   {% endif %}
 
-  <!--[if lte IE 9]>
-    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-  <![endif]-->
+  <a href="#content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:rounded focus:bg-[var(--color-background)] focus:px-3 focus:py-2 focus:text-[var(--color-text)]">Skip to main content</a>
 
+  {% assign path_parts = page.url | split: '/' %}
   <header class="header">
-    <nav class="header__navigation">
-      <a href="/" class="home-link">Paulo Phagula</a>
-      <ul class="navigation">
-        <li><a class="page-link" href="/about" title="Learn more about me and this site">About</a></li>
-        <li><a class="page-link" href="/blog" title="Read my articles">Articles</a></li>
-        <li><a class="page-link" href="/talks" title="Talks">Talks</a></li>
-        <li><a class="page-link" href="/now" title="Check out what I can do for you">Now</a></li>
-        <li><a class="page-link" href="/uses" title="The tools I use to get work done">Uses</a></li>
-        <!--
-        <li><a class="page-link" href="/consulting" title="Check out what I can do for youCheck out what I can do for you">Consulting</a></li>
-        -->
-      </ul>
+    <nav aria-label="Primary" class="header__navigation mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-x-6 gap-y-4 px-4 py-6 sm:py-10">
+      <a href="/" class="home-link whitespace-nowrap font-bold text-[var(--color-text)] no-underline">Paulo Phagula</a>
+      <div class="flex flex-wrap items-center gap-x-3 gap-y-2 sm:gap-x-6">
+        <ul class="navigation flex list-none flex-wrap gap-x-4 gap-y-1 sm:gap-x-6 p-0 text-sm font-medium">
+          {% for item in site.data.navigation %}
+            {% assign item_section = item.url | remove_first: '/' %}
+            <li><a class="page-link text-[var(--color-text)] hover:text-[var(--color-brand)] no-underline aria-[current=page]:underline aria-[current=page]:underline-offset-4" href="{{ item.url }}" title="{{ item.hint }}"{% if path_parts[1] == item_section %} aria-current="page"{% endif %}>{{ item.title }}</a></li>
+          {% endfor %}
+        </ul>
+        <button id="theme-toggle" type="button" class="inline-flex size-6 items-center justify-center rounded text-[var(--color-text)] hover:text-[var(--color-brand)] [&_svg]:size-4">
+          <span class="dark:hidden">{% include feather/moon.svg %}<span class="sr-only">Switch to dark theme</span></span>
+          <span class="hidden dark:inline">{% include feather/sun.svg %}<span class="sr-only">Switch to light theme</span></span>
+        </button>
+      </div>
     </nav>
-
-    <!--
-    {% include search.html %}
-    -->
   </header>
 
-  <main>
-    <section id="content">
-      {{ content }}
-    </section>
-    <div class="clearfix"></div>
+  <main id="content" tabindex="-1" class="mx-auto max-w-3xl px-4 focus:outline-none">
+    {{ content }}
   </main>
 
-  <footer class="footer">
-    <ul class="social">
-      <li><a href="mailto:{{site.author.email}}" target="_blank" title="Drop me an email"><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
-      <li><a href="https://github.com/PauloPhagula" target="_blank" title="Fork my code on Github"><i class="fa fa-github" aria-hidden="true"></i></a></li>
-      <li><a href="https://www.linkedin.com/in/paulophagula" target="_blank" title="Connect with me on Linkedin if you, too, need to put up with this crap against your will"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-      <li><a href="/feed.rss.xml" target="_blank" title="Stay up-to-date with all the blog posts via RSS"><i class="fa fa-feed" aria-hidden="true"></i></a></li>
+  <footer class="footer py-12 text-center text-xs text-zinc-500 dark:text-zinc-400">
+    <ul class="social list-none p-0 m-0 mb-4">
+      <li class="inline px-1">
+        <a class="hover:text-[var(--color-brand)]" href="mailto:{{site.author.email}}" target="_blank" title="Drop me an email">
+          <span aria-hidden="true">{% include feather/mail.svg %}</span>
+          <span class="sr-only">Email</span>
+        </a>
+      </li>
+      <li class="inline px-1">
+        <a class="hover:text-[var(--color-brand)]" href="https://github.com/PauloPhagula" target="_blank" title="Fork my code on Github">
+          <span aria-hidden="true">{% include feather/github.svg %}</span>
+          <span class="sr-only">GitHub</span>
+        </a>
+      </li>
+      <li class="inline px-1">
+        <a class="hover:text-[var(--color-brand)]" href="https://www.linkedin.com/in/paulophagula" target="_blank" title="Connect with me on Linkedin">
+          <span aria-hidden="true">{% include feather/linkedin.svg %}</span>
+          <span class="sr-only">LinkedIn</span>
+        </a>
+      </li>
+      <li class="inline px-1">
+        <a class="hover:text-[var(--color-brand)]" href="/feed.rss.xml" target="_blank" title="Stay up-to-date with all the blog posts via RSS">
+          <span aria-hidden="true">{% include feather/rss.svg %}</span>
+          <span class="sr-only">RSS</span>
+        </a>
+      </li>
     </ul>
     <p class="copyright">
       Copyright &copy; 2014 - {{ site.time | date: '%Y' }} {{ site.author.name }}.<br/>
@@ -62,20 +76,93 @@ layout: compress
     </p>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/toolbar/prism-toolbar.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
-
   {% for js_name in page.extra_js %}
     <script src="{{ js_name }}"></script>
   {% endfor %}
 
-  <script type="text/javascript">
-    var htmlElement = document.getElementsByTagName('html')[0];
-    htmlElement.style.display = 'block';
-    htmlElement.style.overflow = '';
+  <script>
+    /* Let readers link to a section: add a "#" anchor to every heading that has an id. */
+    document.querySelectorAll('.prose :is(h2, h3, h4, h5, h6)[id]').forEach(function (heading) {
+      var anchor = document.createElement('a');
+      anchor.className = 'heading-anchor';
+      anchor.href = '#' + heading.id;
+      anchor.setAttribute('aria-label', 'Link to section: ' + heading.textContent.trim());
+      heading.appendChild(anchor);
+    });
+
+  </script>
+
+  <script>
+    /* Theme toggle. No pinned value means "follow the OS". A value is pinned only when the
+       reader picks a scheme that differs from the OS, and it is never dropped later just
+       because the OS changes to match it. The pinned value lives in memory too, so the
+       button still works when localStorage is blocked. */
+    (function () {
+      var root = document.documentElement;
+      var meta = document.querySelector('meta[name="color-scheme"]');
+      var query = window.matchMedia('(prefers-color-scheme: dark)');
+      var pinned = readStored() || null;
+
+      /* Returns 'light', 'dark' or null, or undefined when storage is blocked. */
+      function readStored() {
+        try {
+          var value = localStorage.getItem('theme');
+          return value === 'light' || value === 'dark' ? value : null;
+        } catch (e) {
+          return undefined;
+        }
+      }
+
+      function syncFromStorage() {
+        var stored = readStored();
+        if (stored !== undefined) {
+          pinned = stored;
+        }
+        apply();
+      }
+
+      function apply() {
+        root.classList.toggle('dark', pinned ? pinned === 'dark' : query.matches);
+        meta.content = pinned || 'light dark';
+      }
+
+      document.getElementById('theme-toggle').addEventListener('click', function () {
+        var target = root.classList.contains('dark') ? 'light' : 'dark';
+        var system = query.matches ? 'dark' : 'light';
+        pinned = target === system ? null : target;
+        try {
+          if (pinned) {
+            localStorage.setItem('theme', pinned);
+          } else {
+            localStorage.removeItem('theme');
+          }
+        } catch (e) {}
+        apply();
+      });
+
+      window.addEventListener('storage', function (event) {
+        if (event.key === 'theme' || event.key === null) {
+          syncFromStorage();
+        }
+      });
+      window.addEventListener('pageshow', function (event) {
+        if (event.persisted) {
+          syncFromStorage();
+        }
+      });
+      query.addEventListener('change', apply);
+    })();
+  </script>
+
+  <script>
+    /* Code blocks that scroll horizontally must be reachable by keyboard. */
+    document.querySelectorAll('pre').forEach(function (pre) {
+      if (pre.scrollWidth > pre.clientWidth) {
+        pre.tabIndex = 0;
+        pre.setAttribute('role', 'region');
+        pre.setAttribute('aria-label', 'Code sample');
+      }
+    });
   </script>
 </body>
 </html>

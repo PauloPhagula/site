@@ -35,15 +35,15 @@ permalink: /blog/:year/:month/:day/:title/
 
 # Build settings
 markdown: kramdown
-highlighter: none
+highlighter: rouge
 kramdown:
   input: GFM
   hard_wrap: false
   auto_ids: true
   toc_levels: 1..6
   smart_quotes: lsquo,rsquo,ldquo,rdquo
-  syntax_highlighter_opts:
-    disable: true
+  syntax_highlighter: rouge
+  footnote_backlink: Back to text
 
 plugins:
   - jekyll-asciidoc
@@ -55,6 +55,7 @@ plugins:
 asciidoctor:
   attributes:
   - icons=font
+  - source-highlighter=rouge
 
 # HTML compression
 compress_html:

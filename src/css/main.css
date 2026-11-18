@@ -1,0 +1,183 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* Use class-based dark mode (toggled via localStorage) instead of prefers-color-scheme */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@source "../../_layouts/**/*.html";
+@source "../../_includes/**/*.html";
+@source "../../_pages/**/*";
+@source "../../_posts/**/*";
+@source "../../_drafts/**/*";
+@source "../../_talks/**/*";
+
+@theme {
+  --font-sans: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-heading: "Libre Baskerville", Georgia, "Times New Roman", serif;
+  --font-serif: Georgia, "Times New Roman", Times, serif;
+  --font-mono: "DM Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Roboto Mono",
+    "Courier New", Courier, monospace;
+
+  --leading-base: 1.5;
+
+  --color-brand: #2a7ae2;
+  --color-text: #111;
+  --color-background: #fdfdfd;
+  --color-link: #000;
+  --color-link-hover: #09c;
+  --color-grey: #828282;
+  --color-grey-light: color-mix(in srgb, #828282 60%, #fff);
+  --color-grey-dark: color-mix(in srgb, #828282 75%, #000);
+}
+
+@layer base {
+  html {
+    color: var(--color-text);
+    background-color: var(--color-background);
+    color-scheme: light;
+    font-family: var(--font-sans);
+    font-size-adjust: from-font;
+    /* 112.5% of the user's browser default (16px) = 18px, and it follows their font-size setting */
+    font-size: 112.5%;
+    line-height: var(--leading-base);
+  }
+
+  html.dark {
+    color-scheme: dark;
+    --color-text: #e8e8e8;
+    --color-background: #111;
+    --color-link: #e8e8e8;
+    --color-link-hover: #4492ff;
+  }
+
+  code,
+  pre {
+    font-family: var(--font-mono);
+  }
+
+  pre {
+    overflow-x: auto;
+  }
+
+  /* Heading scale (preflight resets these; restore for non-prose contexts) */
+  h1, h2, h3, h4, h5, h6 {
+    margin: 20px 0 14px;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--color-text);
+  }
+
+  h1 { font-size: 2em; }
+  h2 { font-size: 1.5em; }
+  h3 { font-size: 1.17em; }
+
+  /* Home page intro layout */
+  .intro {
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 600px) {
+    .intro {
+      flex-direction: column-reverse;
+    }
+  }
+
+  .img--circle {
+    border-radius: 50%;
+  }
+
+  /* Footer social icons */
+  /* 16px icon inside a 24px minimum target (WCAG 2.5.8) */
+  .social a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-inline-size: 24px;
+    min-block-size: 24px;
+  }
+
+  /* Feather icons stroke with currentColor, so they follow the footer text colour in both themes */
+  .social svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@import "./feather.css";
+@import "./asciidoctor.css";
+@import "./code-highlight.css";
+@import "./rouge.css";
+
+@media print {
+  .no-print,
+  .header,
+  .footer,
+  .sharing,
+  .comments {
+    display: none !important;
+  }
+
+  .heading-anchor {
+    display: none;
+  }
+}
+
+/* The blockquote border already marks a quotation. prose would add quote marks to every
+   paragraph, because AsciiDoctor wraps each one in its own div. Unlayered so it beats prose. */
+.prose blockquote p::before,
+.prose blockquote p::after {
+  content: none;
+}
+
+/* Inline code uses the medium weight (prose-code:font-medium); blocks stay regular */
+.prose pre code {
+  font-weight: 400;
+}
+
+/* Footnote back-link: kramdown's default text arrow is drawn as an emoji by browsers.
+   footnote_backlink in _config.yml gives it a text label for screen readers; the label is
+   clipped out of the visible box and a Feather icon is drawn instead. */
+.reversefootnote {
+  display: inline-block;
+  inline-size: 1rem;
+  block-size: 1rem;
+  margin-inline-start: 0.25rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-indent: 100%;
+  vertical-align: -0.125em;
+  background-color: currentColor;
+  mask: var(--feather-corner-down-left) center / contain no-repeat;
+}
+
+/* Unlayered so these beat the prose link styles */
+.heading-anchor {
+  display: inline-block;
+  inline-size: 0.7em;
+  block-size: 0.7em;
+  margin-inline-start: 0.4em;
+  background-color: var(--color-grey);
+  mask: var(--feather-link) center / contain no-repeat;
+  opacity: 0;
+}
+
+:is(h2, h3, h4, h5, h6):hover > .heading-anchor,
+.heading-anchor:focus-visible {
+  opacity: 1;
+}
+
+.heading-anchor:hover {
+  background-color: var(--color-brand);
+}
+
+@media (hover: none) {
+  .heading-anchor {
+    opacity: 0.5;
+  }
+}

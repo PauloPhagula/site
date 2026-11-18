@@ -1,0 +1,162 @@
+/** AsciiDoc Admonitions (icons=font emits <i class="fa icon-note">; the glyph is a Feather mask) */
+.admonitionblock td.icon {
+  text-align: center;
+  width: 80px;
+}
+
+.admonitionblock td.content {
+  width: 100%;
+}
+
+.admonitionblock td.icon i[class*="icon-"] {
+  display: inline-block;
+  inline-size: 1.75rem;
+  block-size: 1.75rem;
+  cursor: default;
+  vertical-align: middle;
+}
+
+.admonitionblock td.icon i[class*="icon-"]::before {
+  content: "";
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  background-color: currentColor;
+  mask: var(--feather-icon) center / contain no-repeat;
+}
+
+.admonitionblock td.icon .icon-note {
+  --feather-icon: var(--feather-info);
+  color: #19407c;
+}
+
+.admonitionblock td.icon .icon-tip {
+  --feather-icon: var(--feather-zap);
+  color: #8a6d00;
+}
+
+.admonitionblock td.icon .icon-warning {
+  --feather-icon: var(--feather-alert-triangle);
+  color: #bf6900;
+}
+
+.admonitionblock td.icon .icon-caution {
+  --feather-icon: var(--feather-alert-octagon);
+  color: #bf3400;
+}
+
+.admonitionblock td.icon .icon-important {
+  --feather-icon: var(--feather-alert-circle);
+  color: #bf0000;
+}
+
+/* Quote blocks: [quote, author, source] renders an attribution line after the blockquote.
+   Move the bar and indent to the wrapper so the attribution sits inside the quote. */
+.quoteblock:has(> .attribution) {
+  margin-block: 1.6em;
+  padding-inline-start: 1em;
+  border-inline-start: 0.25rem solid var(--tw-prose-quote-borders);
+}
+
+.quoteblock:has(> .attribution) > blockquote {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.quoteblock .attribution {
+  margin-block-start: 0.75rem;
+  /* Hanging indent: the dash stays at the quote edge, so the source line under it
+     lines up with the author name. */
+  padding-inline-start: 1.12em;
+  text-indent: -1.12em;
+  font-size: 0.875em;
+  color: var(--color-grey-dark);
+}
+
+.quoteblock .attribution cite {
+  font-style: normal;
+}
+
+html.dark .quoteblock .attribution {
+  color: #a1a1aa;
+}
+
+pre .conum[data-value] {
+  position: relative;
+  top: -0.125em;
+}
+
+.conum[data-value] {
+  display: inline-block;
+  color: #fff !important;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 100px;
+  text-align: center;
+  font-size: 0.75em;
+  width: 1.67em;
+  height: 1.67em;
+  line-height: 1.67em;
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-weight: bold;
+}
+
+.conum[data-value] + b {
+  display: none;
+}
+
+.conum[data-value]::after {
+  content: attr(data-value);
+}
+
+.hdlist > table,
+.colist > table {
+  border: 0;
+  background: none;
+}
+
+.hdlist > table > tbody > tr,
+.colist > table > tbody > tr {
+  background: none;
+}
+
+.colist td:not([class]):first-child {
+  padding: 0.4em 0.75em 0;
+  line-height: 1;
+  vertical-align: top;
+}
+
+.colist td:not([class]):last-child {
+  padding: 0.25em 0;
+}
+
+.colist > table > tbody > tr,
+.colist > table > tbody > tr > td {
+  border: none;
+}
+
+/* Dark mode overrides */
+html.dark .admonitionblock td.icon .icon-note {
+  color: #7aa7ff;
+}
+
+html.dark .admonitionblock td.icon .icon-tip {
+  color: #e6c200;
+}
+
+html.dark .admonitionblock td.icon .icon-warning {
+  color: #e8912c;
+}
+
+html.dark .admonitionblock td.icon .icon-caution {
+  color: #ff7a50;
+}
+
+html.dark .admonitionblock td.icon .icon-important {
+  color: #ff6b6b;
+}
+
+html.dark .conum[data-value] {
+  background-color: rgba(255, 255, 255, 0.2);
+}

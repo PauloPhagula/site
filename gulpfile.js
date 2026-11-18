@@ -1,30 +1,47 @@
-import gulp from 'gulp';
-import uglify from 'gulp-uglify';
-import concat from 'gulp-concat';
-import plumber from 'gulp-plumber';
-import dartSass from 'sass';
-import gulpSass from 'gulp-sass';
-const sass = gulpSass(dartSass);
-import childProcess from 'child_process';
-import browserSync from 'browser-sync';
-import postcss from 'gulp-postcss';
-import cssnano from 'cssnano';
-import autoprefixer from 'autoprefixer';
-import sourcemaps from 'gulp-sourcemaps';
+import gulp from "gulp";
+import childProcess from "child_process";
+import { promisify } from "node:util";
+import browserSync from "browser-sync";
+
+const execAsync = promisify(childProcess.exec);
 const messages = {
-  jekyllBuild: 'Running: $ jekyll build --drafts',
+  jekyllBuild: "Running: $ jekyll build --drafts",
 };
-const __dirname = import.meta.dirname
+const __dirname = import.meta.dirname;
+
 /*
  * Build the Jekyll Site
  * runs a child process in node that runs the jekyll commands
  */
 export const jekyllBuild = (done) => {
   browserSync.notify(messages.jekyllBuild);
-  // return childProcess.spawn('rake', ['build'], { stdio: 'inherit' }).on('close', done);
-  const environment = process.env.JEKYLL_ENV || 'development';
-  return childProcess.spawn('docker', ['run', '--rm', '-e', 'JEKYLL_ROOTLESS=1', '-e', `JEKYLL_ENV=${environment}`, '-v', `${__dirname}/vendor/bundle:/usr/local/bundle:Z`, '-v',`${__dirname}:/srv/jekyll:Z`, '-p', '4000:4000', 'jekyll/jekyll:4', 'jekyll', 'build'], { stdio: 'inherit' }).on('close', done);
+  const environment = process.env.JEKYLL_ENV || "development";
+  return childProcess
+    .spawn(
+      "docker",
+      [
+        "run",
+        "--rm",
+        "-e",
+        "JEKYLL_ROOTLESS=1",
+        "-e",
+        `JEKYLL_ENV=${environment}`,
+        "-v",
+        `${__dirname}/vendor/bundle:/usr/local/bundle:Z`,
+        "-v",
+        `${__dirname}:/srv/jekyll:Z`,
+        "-p",
+        "4000:4000",
+        "jekyll/jekyll:4",
+        "sh",
+        "-c",
+        "bundle install --quiet && jekyll build",
+      ],
+      { stdio: "inherit" },
+    )
+    .on("close", done);
 };
+
 /*
  * Rebuild Jekyll & reload page
  */
@@ -32,71 +49,56 @@ export const jekyllRebuild = gulp.series(jekyllBuild, (done) => {
   browserSync.reload();
   done();
 });
+
 /*
- * Compile and minify sass
+ * Build Tailwind CSS
  */
-export const compileSass = () => {
-  return gulp
-    .src('src/css/**/*.scss')
-    .pipe(sourcemaps.init())
-    .pipe(sass().on('error', sass.logError))
-    .pipe(postcss( [autoprefixer(), cssnano()]))
-    .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('_site/assets/css'))
-    .pipe(browserSync.reload({ stream: true }))
-    .pipe(gulp.dest('assets/css/'));
+export const tailwindCss = async () => {
+  await execAsync(
+    "./node_modules/.bin/tailwindcss -i src/css/main.css -o assets/css/main.css --minify",
+  );
+  browserSync.reload("assets/css/main.css");
+  return execAsync("cp assets/css/main.css _site/assets/css/main.css").catch(() => {});
 };
-/**
- * Compile and minify js
- */
-export const js = () => {
-  return gulp.src('src/js/**/*.js')
-    .pipe(plumber())
-    .pipe(concat('main.js'))
-    .pipe(uglify())
-    .pipe(gulp.dest('assets/js/'));
-};
+
 /*
  * Build the jekyll site and launch browser-sync
  */
-export const browserSyncServe = gulp.series(compileSass, jekyllBuild, (done) => {
+export const browserSyncServe = gulp.series(tailwindCss, jekyllBuild, (done) => {
   browserSync({
     port: 3005,
+    /* Ghost mode replays clicks in every connected tab, which double-fires stateful buttons
+       such as the theme toggle and cancels them out. */
+    ghostMode: false,
     server: {
-      baseDir: '_site',
+      baseDir: "_site",
       serveStaticOptions: {
-        extensions: ["html"]
+        extensions: ["html"],
       },
-    }
+    },
   });
   done();
 });
-/*
- * Compile fonts
- */
-export const fonts = () => {
-  return gulp.src('src/fonts/**/*.{ttf,woff,woff2}')
-    .pipe(plumber())
-    .pipe(gulp.dest('assets/fonts/'));
-};
-/*
- * Minify images
- */
-export const imagemin = async () => {
-  const imagemin = (await import('gulp-imagemin')).default;
-  return gulp
-    .src('src/img/**/*.{jpg,png,gif}')
-    .pipe(plumber())
-    .pipe(imagemin())
-    .pipe(gulp.dest('assets/img/'));
-};
 
 export const watch = () => {
-  gulp.watch('src/css/**/*.scss', gulp.series(compileSass));
-  gulp.watch('src/js/**/*.js', gulp.series(js));
-  gulp.watch('src/img/**/*.{jpg,png,gif}', gulp.series(imagemin));
-  gulp.watch(['_drafts/*.md', '_posts/*.md', '*html', '_includes/*html', '_layouts/*.html'], gulp.series(jekyllRebuild));
+  gulp.watch("src/css/**/*.css", tailwindCss);
+  /* Tailwind scans these files for class names, so rebuild the CSS before Jekyll copies it. */
+  gulp.watch(
+    [
+      "*.html",
+      "_config.yml",
+      "_data/**/*",
+      "_drafts/**/*",
+      "_includes/**/*",
+      "_layouts/**/*",
+      "_pages/**/*",
+      "_posts/**/*",
+      "_talks/**/*",
+    ],
+    gulp.series(tailwindCss, jekyllRebuild),
+  );
 };
-export default gulp.series(js, compileSass, fonts, browserSyncServe, watch);
 
-export const build = gulp.series(js, compileSass, fonts, jekyllBuild);
+export default gulp.series(tailwindCss, browserSyncServe, watch);
+
+export const build = gulp.series(tailwindCss, jekyllBuild);

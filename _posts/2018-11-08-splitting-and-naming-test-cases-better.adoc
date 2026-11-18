@@ -8,8 +8,6 @@ categories: coding
 tags: [Testing, Naming, XUnit, XSpec, PHPUnit, Kahlan]
 ---
 :page-liquid:
-:source-highlighter: coderay
-:coderay-css: class
 
 When writing unit tests, one questionable thing that I've noticed people doing,
 is having a production class, and for it create a "respective" test class, and
