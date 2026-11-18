@@ -55,6 +55,7 @@ plugins:
 asciidoctor:
   attributes:
   - icons=font
+  - source-highlighter=rouge
 
 # HTML compression
 compress_html:

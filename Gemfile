@@ -6,7 +6,6 @@ gem 'jekyll', '~> 4.2'
 
 gem 'webrick', '~> 1.9'
 
-gem 'coderay', '~> 1.1'
 
 group :jekyll_plugins do
   gem 'jekyll-asciidoc'
