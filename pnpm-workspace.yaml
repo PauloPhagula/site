@@ -2,14 +2,8 @@
 # onlyBuiltDependencies. Keep both until CI moves to pnpm 11.
 allowBuilds:
   '@parcel/watcher': true
-  gifsicle: true
-  mozjpeg: true
-  optipng-bin: true
 onlyBuiltDependencies:
   - '@parcel/watcher'
-  - gifsicle
-  - mozjpeg
-  - optipng-bin
 overrides:
   got@<11.8.5: '>=11.8.5'
   http-cache-semantics@<4.1.1: '>=4.1.1'

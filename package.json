@@ -21,12 +21,6 @@
     "css:dev": "tailwindcss -i src/css/main.css -o assets/css/main.css --watch",
     "css:build": "tailwindcss -i src/css/main.css -o assets/css/main.css --minify"
   },
-  "dependencies": {
-    "gulp-concat": "^2.6.1",
-    "gulp-imagemin": "^9.2.0",
-    "gulp-plumber": "^1.2.1",
-    "gulp-uglify": "^3.0.2"
-  },
   "devDependencies": {
     "@tailwindcss/cli": "^4.1.0",
     "@tailwindcss/typography": "^0.5.16",

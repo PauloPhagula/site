@@ -1,7 +1,4 @@
 import gulp from "gulp";
-import uglify from "gulp-uglify";
-import concat from "gulp-concat";
-import plumber from "gulp-plumber";
 import childProcess from "child_process";
 import { promisify } from "node:util";
 import browserSync from "browser-sync";
@@ -65,18 +62,6 @@ export const tailwindCss = async () => {
 };
 
 /*
- * Compile and minify js
- */
-export const js = () => {
-  return gulp
-    .src("src/js/**/*.js")
-    .pipe(plumber())
-    .pipe(concat("main.js"))
-    .pipe(uglify())
-    .pipe(gulp.dest("assets/js/"));
-};
-
-/*
  * Build the jekyll site and launch browser-sync
  */
 export const browserSyncServe = gulp.series(tailwindCss, jekyllBuild, (done) => {
@@ -95,32 +80,8 @@ export const browserSyncServe = gulp.series(tailwindCss, jekyllBuild, (done) => 
   done();
 });
 
-/*
- * Compile fonts
- */
-export const fonts = () => {
-  return gulp
-    .src("src/fonts/**/*.{ttf,woff,woff2}")
-    .pipe(plumber())
-    .pipe(gulp.dest("assets/fonts/"));
-};
-
-/*
- * Minify images
- */
-export const imagemin = async () => {
-  const imagemin = (await import("gulp-imagemin")).default;
-  return gulp
-    .src("src/img/**/*.{jpg,png,gif}")
-    .pipe(plumber())
-    .pipe(imagemin())
-    .pipe(gulp.dest("assets/img/"));
-};
-
 export const watch = () => {
   gulp.watch("src/css/**/*.css", tailwindCss);
-  gulp.watch("src/js/**/*.js", gulp.series(js));
-  gulp.watch("src/img/**/*.{jpg,png,gif}", gulp.series(imagemin));
   /* Tailwind scans these files for class names, so rebuild the CSS before Jekyll copies it. */
   gulp.watch(
     [
@@ -138,6 +99,6 @@ export const watch = () => {
   );
 };
 
-export default gulp.series(js, tailwindCss, fonts, browserSyncServe, watch);
+export default gulp.series(tailwindCss, browserSyncServe, watch);
 
-export const build = gulp.series(js, tailwindCss, fonts, jekyllBuild);
+export const build = gulp.series(tailwindCss, jekyllBuild);
