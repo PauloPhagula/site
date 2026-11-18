@@ -1,8 +1,4 @@
-/** AsciiDoc Admonitions */
-span.icon > .fa {
-  cursor: default;
-}
-
+/** AsciiDoc Admonitions (icons=font emits <i class="fa icon-note">; the glyph is a Feather mask) */
 .admonitionblock td.icon {
   text-align: center;
   width: 80px;
@@ -12,35 +8,45 @@ span.icon > .fa {
   width: 100%;
 }
 
-.admonitionblock td.icon [class^="fa icon-"] {
-  font-size: 1.5em;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+.admonitionblock td.icon i[class*="icon-"] {
+  display: inline-block;
+  inline-size: 1.75rem;
+  block-size: 1.75rem;
   cursor: default;
+  vertical-align: middle;
 }
 
-.admonitionblock td.icon .icon-note:before {
-  content: "📎";
+.admonitionblock td.icon i[class*="icon-"]::before {
+  content: "";
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  background-color: currentColor;
+  mask: var(--feather-icon) center / contain no-repeat;
+}
+
+.admonitionblock td.icon .icon-note {
+  --feather-icon: var(--feather-info);
   color: #19407c;
 }
 
-.admonitionblock td.icon .icon-tip:before {
-  content: "💡";
-  text-shadow: 1px 1px 2px rgba(155, 155, 0, 0.8);
-  color: #111;
+.admonitionblock td.icon .icon-tip {
+  --feather-icon: var(--feather-zap);
+  color: #8a6d00;
 }
 
-.admonitionblock td.icon .icon-warning:before {
-  content: "⚠";
+.admonitionblock td.icon .icon-warning {
+  --feather-icon: var(--feather-alert-triangle);
   color: #bf6900;
 }
 
-.admonitionblock td.icon .icon-caution:before {
-  content: "🔥";
+.admonitionblock td.icon .icon-caution {
+  --feather-icon: var(--feather-alert-octagon);
   color: #bf3400;
 }
 
-.admonitionblock td.icon .icon-important:before {
-  content: "❗";
+.admonitionblock td.icon .icon-important {
+  --feather-icon: var(--feather-alert-circle);
   color: #bf0000;
 }
 
@@ -99,8 +105,24 @@ pre .conum[data-value] {
 }
 
 /* Dark mode overrides */
-html.dark .admonitionblock td.icon .icon-tip:before {
-  color: #e8e8e8;
+html.dark .admonitionblock td.icon .icon-note {
+  color: #7aa7ff;
+}
+
+html.dark .admonitionblock td.icon .icon-tip {
+  color: #e6c200;
+}
+
+html.dark .admonitionblock td.icon .icon-warning {
+  color: #e8912c;
+}
+
+html.dark .admonitionblock td.icon .icon-caution {
+  color: #ff7a50;
+}
+
+html.dark .admonitionblock td.icon .icon-important {
+  color: #ff6b6b;
 }
 
 html.dark .conum[data-value] {

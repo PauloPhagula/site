@@ -109,6 +109,7 @@
   }
 }
 
+@import "./feather.css";
 @import "./asciidoctor.css";
 @import "./code-highlight.css";
 @import "./rouge.css";
@@ -129,10 +130,12 @@
 
 /* Unlayered so these beat the prose link styles */
 .heading-anchor {
+  display: inline-block;
+  inline-size: 0.7em;
+  block-size: 0.7em;
   margin-inline-start: 0.4em;
-  color: var(--color-grey);
-  font-weight: 400;
-  text-decoration: none;
+  background-color: var(--color-grey);
+  mask: var(--feather-link) center / contain no-repeat;
   opacity: 0;
 }
 
@@ -142,7 +145,7 @@
 }
 
 .heading-anchor:hover {
-  color: var(--color-brand);
+  background-color: var(--color-brand);
 }
 
 @media (hover: none) {

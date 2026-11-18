@@ -80,7 +80,6 @@ layout: compress
       var anchor = document.createElement('a');
       anchor.className = 'heading-anchor';
       anchor.href = '#' + heading.id;
-      anchor.textContent = '#';
       anchor.setAttribute('aria-label', 'Link to section: ' + heading.textContent.trim());
       heading.appendChild(anchor);
     });
