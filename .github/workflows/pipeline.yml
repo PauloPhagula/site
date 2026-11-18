@@ -7,12 +7,17 @@ on:
   push:
     branches:
       - main
+  # Builds (without deploying) pull requests that target main
+  pull_request:
+    branches:
+      - main
   # Allows you to run workflow manually from the actions tab
   workflow_dispatch:
 
-# Allow one concurrent deployment
+# Allow one concurrent deployment. Pull request builds use their own group so they never
+# cancel a deployment from main.
 concurrency:
-  group: "pages"
+  group: ${{ github.event_name == 'pull_request' && format('pages-pr-{0}', github.event.pull_request.number) || 'pages' }}
   cancel-in-progress: true
 
 jobs:
