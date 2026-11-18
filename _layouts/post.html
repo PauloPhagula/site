@@ -26,8 +26,8 @@ layout: base
     </div>
 
     {% if page.excerpt %}
-      <p class="article__excerpt mt-3 text-zinc-600 dark:text-zinc-400">
-        {{ page.excerpt | strip_html | strip_newlines }}
+      <p class="article__excerpt mt-3 text-zinc-600 dark:text-zinc-400 [&_code]:font-medium [&_code]:text-[0.9em]">
+        {{ page.excerpt | markdownify | remove: '<p>' | remove: '</p>' | strip_newlines }}
       </p>
     {% endif %}
   </header>

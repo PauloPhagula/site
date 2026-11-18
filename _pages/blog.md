@@ -20,7 +20,7 @@ permalink: /blog/
             <span class="">{{ post.categories }}</span>
             {% endif %}
           </p>
-          <p>{{ post.excerpt }}</p>
+          <p>{{ post.excerpt | markdownify | remove: '<p>' | remove: '</p>' }}</p>
         </article>
       {% endif %}
     {% endfor %}
