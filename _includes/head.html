@@ -1,6 +1,5 @@
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# object: http://ogp.me/ns/object# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile#">
   <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <meta http-equiv="x-dns-prefetch-control" content="on" />
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">
@@ -9,7 +8,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Lora:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Geist+Mono:wght@400..600&family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&display=swap">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Geist+Mono:wght@400..600&family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&display=swap"></noscript>
 
   <link
     rel="preconnect"
@@ -20,8 +20,6 @@
     href="https://www.google-analytics.com"
     crossorigin="anonymous">
 
-  {% if page.next %}<link rel="prerender" href="{{ page.next.url }}" />{% endif %}
-  {% if page.previous %}<link rel="prerender" href="{{ page.previous.url }}" />{% endif %}
 
   <title>
     {% if page.title %}
@@ -41,12 +39,10 @@
       href="{{ page.next.url }}"
       title="{{ page.next.title }}" />{% endif %}
 
-  <meta name="HandheldFriendly" content="True" />
-  <meta name="MobileOptimized" content="320" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="text-scale" content="scale" />
+  <meta name="color-scheme" content="light dark" />
   <meta name="format-detection" content="telephone=no" />
-  <meta http-equiv="x-rim-auto-match" content="none" />
-  <meta http-equiv="cleartype" content="on">
 
   <meta name="mobile-web-app-capable" content="yes">
   <link
@@ -54,7 +50,8 @@
     sizes="192x192"
     href="{{ "/assets/images/favicons/android-chrome-192x192.png" | prepend: site.baseurl | prepend: site.url }}">
   <link rel="manifest" href="{{ "/manifest.json" | prepend: site.baseurl | prepend: site.url }}">
-  <meta name="theme-color" content="#333">
+  <meta name="theme-color" content="#fdfdfd" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#111" media="(prefers-color-scheme: dark)">
 
   <link
     rel="mask-icon"
@@ -73,11 +70,9 @@
   {% if page.robots and jekyll.environment == 'production' %}
     <meta name="robots" content="{{ page.robots }}">
   {% endif %}
-  <meta name="revisit-after" content="1 DAYS">
   <meta name="author" content="{{ site.author.name }}" />
   <link rel="author" href="/about">
   <meta name="contact" content="{{ site.author.email }}" />
-  <meta name="geography" content="Mozambique">
   <meta name="source" content="https://github.com/PauloPhagula/site">
 
   <!-- twitter meta -->
@@ -127,7 +122,7 @@
 
 
   <script>
-    // Dark mode: apply saved preference before first paint to avoid FOUC
+    /* Apply saved or OS dark preference before first paint to avoid a flash. */
     (function () {
       var stored = localStorage.getItem('theme');
       var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -136,7 +131,7 @@
       }
     })();
 
-    // Redirect to https
+    /* Redirect to https. */
     var host = "{{ site.url }}";
     if (host == window.location.host && window.location.protocol != "https:") {
       window.location.protocol = "https";

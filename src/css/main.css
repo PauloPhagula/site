@@ -12,14 +12,13 @@
 @source "../../_talks/**/*";
 
 @theme {
-  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+  --font-sans: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  --font-heading: "Lora", Georgia, "Times New Roman", serif;
+  --font-heading: "Libre Baskerville", Georgia, "Times New Roman", serif;
   --font-serif: Georgia, "Times New Roman", Times, serif;
-  --font-mono: Menlo, Monaco, Consolas, "Liberation Mono", "Roboto Mono",
+  --font-mono: "Geist Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Roboto Mono",
     "Courier New", Courier, monospace;
 
-  --text-base: 18px;
   --leading-base: 1.5;
 
   --color-brand: #2a7ae2;
@@ -36,12 +35,16 @@
   html {
     color: var(--color-text);
     background-color: var(--color-background);
+    color-scheme: light;
     font-family: var(--font-sans);
-    font-size: var(--text-base);
+    font-size-adjust: from-font;
+    /* 112.5% of the user's browser default (16px) = 18px, and it follows their font-size setting */
+    font-size: 112.5%;
     line-height: var(--leading-base);
   }
 
   html.dark {
+    color-scheme: dark;
     --color-text: #e8e8e8;
     --color-background: #111;
     --color-link: #e8e8e8;
@@ -61,7 +64,7 @@
   h1, h2, h3, h4, h5, h6 {
     margin: 20px 0 14px;
     font-family: var(--font-heading);
-    font-weight: 600;
+    font-weight: 700;
     line-height: 1.25;
     color: var(--color-text);
   }
@@ -90,39 +93,25 @@
   }
 
   /* Footer social icons */
+  /* 16px icon inside a 24px minimum target (WCAG 2.5.8) */
   .social a {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    color: #404040;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-inline-size: 24px;
+    min-block-size: 24px;
   }
 
+  /* Feather icons stroke with currentColor, so they follow the footer text colour in both themes */
   .social svg {
-    fill: #848d95;
     width: 16px;
     height: 16px;
-  }
-
-  html.dark .social svg {
-    fill: #9ca3af;
-  }
-
-  /* Screen-reader-only utility */
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
   }
 }
 
 @import "./asciidoctor.css";
 @import "./code-highlight.css";
+@import "./rouge.css";
 
 @media print {
   .no-print,
@@ -131,5 +120,33 @@
   .sharing,
   .comments {
     display: none !important;
+  }
+
+  .heading-anchor {
+    display: none;
+  }
+}
+
+/* Unlayered so these beat the prose link styles */
+.heading-anchor {
+  margin-inline-start: 0.4em;
+  color: var(--color-grey);
+  font-weight: 400;
+  text-decoration: none;
+  opacity: 0;
+}
+
+:is(h2, h3, h4, h5, h6):hover > .heading-anchor,
+.heading-anchor:focus-visible {
+  opacity: 1;
+}
+
+.heading-anchor:hover {
+  color: var(--color-brand);
+}
+
+@media (hover: none) {
+  .heading-anchor {
+    opacity: 0.5;
   }
 }

@@ -34,7 +34,7 @@ The convention promises to address questions like:
 To put things into perspective let's see a practical example of how we would use
 this for the simple login widget bellow
 
-<img src="/content/2016/08/login-widget.png" style="width:50%">
+<img src="/content/2016/08/login-widget.png" width="490" height="550" loading="lazy" style="width:50%;height:auto" alt="A login form with username and password fields, a Login button, and links for creating an account and recovering a lost password">
 
 First the login widget as a whole could be considered a block, so its markup
 would look like

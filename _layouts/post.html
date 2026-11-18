@@ -3,14 +3,14 @@ layout: base
 ---
 {% assign sorted_tags = page.tags | sort %}
 {% assign category = page.categories | sort | limit1 %}
-<article class="prose prose-lg dark:prose-invert mx-auto max-w-[70ch]
+<article class="prose dark:prose-invert mx-auto max-w-[70ch] leading-[1.6]
                 prose-headings:font-heading
-                prose-code:font-mono prose-code:before:content-none prose-code:after:content-none
-                prose-pre:bg-zinc-50 dark:prose-pre:bg-zinc-900">
+                prose-li:my-1 prose-ul:my-4 prose-ol:my-4
+                prose-code:font-mono prose-code:before:content-none prose-code:after:content-none">
 
   <header class="not-prose mb-8">
     <h1 class="article__title text-3xl font-bold mb-2">{{ page.title }}</h1>
-    <div class="article__meta text-sm text-zinc-500">
+    <div class="article__meta text-sm text-zinc-500 dark:text-zinc-400">
       <time
         class="article__post-date"
         datetime="{{ page.date | date_to_xmlschema }}"
@@ -35,7 +35,7 @@ layout: base
   {{ content }}
 
   <div class="not-prose mt-8 pt-6 border-t border-zinc-200 dark:border-zinc-700">
-    <div class="sharing text-sm text-zinc-500">
+    <div class="sharing text-sm text-zinc-500 dark:text-zinc-400">
       Share:
       <a class="hover:text-[var(--color-brand)]" title="Share article on Email" href="mailto:?subject={{ page.title }}&body={{ page.url | escape | prepend: site.baseurl | prepend: site.url | url_encode}}">Email</a>
       ·
@@ -52,7 +52,7 @@ layout: base
 
     {% if content and page.related %}
       <div class="related-posts mt-6">
-        <h5 class="text-xs font-semibold uppercase tracking-wide text-zinc-500 mb-2">Related Posts</h5>
+        <h2 class="text-xs font-semibold uppercase tracking-wide text-zinc-500 dark:text-zinc-400 mb-2">Related Posts</h2>
         <ul class="tags list-none p-0 space-y-1">
           {% for post in site.posts %}
             {% if page.related contains post.title or page.related contains post.url %}
@@ -68,7 +68,7 @@ layout: base
 
   {% if jekyll.environment == "production" %}
     <div class="not-prose comments mt-8 pt-6 border-t border-zinc-200 dark:border-zinc-700">
-      <p class="text-sm text-zinc-500 mb-4">Please, use
+      <p class="text-sm text-zinc-500 dark:text-zinc-400 mb-4">Please, use
         <a href="https://help.disqus.com/customer/portal/articles/665057-syntax-highlighting" class="hover:text-[var(--color-brand)]">syntax highlighting</a>
         in your comments, to make them more readable.</p>
       <div id="disqus_thread"></div>
