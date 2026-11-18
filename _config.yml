@@ -43,6 +43,7 @@ kramdown:
   toc_levels: 1..6
   smart_quotes: lsquo,rsquo,ldquo,rdquo
   syntax_highlighter: rouge
+  footnote_backlink: Back to text
 
 plugins:
   - jekyll-asciidoc

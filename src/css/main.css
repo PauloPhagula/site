@@ -140,6 +140,22 @@
   font-weight: 400;
 }
 
+/* Footnote back-link: kramdown's default text arrow is drawn as an emoji by browsers.
+   footnote_backlink in _config.yml gives it a text label for screen readers; the label is
+   clipped out of the visible box and a Feather icon is drawn instead. */
+.reversefootnote {
+  display: inline-block;
+  inline-size: 1rem;
+  block-size: 1rem;
+  margin-inline-start: 0.25rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-indent: 100%;
+  vertical-align: -0.125em;
+  background-color: currentColor;
+  mask: var(--feather-corner-down-left) center / contain no-repeat;
+}
+
 /* Unlayered so these beat the prose link styles */
 .heading-anchor {
   display: inline-block;
