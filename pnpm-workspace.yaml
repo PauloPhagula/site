@@ -1,3 +1,5 @@
+# Build-script approvals. pnpm 11 reads allowBuilds; pnpm 10 (pinned in CI) reads
+# onlyBuiltDependencies. Keep both until CI moves to pnpm 11.
 allowBuilds:
   '@parcel/watcher': true
   gifsicle: true
