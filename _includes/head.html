@@ -42,6 +42,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="text-scale" content="scale" />
   <meta name="color-scheme" content="light dark" />
+  <script>
+    /* Apply a stored light or dark choice, or the OS setting, before first paint to avoid a flash. */
+    (function () {
+      var stored = null;
+      try { stored = localStorage.getItem('theme'); } catch (e) {}
+      var pinned = stored === 'light' || stored === 'dark';
+      var dark = pinned ? stored === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.classList.toggle('dark', dark);
+      document.querySelector('meta[name="color-scheme"]').content = pinned ? stored : 'light dark';
+    })();
+  </script>
   <meta name="format-detection" content="telephone=no" />
 
   <meta name="mobile-web-app-capable" content="yes">
@@ -122,15 +133,6 @@
 
 
   <script>
-    /* Apply saved or OS dark preference before first paint to avoid a flash. */
-    (function () {
-      var stored = localStorage.getItem('theme');
-      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if (stored === 'dark' || (!stored && prefersDark)) {
-        document.documentElement.classList.add('dark');
-      }
-    })();
-
     /* Redirect to https. */
     var host = "{{ site.url }}";
     if (host == window.location.host && window.location.protocol != "https:") {
