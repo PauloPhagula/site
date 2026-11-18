@@ -2,6 +2,18 @@
   "name": "site",
   "version": "0.0.1",
   "description": "Paulo Phagula's site",
+  "keywords": [
+    "blog",
+    "notes",
+    "portfolio",
+    "site"
+  ],
+  "license": "UNLICENSED",
+  "author": "Paulo Phagula <paulo.phagula@gmail.com> (https://paulophagula.com/)",
+  "repository": {
+    "type": "git",
+    "url": "github.com/PauloPhagula/site"
+  },
   "main": "index.js",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
@@ -9,18 +21,12 @@
     "css:dev": "tailwindcss -i src/css/main.css -o assets/css/main.css --watch",
     "css:build": "tailwindcss -i src/css/main.css -o assets/css/main.css --minify"
   },
-  "repository": {
-    "type": "git",
-    "url": "github.com/PauloPhagula/site"
+  "dependencies": {
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^9.2.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-uglify": "^3.0.2"
   },
-  "keywords": [
-    "site",
-    "blog",
-    "portfolio",
-    "notes"
-  ],
-  "author": "Paulo Phagula <paulo.phagula@gmail.com> (https://paulophagula.com/)",
-  "license": "UNLICENSED",
   "devDependencies": {
     "@tailwindcss/cli": "^4.1.0",
     "@tailwindcss/typography": "^0.5.16",
@@ -28,17 +34,11 @@
     "gulp": "^5.0.1",
     "gulp-cli": "^3.1.0",
     "husky": "^9.1.7",
-    "lint-staged": "^16.2.7"
+    "lint-staged": "^17.6.0"
   },
   "lint-staged": {
     ".md": "markdownlint",
     "*.org": "org-lint"
-  },
-  "dependencies": {
-    "gulp-concat": "^2.6.1",
-    "gulp-imagemin": "^9.2.0",
-    "gulp-plumber": "^1.2.1",
-    "gulp-uglify": "^3.0.2"
   },
   "pnpm": {
     "overrides": {

@@ -10,10 +10,10 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10  # v6
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v6
         with:
           persist-credentials: false
       - name: Fix links
-        uses: tmcw/notfoundbot@1f97e4c79fa3aeaa9b2b87b8cd2533f645fed82d  # v3.0.0
+        uses: tmcw/notfoundbot@feeb668347f9c0ef8abdc4a8c43778fce2ee85d9  # v3.1.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

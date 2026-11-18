@@ -16,25 +16,25 @@ MySQL is the most widely used database in the world. It is in the LAMP stack
 commonly used by Web Developers and supports many software bundles like
 WordPress and Drupal which in turn support most of the sites in the internet.
 
-Its users range from the one-man-band-man hard-core developers writing
+Its users range from the one-man-band hardcore developers writing
 code in their basements, to the super-mega enterprises like Facebook,
 Github, Google, and Wikipedia just to name a few.
 
 (Almost everyone uses it -- that's what I want to say)
 
 Now, despite its very large user base, there are still some misconceptions/subtleties
-about how to use it and properly setup, that usually go unnoticed until its too
+about how to use it and properly setup, that usually go unnoticed until it's too
 late, or that are initially unusual/unexpected by people (like me) used to other
 database products. At large, this is due to ignorance on developers
 (which commonly have to act as DBAs), but mostly to MySQL itself which acts in
-a very uncommon way -- read insecure, non-ANSI compliant, shit-show like style --
+a very uncommon way -- read insecure, non-ANSI compliant, circus-act style --
 by default.
 
 The fact that it's so easy to setup and use, allows almost anyone,
 beginner or not, to just fire it and rock on.
 
 This post is not a rant about MySQL nor a promotion of `<insert-your-favorite-db-here>`
--- I'll do my best to control my emotions, I promise!. Its about sharing details
+-- I'll do my best to control my emotions, I promise!. It's about sharing details
 on a set of subtleties I found in my experience (coming from SQL Server and Oracle),
 and how you can go about them so you're not caught off guard as I was.
 
@@ -148,7 +148,7 @@ SELECT 1/if(some_column = 0, 1, some_column); -- returns 1
 ----
 
 I do not like this technique as I have to remember to do that, plus it makes the
-query ugly. But since practicality speak lauder than my tastes, ultimately, I have
+query ugly. But since practicality speaks louder than my tastes, ultimately, I have
 to go with the less worse solution, which in this case seems to be the last one.
 
 WARNING: this is just an example, and setting the SQL mode for the session suffices,
@@ -200,7 +200,10 @@ All I recall is there was a simple mistake of swapping the values for the fields
 in the `WHERE` clause, which caused the query to produce correct results sometimes
 but fail unpredictably at others.
 
-What is the way around this? Being careful and minding warnings.
+What's the way around this? Honest answer: there's no SQL mode flag that
+prevents MySQL from doing this type coercion. The real defense is discipline —
+use parameterized queries, avoid mixing types in `WHERE` clauses, and take
+every warning MySQL throws at you seriously.
 
 == Zeros in dates and timestamps '0000-00-00 00:00:00'
 
@@ -235,12 +238,12 @@ Suppose you're called in to analyze this data. How would you interpret it?
 This seems like a bad usage of the typing system. If we're going to represent
 missing data why not simply use `NULL`, since that is precisely what it is for?!
 
-In the same token, its contradictory to mandate that a field be `NOT NULL`, but
+In the same token, it's contradictory to mandate that a field be `NOT NULL`, but
 then go and keep invalid values on it. We would be respecting the constraint but
 at the expense of littering data with insignificant and hard (if at all) interpretable
 values.
 
-I remember working on an HR system where zeroes where allowed in the dates.
+I remember working on an HR system where zeroes were allowed in the dates.
 Whenever a date was missing, `0000-00-00` was used instead, and as a result queries
 for computing the candidates experience would bring inconsistent results.
 
@@ -339,8 +342,8 @@ Why not? It's UTF-8 right? I saw you doing the `CHARSET` thing when you created
 your table...
 
 To be fair, encodings, unicode, character sets and collations make my head
-hurt and I'm not a smart guy so I'll just give you the bottom line and
-refer to a place where you can know more.
+hurt and I'm not going to pretend I find this stuff intuitive, so I'll just
+give you the bottom line and refer you to a place where you can dig deeper.
 
 Bottom line is: if you created a table with `CHARSET uft8` then it won't work
 with 💩, that is, you're not supporting all characters in unicode, and so
@@ -416,7 +419,8 @@ you need to use "proper" UTF8.
 BTW on MySQL 8 this is going to be the default, but we all know everyone must do
 ceremonies and rituals prior to migrating, so...
 
-To know the exact details of why this is so check out https://mathiasbynens.be/notes/mysql-utf8mb4
+To know the exact details of why this is so, check out
+https://mathiasbynens.be/notes/mysql-utf8mb4[How to support full Unicode in MySQL databases] by Mathias Bynens.
 
 == The `CHECK` constraint is only parsed but ignored in the end
 
@@ -425,7 +429,7 @@ the `CHECK` constraints when defining tables but it doesn't enforce them. They'r
 just there but do nothing.
 
 The example bellow depicts the behavior. On it we imagine defining a `people`
-table. Its just supposed to keep the id, name and gender of for each person. In
+table. It's just supposed to keep the id, name and gender of each person. In
 order to save a bit of space we want to constrain the value that can go in gender
 to `m` or `f`, standing for male and female. We use the `CHECK` constraint for it.
 
@@ -488,20 +492,19 @@ should've rejected it.
 
 There are legitimate cases for using aggregations without grouping, but only
 aggregations should be allowed then. A basic example would be to know the
-average height of the candidates and the count fo them. There's nothing wrong
-with that. But as soon you an aggregations and non-aggregations without grouping
-then it is very likely you have problem.
+average height of the candidates and the count of them. There's nothing wrong
+with that. But as soon as you mix aggregations and non-aggregations without
+grouping, you very likely have a problem.
 
-The cure for this problem is the same as for the next point. So, just keep going.
+The fix for both this and the next case is `ONLY_FULL_GROUP_BY` in your SQL mode.
 
 == Non-GROUPed-BY nor aggregated columns in SELECT
 
-This is stopped by default starting from MySQL 5.7 as seen these reference
-articles:
+This was corrected by default in MySQL 5.7 via `ONLY_FULL_GROUP_BY`
+(see Refs for the full writeup).
 
-
-However, for those using versions or that do not their settings right, bellow
-follows an example of what I mean.
+However, for those on older versions or with misconfigured settings, here's
+what the problem looks like.
 
 [source,sql]
 ----
@@ -531,7 +534,7 @@ mysql> SELECT id, invoice_id, description FROM invoice_line_items GROUP BY invoi
 Because MySQL doesn't enforce the usage the correct behavior of `GROUP BY` we can
 easily return incorrect data by accident, such as above. Luckily this behavior
 has been corrected by default since version 5.7 with the mode `ONLY_FULL_GROUP_BY`.
-Setting your SQL mode to include it sort things out for you you.
+Setting your SQL mode to include it sorts things out for you.
 
 == Data Truncations
 
@@ -564,7 +567,7 @@ ALTER TABLE foo MODIFY COLUMN bar VARCHAR(2);
 You can make MySQL do the right thing by setting the SQL Mode option to
 include `STRICT_TRANS_TABLES` or `STRICT_ALL_TABLES`. The difference is that the
 former will only enable it for transactional data storage engines. As much as
-I'm loathed to say it, I don't recommend using `STRICT_ALL_TABLES`, as an error
+I'm loath to say it, I don't recommend using `STRICT_ALL_TABLES`, as an error
 during updating a non-transactional table will result in a partial update, which
 is probably worse than a truncated field. Setting the mode to `TRADITIONAL`
 includes both these and a couple of related ones
@@ -666,8 +669,9 @@ Yap `VARCHAR(65535)` FTW. Way better than the TEXT you use for most cases.
 
 Only `CHAR` has a limit of 255.
 
-The limit for VARCHAR was lifted from 255 on MySQL 5.0.3. And it is 21844
-when using UTF-8 (the real UTF8 not UTF8 :)).
+The limit was lifted from 255 on MySQL 5.0.3. One catch: when using `utf8mb4`
+(which you should be — see above), the effective ceiling drops to 16,383 characters
+due to the 4-bytes-per-character overhead. Still a lot better than 255.
 
 == Why keep MySQL then?
 
@@ -691,14 +695,14 @@ I promised not to make comparisons with other products, but I'd be remiss if I
 didn't mention that if these issues are really bothering you then perhaps you can
 try a different distribution of MySQL other than the default one, which usually
 have more saner defaults out of the box, like: Percona Server, MariaDB, Drizzle
-or WebScaleSQL. They're are MySQL after all.
+or WebScaleSQL. They're MySQL after all.
 
 '''''
 
 I hope this has been informative for you. Drop a comment bellow if you found
 something fishy, agree with my views, or have something to add.
 
-== Refs:
+== Refs
 
 * https://dev.mysql.com/doc/refman/5.7/en/sql-mode.html[Server SQL Modes]
 * https://mathiasbynens.be/notes/mysql-utf8mb4[How to support full Unicode in MySQL databases]
