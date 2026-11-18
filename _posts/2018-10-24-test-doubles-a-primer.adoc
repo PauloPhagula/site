@@ -16,7 +16,7 @@ This article emerged as an attempt to provide a more in-depth response to the
 following question, posted by https://twitter.com/ivanbila[Ivan] on the
 http://mozdevz.org/en/[MozDevz] https://t.me/MozDevz[group on Telegram]:
 
-[quote, Ivan Bila, on the MozDevz group on Telegram]
+[quote, Ivan Bila, MozDevz group on Telegram]
 ____
 Hi all,
 
