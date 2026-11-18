@@ -82,6 +82,9 @@ export const js = () => {
 export const browserSyncServe = gulp.series(tailwindCss, jekyllBuild, (done) => {
   browserSync({
     port: 3005,
+    /* Ghost mode replays clicks in every connected tab, which double-fires stateful buttons
+       such as the theme toggle and cancels them out. */
+    ghostMode: false,
     server: {
       baseDir: "_site",
       serveStaticOptions: {
@@ -118,9 +121,20 @@ export const watch = () => {
   gulp.watch("src/css/**/*.css", tailwindCss);
   gulp.watch("src/js/**/*.js", gulp.series(js));
   gulp.watch("src/img/**/*.{jpg,png,gif}", gulp.series(imagemin));
+  /* Tailwind scans these files for class names, so rebuild the CSS before Jekyll copies it. */
   gulp.watch(
-    ["_drafts/*.md", "_posts/*.md", "_posts/*.adoc", "*html", "_includes/*html", "_layouts/*.html"],
-    gulp.series(jekyllRebuild),
+    [
+      "*.html",
+      "_config.yml",
+      "_data/**/*",
+      "_drafts/**/*",
+      "_includes/**/*",
+      "_layouts/**/*",
+      "_pages/**/*",
+      "_posts/**/*",
+      "_talks/**/*",
+    ],
+    gulp.series(tailwindCss, jekyllRebuild),
   );
 };
 
