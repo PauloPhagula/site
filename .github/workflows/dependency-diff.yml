@@ -3,12 +3,19 @@ name: Dependency Diff
 on:
   pull_request:
 
+permissions: {}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   diff_dependencies:
+    name: Diff dependencies
     runs-on: ubuntu-slim
     permissions:
-      contents: read
-      pull-requests: write
+      contents: read # checkout
+      pull-requests: write # post the diff comment
     steps:
       - name: Checkout repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
@@ -16,4 +23,4 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
       - name: Create Diff
-        uses: e18e/action-dependency-diff@9a7f09f5f2993256322e0db17ee4c8d9339dab77  # v1
+        uses: e18e/action-dependency-diff@9a7f09f5f2993256322e0db17ee4c8d9339dab77  # v1.7.1

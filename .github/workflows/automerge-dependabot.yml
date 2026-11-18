@@ -1,13 +1,19 @@
 name: Auto-merge Dependabot
 on: pull_request
 
-permissions:
-  pull-requests: write
-  contents: write
+permissions: {}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   automerge:
+    name: Enable auto-merge
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # gh pr merge --auto needs to merge into the base branch
+      pull-requests: write # enable auto-merge on the pull request
     if: github.event.pull_request.user.login == 'dependabot[bot]' && github.repository == github.event.pull_request.head.repo.full_name
     steps:
       - name: Checkout repository
