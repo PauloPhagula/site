@@ -20,20 +20,10 @@ people's lives, from idea inception to shipping the final product.
 
 This is my personal blog and brain dump, where I share my ideas and thoughts.
 
-I live in sunny https://en.wikipedia.org/wiki/Mozambique[Mozambique^]
-☀️ 🇲🇿 footnote:[
-The only country in the world whose name is made of a single word containing all vowels.
-And also one of the 4 countries in the world with an AK-47 on its flag.
-]
-, but have been working in remote teams since forever.
-Presently, I work at https://factorialhr.com[Factorial,role=external,window=_blank] as a
-senior software engineer, helping customers manage payroll on time and error-free.
+I have been working in remote teams since forever.
 
 Along my career, I've worked in many domains, like Banking & Finances, Human Resources
 & Recruiting, e-Governance, e-Commerce, and more.
-
-// I hold a BS degree in Computer Science from http://www.ustm.ac.mz[Universidade São Tomás de Moçambique]
-// with a specialization in Software Engineering.
 
 Basically, I'm a tech enthusiast who loves to change people's lives by enhancing
 their capabilities through software.
@@ -45,9 +35,8 @@ Fun fact: On Sundays I practice the Evil cult of Vim at the church of Emacs.
 
 == Connect with me
 
-If you want to know more about what I'm up to, please contact me directly or
+If you want to know more about what I'm up to, please
 follow me on these channels.
 
-- paulo.phagula@gmail.com
 - https://github.com/paulophagula[github.com/paulophagula^]
 - https://twitter.com/paulophagula[twitter.com/paulophagula^]

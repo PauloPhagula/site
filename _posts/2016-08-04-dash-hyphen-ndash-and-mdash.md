@@ -29,7 +29,7 @@ each of the dashes.
 
 - dash/hyphen - used to indicate breaks within words that wrap at the end of a
   line; to connect compound words like “mass-produced”; to connect grouped numbers
-  like in a phone number (258 84-850-4509)
+  like in a phone number (555 010-0100)
 - n dash - has the width of a capital N and should be used to join ranges, like
   2000&ndash;2010 or July&ndash;October 2010
 - m dash - has the width of a capital M and is meant to set apart a unique idea
